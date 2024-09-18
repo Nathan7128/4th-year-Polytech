@@ -3,6 +3,6 @@
 
 # Specification
 
-Each folder match with programmation courses I followed during my 4th year of studies at Polytech Clermont.
+Each folder corresponds to the programming courses I took during my 4th year of studies at Polytech Clermont.
 
-I decided to create one virtual environment by course : you can find requirements.txt files on each folder.
+I decided to create one virtual environment per course; you can find the requirements.txt file in each folder.
