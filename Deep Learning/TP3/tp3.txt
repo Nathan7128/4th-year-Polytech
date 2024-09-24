@@ -1,0 +1,54 @@
+df2 = pd.DataFrame()
+X_kfold, X_test, y_kfold, y_test = train_test_split(X, y, test_size = 0.2, shuffle = True, random_state = 3)
+# initialize parameters
+params = {"N1" : 12, "N2" : 12, "act1" : "relu", "act2" : "sigmoid", "opt" : "adam", "loss" : losses.BinaryCrossentropy(),
+          "epochs" : 100, "batch_size" : 20}
+
+def create_model(X_t, y_t, X_v, y_v, count) :
+    """create and return model"""
+
+    callbacks = [
+        EarlyStopping(monitor = "val_accuracy", patience = 20),
+        ModelCheckpoint(
+            filepath = "my_best_model" + str(count) + ".keras",
+            monitor = "val_accuracy",
+            mode = "max",
+            save_best_only = True,
+            verbose = 1
+        )
+    ]
+
+    # create model
+    model = models.Sequential()
+    model.add(layers.Dense(params["N1"], activation = params["act1"], input_dim = 8))
+    model.add(layers.Dense(params["N2"], activation = params["act2"]))
+    # model.add(layers.Dense(params["N3"], activation = params["act3"]))
+    model.add(layers.Dense(1, activation = "sigmoid"))
+
+    # compile model
+    model.compile(optimizer=params["opt"],loss=params["loss"],metrics=["accuracy"])
+
+    # fit model
+    model.fit(X_t, y_t, validation_data = (X_v, y_v), epochs = params["epochs"], batch_size = params["batch_size"], verbose = 0, callbacks = callbacks)
+
+    return model
+# split data into 10 folds
+kfold = StratifiedKFold(n_splits = 10, shuffle = True, random_state = 0)
+
+# list that will store the results
+cv_score = []
+i = 0
+for train_index, test_index in kfold.split(X_kfold, y_kfold) :
+    # create model
+    model = create_model(X_kfold[train_index], y_kfold[train_index], X_kfold[test_index], y_kfold[test_index], i)
+    
+    # evaluate the model
+    score = model.evaluate(X_kfold[test_index], y_kfold[test_index], verbose = 0)
+    print(model.metrics_names[1], score[1]*100)
+    cv_score.append(score[1]*100)
+    i += 1
+
+params["accuracy"] = np.mean(cv_score)
+df2 = pd.concat([df, pd.Series(params)], axis = 1)
+print("average accuracy and standard deviation:", np.mean(cv_score), np.std(cv_score))
+df2
