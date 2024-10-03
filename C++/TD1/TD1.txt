@@ -1,0 +1,11 @@
+TD1: Vecteurs d'entiers via tableaux dynamiques
+
+int* allocVecteur(int t)
+void allocVecteur(int **V, int t)
+void libereVecteur(int **V)
+void lireVecteur(int *V, int t)
+void afficherVecteur(int *V, int t)
+void sommeVecteurs(int *V1, int *V2, int *V3, int t)
+void differenceVecteurs(int *V1, int *V2, int *V3, int t)
+int produitScalaireVecteurs(int *V1, int *V2, int t)
+programme principal avec menu : lire les vecteurs, afficher les vecteurs, somme, différence, produit scalaire, quitter
