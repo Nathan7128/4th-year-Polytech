@@ -9,13 +9,15 @@ int main()
     etu1.ajouterMatiere("Francais");
     etu1.modifierCoeffMatiere("Francais", 1);
     etu1.modifierNoteMatiere("Francais", 15);
-    etu1.ajouterMatiere("Francais");
-    etu1.modifierCoeffMatiere("Francais", 1);
-    etu1.modifierNoteMatiere("Francais", 15);
-    etu1.ajouterMatiere("Francais");
-    etu1.modifierCoeffMatiere("Francais", 1);
-    etu1.modifierNoteMatiere("Francais", 15);
+    etu1.ajouterMatiere("Maths");
+    etu1.modifierCoeffMatiere("Maths", 2);
+    etu1.modifierNoteMatiere("Maths", 18);
+    etu1.supprimerMatiere("Maths");
     etu1.afficher();
+    etu1.supprimerMatiere("Maths");
+    etu1.supprimerMatiere("Francais");
+    etu1.afficher();
+    cout << "Moyenne : " << etu1.calculMoyenneGenerale() << endl;
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

@@ -1,0 +1,4 @@
+﻿  prog.cpp
+C:\Users\natha\Documents\GitHub\4th year Polytech\C++\TD3\Complexe\prog.cpp(5,21): warning C4305: 'argument' : troncation de 'double' à 'float'
+C:\Users\natha\Documents\GitHub\4th year Polytech\C++\TD3\Complexe\prog.cpp(5,16): warning C4305: 'argument' : troncation de 'double' à 'float'
+  Complexe.vcxproj -> C:\Users\natha\Documents\GitHub\4th year Polytech\C++\TD3\Complexe\x64\Debug\Complexe.exe

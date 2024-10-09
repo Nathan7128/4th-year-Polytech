@@ -32,8 +32,11 @@ Etudiant::Etudiant(string nom, string prenom, int age, int nbMatieresMax) {
 
 
 void Etudiant::ajouterMatiere(string nom) {
-    if (m_nbMatieres >= m_nbMatieresMax - 1) {
-        cout << "Erreur : Nombre de matières maximal atteint" << endl;
+    if (m_nbMatieres >= m_nbMatieresMax) {
+        cout << "Erreur : Nombre de matieres maximal atteint" << endl;
+    }
+    else if (existeMatiere(nom) != -1) {
+        cout << "Erreur : Matiere deja ajoutee" << endl;
     }
     else {
         Matiere new_matiere = { nom, 0, 0 };
@@ -45,19 +48,10 @@ void Etudiant::ajouterMatiere(string nom) {
 
 void Etudiant::supprimerMatiere(string nom) {
     int pos = existeMatiere(nom);
-    //while (pos == -1 && i < m_nbMatieres) {
-    //    if (m_listeMatieres[i].nom == nom) {
-    //        pos = i;
-    //    }
-    //    else {
-    //        i++;
-    //    }
-    //}
     if (pos != -1) {
         for (int j = pos; j < m_nbMatieres - 1; j++) {
             m_listeMatieres[j] = m_listeMatieres[j + 1];
         }
-        delete& (m_listeMatieres[m_nbMatieres - 1]);
         m_nbMatieres--;
     }
 }
@@ -82,12 +76,18 @@ void Etudiant::modifierCoeffMatiere(string nom, int coeff) {
 float Etudiant::calculMoyenneGenerale(void) const {
     float moy = 0;
     int coef = 0;
-    for (int i = 0; i < m_nbMatieres; i++) {
-        moy += m_listeMatieres[i].coeff * m_listeMatieres[i].note;
-        coef += m_listeMatieres[i].coeff;
+    if (m_nbMatieres == 0) {
+        cout << "Erreur : 0 matiere pour cet etudiant" << endl;
+        return 0;
     }
-    moy /= coef;
-    return moy;
+    else {
+        for (int i = 0; i < m_nbMatieres; i++) {
+            moy += m_listeMatieres[i].coeff * m_listeMatieres[i].note;
+            coef += m_listeMatieres[i].coeff;
+        }
+        moy /= coef;
+        return moy;
+    }
 }
 
 
@@ -95,7 +95,7 @@ void Etudiant::afficher(void) const {
     Matiere matiere;
     for (int i = 0; i < m_nbMatieres; i++) {
         matiere = m_listeMatieres[i];
-        cout << "Matiere : " << matiere.nom << "\tNote : " << matiere.note << "\tCoeff : " << matiere.coeff << endl;
+        cout << matiere.nom << "\tNote : " << matiere.note << "\tCoeff : " << matiere.coeff << endl;
     }
 }
 
@@ -106,6 +106,7 @@ int Etudiant::existeMatiere(string nom) const {
         if (m_listeMatieres[i].nom == nom) {
             pos = i;
         }
+        i++;
     }
     return pos;
 }
