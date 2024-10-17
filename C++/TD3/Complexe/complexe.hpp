@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
+
+
 using namespace std;
 
 class Complexe
@@ -11,8 +14,7 @@ private :
 	float m_pReelle, m_pImaginaire;
 
 public :
-	Complexe();
-	Complexe(float re, float im);
+	Complexe(float re = 0.0, float im = 0.0);
 	float module() const;
 	Complexe conjugue() const;
 

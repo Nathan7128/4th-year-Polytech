@@ -1,9 +1,5 @@
 #include "complexe.hpp"
 
-Complexe::Complexe() {
-	m_pImaginaire = 0;
-	m_pReelle = 0;
-}
 
 Complexe::Complexe(float re, float im) {
 	m_pImaginaire = re;
@@ -26,4 +22,12 @@ bool operator==(const Complexe& c1, const Complexe& c2) {
 	else {
 		return true;
 	}
+}
+
+bool operator!=(const Complexe& c1, const Complexe& c2) {
+	return !(c1 == c2);
+}
+
+ostream& operator<<(ostream& f, const Complexe& c) {
+
 }
