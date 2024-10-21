@@ -7,16 +7,16 @@ using namespace std;
 
 class Vecteur
 {
-private :
+private:
 	float* m_listeValeurs;
 	int m_nbValeursMax;
 
-public :
+public:
 	Vecteur(int nbValeursMax = 3);
 	Vecteur(const Vecteur& v);
 	~Vecteur();
 
-	Vecteur& operator=(const Vecteur& e);
+	Vecteur& operator=(const Vecteur& v);
 	float& operator[](int i);
 	friend bool operator==(const Vecteur& v1, const Vecteur& v2);
 	friend bool operator!=(const Vecteur& v1, const Vecteur& v2);
@@ -25,7 +25,7 @@ public :
 	friend Vecteur operator+(const Vecteur& v1, const Vecteur& v2);
 	friend Vecteur operator-(const Vecteur& v1, const Vecteur& v2);
 	friend float operator*(const Vecteur& v1, const Vecteur& v2);
-}
+};
 
 
-#endif
+#endif _VECTEUR_HPP_
