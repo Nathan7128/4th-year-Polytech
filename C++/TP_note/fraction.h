@@ -24,8 +24,17 @@ public :
 	//fonctions amies
 	friend int pgcd(int a, int b); /*renvoie le pgcd entre 2 nombres grâce à l'algorithme d'Euclide*/
 	friend Fraction operator+(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur +*/
+	friend Fraction operator-(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur -*/
+	friend Fraction operator*(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur **/
+	friend Fraction operator/(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur **/
 	friend bool operator==(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur ==*/
 	friend bool operator!=(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur !=*/
+	friend bool operator<(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur <*/
+	friend bool operator>(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur >*/
+	friend bool operator<=(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur <=*/
+	friend bool operator>=(const Fraction& f1, const Fraction& f2); /*surcharge de l'opérateur >=*/
+	friend ostream& operator<<(ostream& f, const Fraction& frac);
+	friend istream& operator>>(istream& f, Fraction& frac);
 };
 
 

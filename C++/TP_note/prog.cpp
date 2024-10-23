@@ -5,8 +5,13 @@
 
 int main()
 {
-    Fraction f1(2, 3), f2(5, 11);
+    Fraction f1(-5, -11), f2(-1, 2);
     Fraction f3;
-    f3 = f1 + f2;
-    cout << f3.getNum() << "/" << f3.getDeno() << "\n\n";
+    cout << f1 << "\n\n";
+    f1.simplifier();
+    cout << f1 << "\n\n";
+    f3 = f1 * f2;
+    cout << f3 << "\n\n";
+    cin >> f3;
+    cout << f3 << "\n\n";
 }
