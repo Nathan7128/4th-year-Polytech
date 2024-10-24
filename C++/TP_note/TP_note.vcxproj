@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="fraction.cpp" />
-    <ClCompile Include="prog.cpp" />
+    <ClCompile Include="liste_chainee.cpp" />
+    <ClCompile Include="main_fraction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fraction.h" />
+    <ClInclude Include="liste_chainee.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

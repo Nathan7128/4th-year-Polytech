@@ -1,6 +1,12 @@
+//implémentation de la classe fraction
+
+
+
 //include gards
 #ifndef _FRACTION_HPP_
 #define _FRACTION_HPP_
+
+
 
 //import libraries
 #include <iostream>
@@ -8,7 +14,8 @@
 using namespace std;
 
 
-//class Fraction : permet de manipuler des fractions
+
+//classe Fraction : permet de manipuler des fractions
 class Fraction {
 private :
 	int m_numerateur; /*numérateur de la fraction*/
@@ -36,6 +43,25 @@ public :
 	friend ostream& operator<<(ostream& f, const Fraction& frac);
 	friend istream& operator>>(istream& f, Fraction& frac);
 };
+
+
+
+//classe exception dénominateur nul
+class ExceptionDenoNul {
+public :
+	string m_message;
+	ExceptionDenoNul(string m = "Erreur : denominateur nul") { m_message = m; };
+};
+
+
+
+//classe exception division par 0
+class ExceptionDivZero {
+public :
+	string m_message;
+	ExceptionDivZero(string m = "Divison par 0") { m_message = m; };
+};
+
 
 
 #endif // _FRACTION_HPP_

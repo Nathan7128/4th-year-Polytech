@@ -1,9 +1,20 @@
+//définition des méthodes de la classe fraction
+
+
+
+//import libraries
 #include "fraction.h"
 
+
+
 Fraction::Fraction(int num, int deno) {
-	m_numerateur = num;
-	m_denominateur = deno;
-	//exception si dénominateur est nul
+	if (deno != 0) {
+		m_numerateur = num;
+		m_denominateur = deno;
+	}
+	else {
+		throw ExceptionDenoNul("Erreur d'initialisation : denominateur nul");
+	}
 }
 
 int Fraction::getNum() {
@@ -15,10 +26,14 @@ int Fraction::getDeno() {
 }
 
 void Fraction::inverse() {
-	int temp = m_numerateur;
-	m_numerateur = m_denominateur;
-	m_denominateur = temp;
-	//exception si numérateur est nul
+	if (m_numerateur != 0) {
+		int temp = m_numerateur;
+		m_numerateur = m_denominateur;
+		m_denominateur = temp;
+	}
+	else {
+		throw ExceptionDenoNul("Erreur d'inversion : impossible d'inverser une fraction nulle");
+	}
 }
 
 int pgcd(int a, int b) {
@@ -66,9 +81,14 @@ Fraction operator*(const Fraction& f1, const Fraction& f2) {
 }
 
 Fraction operator/(const Fraction& f1, const Fraction& f2) {
-	Fraction f(f1.m_numerateur * f2.m_denominateur, f2.m_numerateur * f1.m_denominateur);
-	f.simplifier();
-	return f;
+	if (f2.m_numerateur != 0) {
+		Fraction f(f1.m_numerateur * f2.m_denominateur, f2.m_numerateur * f1.m_denominateur);
+		f.simplifier();
+		return f;
+	}
+	else {
+		throw ExceptionDivZero("Erreur de division : impossible de diviser par une fraction nulle");
+	}
 }
 
 bool operator==(const Fraction& f1, const Fraction& f2) {
