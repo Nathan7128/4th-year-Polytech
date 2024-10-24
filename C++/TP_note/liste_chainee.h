@@ -36,8 +36,9 @@ public:
 	void push_back(int elt);
 	void pop_front();
 	void pop_back();
+	void insert(int i, int elt); /*exception si i négatif ou si moins de i élément dans la liste*/
 };
 
 
 
-#endif // !_LISTE_CHAINEE_
+#endif // _LISTE_CHAINEE_

@@ -51,10 +51,13 @@ void liste_chainee::pop_front() {
 
 void liste_chainee::pop_back() {
 	noeud* temp = m_debut;
-	while ((temp->suivant)->suivant != NULL) {
+	noeud* courant = temp;
+	while (temp->suivant != NULL) {
+		courant = temp;
 		temp = temp->suivant;
 	}
-	delete temp->suivant;
-	temp->suivant = NULL;
+	delete temp;
+	courant->suivant = NULL;
 	//exception si liste vide
 }
+
