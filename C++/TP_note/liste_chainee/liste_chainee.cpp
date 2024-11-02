@@ -270,14 +270,14 @@ void affichage_menu() {
 	cout << "1) front : retourne le premier element de la liste" << "\n\n";
 	cout << "2) back : retourne le dernier element de la liste" << "\n\n";
 	cout << "3) push_front(elt) : ajoute un element au debut de la liste" << "\n\n";
-	cout << "4) push_back(elt) : ajoute un element à la fin de la liste" << "\n\n";
+	cout << "4) push_back(elt) : ajoute un element a la fin de la liste" << "\n\n";
 	cout << "5) pop_front : supprime le premier element de la liste" << "\n\n";
 	cout << "6) pop_back : supprimer le dernier element de la liste" << "\n\n";
-	cout << "7) insert(i, elt) : ajoute un element à la ieme position dans la liste" << "\n\n";
+	cout << "7) insert(i, elt) : ajoute un element a la ieme position dans la liste" << "\n\n";
 	cout << "8) erase(i) : supprime le ieme element de la liste" << "\n\n";
 	cout << "9) size : renvoie le nombre d’elements stockes dans la liste" << "\n\n";
 	cout << "10) empty : renvoie vrai si la liste est vide, faux sinon" << "\n\n";
 	cout << "11) clear : vide la liste" << "\n\n";
-	cout << "12) remove(elt) : supprime de la liste tous les elements egaux à elt" << "\n\n";
+	cout << "12) remove(elt) : supprime de la liste tous les elements egaux a elt" << "\n\n";
 	cout << "13) sort : trie la liste par ordre croissant" << "\n\n";
 }
