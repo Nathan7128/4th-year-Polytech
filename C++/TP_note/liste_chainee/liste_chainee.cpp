@@ -96,41 +96,43 @@ int liste_chainee::size() {
 
 void liste_chainee::insert(int i, int elt) {
 	int l_size = size();
-	if (i <= l_size) {
-		noeud * temp = m_debut, *new_noeud = new noeud;
-		new_noeud->valeur = elt;
-		int j = 1;
-		while (j < i and temp != NULL) {
-			temp = temp->suivant;
-			j++;
-		}
-		new_noeud->suivant = temp->suivant;
-		temp->suivant = new_noeud;
-	}
-	else {
+	noeud* temp = m_debut, * new_noeud = new noeud;
+	if (i > l_size) {
 		throw ExceptionIndex("Erreur methode insert : la liste contient moins de "
 			+ to_string(i) + " elements", i);
+	}
+	else if (i < 1) {
+		throw ExceptionIndex("Erreur methode insert : saisir index superieur a 0", i);
+	}
+	else if (i == 1) {
+		new_noeud->suivant = m_debut->suivant;
+		m_debut = new_noeud;
+	}
+	else {
+		new_noeud->valeur = elt;
+		for (int j = 1; j < i - 1; j++) {
+			temp = temp->suivant;
+		}
+		new_noeud->suivant = temp->suivant->suivant;
+		temp->suivant = new_noeud;
 	}
 }
 
 void liste_chainee::erase(int i) {
 	int l_size = size();
+	noeud* temp1, * temp2;
 	if (i <= l_size) {
-		noeud* temp1 = m_debut->suivant, * temp2 = m_debut;
-		int j = 2;
 		if (i == 1) {
 			pop_front();
 		}
 		else {
-			while (j < i and temp1 != NULL) {
-				temp2 = temp1;
+			temp1 = m_debut;
+			for (int j = 2; j < i; j++) {
 				temp1 = temp1->suivant;
-				j++;
 			}
-			if (temp1 != NULL) {
-				temp2->suivant = temp1->suivant;
-				delete temp1;
-			}
+			temp2 = temp1->suivant;
+			temp1->suivant = temp1->suivant->suivant;
+			delete temp2;
 		}
 	}
 	else {
@@ -280,4 +282,5 @@ void affichage_menu() {
 	cout << "11) clear : vide la liste" << "\n\n";
 	cout << "12) remove(elt) : supprime de la liste tous les elements egaux a elt" << "\n\n";
 	cout << "13) sort : trie la liste par ordre croissant" << "\n\n";
+	cout << "14) + : concatener deux listes" << "\n\n";
 }

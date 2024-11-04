@@ -65,12 +65,12 @@ public:
 
 
 
-//classe exception index trop grand par rapport à la taille de la liste
+//classe exception index de liste
 class ExceptionIndex {
 public:
 	string m_message;
 	int m_index;
-	ExceptionIndex(string m = "Erreur : liste vide", int index = 0) {
+	ExceptionIndex(string m = "Erreur d'index", int index = 0) {
 		m_message = m;
 		m_index = index;
 	};
