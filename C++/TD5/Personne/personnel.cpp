@@ -6,3 +6,10 @@ Personnel::Personnel(string numeroBureau, string nom, string adresse):Personne(n
 	m_numeroBureau = numeroBureau;
 }
 
+string Personnel::getNumeroBureau() {
+	return m_numeroBureau;
+}
+
+void Personnel::setNumeroBureau(string nBureau) {
+	m_numeroBureau = nBureau;
+}

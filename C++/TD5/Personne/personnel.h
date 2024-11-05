@@ -1,5 +1,5 @@
-#ifndef _PERSONNEL_HPP_
-#define _PERSONNEL_HPP_
+#ifndef _PERSONNEL_H_
+#define _PERSONNEL_H_
 
 
 
@@ -13,10 +13,10 @@ private :
 public :
 	Personnel(string nom = "Henri Dupont", string adresse = "10 Rue de la Paix, 75002 Paris", string numeroBureau = "0");
 	string getNumeroBureau();
-	string setNumeroBureau();
+	void setNumeroBureau(string nBureau);
 	virtual float calculerSalaire() = 0;
 };
 
 
 
-#endif _PERSONNEL_HPP_
+#endif _PERSONNEL_H_

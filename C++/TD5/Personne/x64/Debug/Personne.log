@@ -1,14 +1,2 @@
-﻿  main_td5.cpp
-  personnel.cpp
-  Génération de code en cours...
-C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.cpp(5,12): error C2511: 'Personnel::Personnel(std::string)' : impossible de trouver la fonction membre surchargée dans 'Personnel'
-      C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.h(10,7):
-      voir la déclaration de 'Personnel'
-  
-C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.cpp(5,52): error C2275: « std::string » : expression attendue au lieu d’un type
-C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.cpp(5,59): error C2146: erreur de syntaxe : absence de ')' avant l'identificateur 'nom'
-C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.cpp(5,80): error C2550: 'Personnel::{ctor}' : les listes d'initialiseurs de constructeur ne sont autorisées que dans la définition d'un constructeur
-C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.cpp(6,2): error C2597: référence non conforme à un membre non static 'Personnel::m_numeroBureau'
-      C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\Personne\personnel.h(12,9):
-      voir la déclaration de 'Personnel::m_numeroBureau'
-  
+﻿  administratif.cpp
+  Personne.vcxproj -> C:\Users\natha\Documents\GitHub\4th-year-Polytech\C++\TD5\x64\Debug\Personne.exe

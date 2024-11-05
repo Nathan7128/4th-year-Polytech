@@ -127,13 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="administratif.cpp" />
+    <ClCompile Include="enseignant.cpp" />
+    <ClCompile Include="etudiant.cpp" />
     <ClCompile Include="main_td5.cpp" />
+    <ClCompile Include="permanent.cpp" />
     <ClCompile Include="personne.cpp" />
     <ClCompile Include="personnel.cpp" />
+    <ClCompile Include="vacataire.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="administratif.h" />
+    <ClInclude Include="enseignant.h" />
+    <ClInclude Include="etudiant.h" />
+    <ClInclude Include="permanent.h" />
     <ClInclude Include="personne.h" />
     <ClInclude Include="personnel.h" />
+    <ClInclude Include="vacataire.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

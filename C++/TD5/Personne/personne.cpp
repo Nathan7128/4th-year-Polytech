@@ -15,12 +15,12 @@ string Personne::getAdresse() {
 	return m_adresse;
 }
 
-void Personne::setNom(string nom) {
-	m_nom = nom;
+void Personne::setNom(string nNom) {
+	m_nom = nNom;
 }
 
-void Personne::setAdresse(string adresse) {
-	m_adresse = adresse;
+void Personne::setAdresse(string nAdresse) {
+	m_adresse = nAdresse;
 }
 
 void Personne::afficher() {
