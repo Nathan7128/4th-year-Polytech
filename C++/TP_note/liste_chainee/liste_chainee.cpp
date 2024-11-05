@@ -121,23 +121,24 @@ void liste_chainee::insert(int i, int elt) {
 void liste_chainee::erase(int i) {
 	int l_size = size();
 	noeud* temp1, * temp2;
-	if (i <= l_size) {
-		if (i == 1) {
-			pop_front();
-		}
-		else {
-			temp1 = m_debut;
-			for (int j = 2; j < i; j++) {
-				temp1 = temp1->suivant;
-			}
-			temp2 = temp1->suivant;
-			temp1->suivant = temp1->suivant->suivant;
-			delete temp2;
-		}
-	}
-	else {
+	if (i > l_size) {
 		throw ExceptionIndex("Erreur methode erase : la liste contient moins de "
 			+ to_string(i) + " elements", i);
+	}
+	else if (i < 1) {
+		throw ExceptionIndex("Erreur methode insert : saisir index superieur a 0", i);
+	}
+	else if (i == 1) {
+		pop_front();
+	}
+	else {
+		temp1 = m_debut;
+		for (int j = 2; j < i; j++) {
+			temp1 = temp1->suivant;
+		}
+		temp2 = temp1->suivant;
+		temp1->suivant = temp1->suivant->suivant;
+		delete temp2;
 	}
 }
 
@@ -153,15 +154,19 @@ void liste_chainee::clear() {
 }
 
 void liste_chainee::remove(int elt) {
-	noeud* temp = m_debut;
-	int i = 1;
-	while (temp != NULL) {
-		if (temp->valeur == elt) {
-			erase(i);
+	noeud* temp1, * temp2;
+	if (m_debut->valeur == elt) {
+		pop_front();
+	}
+	temp1 = m_debut;
+	while (temp1->suivant != NULL) {
+		if (temp1->suivant->valeur == elt) {
+			temp2 = temp1->suivant;
+			temp1->suivant = temp1->suivant->suivant;
+			delete temp2;
 		}
 		else {
-			i++;
-			temp = temp->suivant;
+			temp1 = temp1->suivant;
 		}
 	}
 }
@@ -268,19 +273,19 @@ liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2) {
 }
 
 void affichage_menu() {
-	cout << "0) arreter la saisie" << "\n\n";
-	cout << "1) front : retourne le premier element de la liste" << "\n\n";
-	cout << "2) back : retourne le dernier element de la liste" << "\n\n";
-	cout << "3) push_front(elt) : ajoute un element au debut de la liste" << "\n\n";
-	cout << "4) push_back(elt) : ajoute un element a la fin de la liste" << "\n\n";
-	cout << "5) pop_front : supprime le premier element de la liste" << "\n\n";
-	cout << "6) pop_back : supprimer le dernier element de la liste" << "\n\n";
-	cout << "7) insert(i, elt) : ajoute un element a la ieme position dans la liste" << "\n\n";
-	cout << "8) erase(i) : supprime le ieme element de la liste" << "\n\n";
-	cout << "9) size : renvoie le nombre d’elements stockes dans la liste" << "\n\n";
-	cout << "10) empty : renvoie vrai si la liste est vide, faux sinon" << "\n\n";
-	cout << "11) clear : vide la liste" << "\n\n";
-	cout << "12) remove(elt) : supprime de la liste tous les elements egaux a elt" << "\n\n";
-	cout << "13) sort : trie la liste par ordre croissant" << "\n\n";
-	cout << "14) + : concatener deux listes" << "\n\n";
+	cout << "0) arreter la saisie" << endl;
+	cout << "1) front : retourne le premier element de la liste" << endl;
+	cout << "2) back : retourne le dernier element de la liste" << endl;
+	cout << "3) push_front(elt) : ajoute un element au debut de la liste" << endl;
+	cout << "4) push_back(elt) : ajoute un element a la fin de la liste" << endl;
+	cout << "5) pop_front : supprime le premier element de la liste" << endl;
+	cout << "6) pop_back : supprimer le dernier element de la liste" << endl;
+	cout << "7) insert(i, elt) : ajoute un element a la ieme position dans la liste" << endl;
+	cout << "8) erase(i) : supprime le ieme element de la liste" << endl;
+	cout << "9) size : renvoie le nombre d’elements stockes dans la liste" << endl;
+	cout << "10) empty : renvoie vrai si la liste est vide, faux sinon" << endl;
+	cout << "11) clear : vide la liste" << endl;
+	cout << "12) remove(elt) : supprime de la liste tous les elements egaux a elt" << endl;
+	cout << "13) sort : trie la liste par ordre croissant" << endl;
+	cout << "14) + : concatener deux listes" << endl;
 }

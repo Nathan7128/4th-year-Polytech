@@ -77,6 +77,8 @@ public:
 };
 
 
+
+//méthode permettant d'afficher le menu dans la fonction main
 void affichage_menu();
 
 

@@ -32,41 +32,41 @@ int main()
 
 			//éxécution du choix
 			switch (choix_menu) {
-				//méthode front
+			//méthode front
 			case 1:
 				cout << tab_liste[choix_liste1 - 1].front() << endl;
 				break;
 
-				//méthode back
+			//méthode back
 			case 2:
 				cout << tab_liste[choix_liste1 - 1].back() << endl;
 				break;
 
-				//méthode push_front
+			//méthode push_front
 			case 3:
 				cout << "Saisir element : ";
 				cin >> elt;
 				tab_liste[choix_liste1 - 1].push_front(elt);
 				break;
 
-				//méthode push_back
+			//méthode push_back
 			case 4:
 				cout << "Saisir element : ";
 				cin >> elt;
 				tab_liste[choix_liste1 - 1].push_back(elt);
 				break;
 
-				//méthode pop_front
+			//méthode pop_front
 			case 5:
 				tab_liste[choix_liste1 - 1].pop_front();
 				break;
 
-				//méthode pop_back
+			//méthode pop_back
 			case 6:
 				tab_liste[choix_liste1 - 1].pop_back();
 				break;
 
-				//méthode insert
+			//méthode insert
 			case 7:
 				cout << "Saisir element : ";
 				cin >> elt;
@@ -75,41 +75,41 @@ int main()
 				tab_liste[choix_liste1 - 1].insert(index_elt, elt);
 				break;
 
-				//méthode erase
+			//méthode erase
 			case 8:
 				cout << "Saisir index : ";
 				cin >> index_elt;
 				tab_liste[choix_liste1 - 1].erase(index_elt);
 				break;
 
-				//méthode size
+			//méthode size
 			case 9:
 				cout << "Taille de la liste : " << tab_liste[choix_liste1 - 1].size() << endl;
 				break;
 
-				//méthode empty
+			//méthode empty
 			case 10:
 				cout << tab_liste[choix_liste1 - 1].empty() << endl;
 				break;
 
-				//méthode clear
+			//méthode clear
 			case 11:
 				tab_liste[choix_liste1 - 1].clear();
 				break;
 
-				//méthode remove
+			//méthode remove
 			case 12:
 				cout << "Saisir element : ";
 				cin >> elt;
 				tab_liste[choix_liste1 - 1].remove(elt);
 				break;
 
-				//méthode sort
+			//méthode sort
 			case 13:
 				tab_liste[choix_liste1 - 1].sort();
 				break;
 
-				//méthode +
+			//méthode +
 			case 14:
 				while (choix_liste2 < 1 or choix_liste2 > 10) {
 					cout << "Choisir liste a additionner (entre 1 et 10) : ";
@@ -123,7 +123,7 @@ int main()
 				choix_liste1 = choix_liste_add;
 				break;
 
-				//arrêt du programme
+			//arrêt du programme
 			default:
 				continuer = false;
 				break;
