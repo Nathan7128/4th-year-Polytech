@@ -51,6 +51,16 @@ D = sp.kron(D1, M) + sp.kron(M, D1)
 D[0, 0] = D[I, I] = D[-I - 1, -I - 1] = D[-1, -1] = 1
 
 
+D_d_g = np.zeros(I + 1, I + 1)
+D_d_g[0, 0] = D_d_g[-1, -1] = 1
+D_d_g[0, 1] = D_d_g[-1, -2] = -1
+
+
+D_b_h = np.zeros(I + 1, I + 1)
+D_b_h[0, 0] = D_b_h[-1, -1] = 1
+D_b_h[0, 1] = D_b_h[-1, -2] = -1
+
+
 F = np.zeros((I + 1)**2)
 G = np.zeros((I + 1)**2)
 U_sol = np.zeros((I + 1)**2)
