@@ -20,9 +20,6 @@ def u(x, y) :
 def f(x, y) :
     return 2*(np.pi**2)*np.sin(np.pi*x)*np.sin(np.pi*y)
 
-def g(x, y) :
-    return 0
-
 I = 100
 
 h = 1/I
@@ -64,12 +61,18 @@ for j in range(I + 1) :
         xi = i*h
         
         U_sol[i + j*(I + 1)] = u(xi, xj)
-        
-        if i == 0 or i == I or j == 0 or j == I:
-            G[i + j*(I + 1)] = g(xi, xj)
+
+        if i == 0 :
+            G[i + j*(I + 1)] = np.pi*np.sin(np.pi*xj)
+        elif i == I :
+            G[i + j*(I + 1)] = -np.pi*np.sin(np.pi*xj)
+        elif j == 0 :
+            G[i + j*(I + 1)] = np.pi*np.sin(np.pi*xi)
+        elif j == I :
+            G[i + j*(I + 1)] = -np.pi*np.sin(np.pi*xi)
         else :
             F[i + j*(I + 1)] = f(xi, xj)
-
+            
 
 
 # Show result

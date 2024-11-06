@@ -10,22 +10,29 @@ t0 = time.time()
 
 
 
-# Solution
-def u(x, y) :
-    return np.sin(np.pi*x)*np.sin(np.pi*y)
-
-
-
 # Data
-def f(x, y) :
-    return 2*(np.pi**2)*np.sin(np.pi*x)*np.sin(np.pi*y)
+T_ext = 8
 
-def g(x, y) :
+D = 2*(10**(-5))
+
+T = 36000
+
+def f(x, y) :
     return 0
 
-I = 100
+def g(x, y) :
+    return T_ext
+
+def u0(x) :
+    return T_ext + 15*np.sin(np.pi*x)*np.sin(np.pi*y)
+
+I = 1000
+
+N = 10
 
 h = 1/I
+
+d_t = T/N
 
 
 
@@ -63,12 +70,12 @@ for j in range(I + 1) :
     for i in range(I + 1) :
         xi = i*h
         
+        F[i + j*(I + 1)] = f(xi, xj)
+        
         U_sol[i + j*(I + 1)] = u(xi, xj)
         
         if i == 0 or i == I or j == 0 or j == I:
             G[i + j*(I + 1)] = g(xi, xj)
-        else :
-            F[i + j*(I + 1)] = f(xi, xj)
 
 
 
