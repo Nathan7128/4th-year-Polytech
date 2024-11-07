@@ -83,40 +83,82 @@ FROM vol
 WHERE villedep = 'PARIS';
 
 -- REQ 16 : Trouver le nom des pilotes effectuant des vols au depart de Paris sur des Airbus.
-SELECT plnom
-FROM vol V JOIN 
+SELECT P.plnom
+FROM avion A JOIN (vol V JOIN pilote P
+                 ON V.plnum = P.plnum)
+ON V.avnum = A.avnum
+WHERE V.villedep = 'PARIS'
+AND A.avnom LIKE 'A%';
 
 -- REQ 17 : Quels sont les avions localises dans la meme ville que l’avion numero 3 ?
-
+SELECT *
+FROM avion
+WHERE localisation = (SELECT localisation
+                      FROM avion
+                      WHERE avnum = 3);
 
 -- REQ 18 : Quels sont les pilotes dont le salaire est plus eleve que le salaire moyen des pilotes ?
-
+SELECT *
+FROM pilote
+WHERE salaire > (SELECT AVG(salaire)
+                 FROM pilote);
 
 -- REQ 19 : Quels sont les noms des pilotes en service au depart de Paris ?
-
+SELECT P.plnom
+FROM pilote P JOIN vol V
+ON P.plnum = V.plnum
+WHERE villedep = 'PARIS';
 
 -- REQ 20 : Quels sont les noms des pilotes niçois qui gagnent plus que tous les pilotes parisiens ?
-
+SELECT plnom
+FROM pilote
+WHERE salaire > ALL (SELECT salaire
+                 FROM pilote
+                 WHERE ville = 'PARIS')
+AND ville = 'NICE';
 
 -- REQ 21 : Donner le nom des pilotes niçois qui gagnent plus qu’au moins un pilote parisien.
-
+SELECT plnom
+FROM pilote
+WHERE salaire > ANY (SELECT salaire
+                 FROM pilote
+                 WHERE ville = 'PARIS')
+AND ville = 'NICE';
 
 -- REQ 22 : Rechercher les pilotes ayant meme adresse et meme salaire que Miranda.
-
+SELECT *
+FROM pilote
+WHERE ville = (SELECT ville
+               FROM pilote
+               WHERE plnom = 'MIRANDA')
+AND salaire = (SELECT salaire
+               FROM pilote
+               WHERE plnom = 'MIRANDA')
+AND plnom != 'MIRANDA';
 
 -- REQ 23 : Donner la liste des pilotes parisiens par ordre de salaire decroissant puis par ordre alphabetique des noms.
-
+SELECT *
+FROM pilote
+WHERE ville = 'PARIS'
+ORDER BY salaire DESC, plnom ASC;
 
 -- REQ 24 : Quel est le nombre de vols effectues par chacun des pilotes ?
-
+SELECT plnum, COUNT(*)
+FROM vol
+GROUP BY plnum;
 
 -- REQ 25 : Trouver le nombre de vols par pilote et par avion.
-
+SELECT plnum, avnum, COUNT(*)
+FROM vol
+GROUP BY plnum, avnum;
 
 -- REQ 26 : 
 -- a-	Donner le nombre de vols par pilote seulement s’il est superieur a 5.
 -- b-	Donner le nom des pilotes effectuant au moins 5 vols.
-
+SELECT plnum, COUNT(*)
+FROM vol
+GROUP BY plnum
+HAVING COUNT(*) > 5;
 
 -- REQ 27 : Quels sont les noms des avions de capacite superieure a 250 ou localises a Paris ?
 
