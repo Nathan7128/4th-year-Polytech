@@ -160,20 +160,38 @@ ON C.numclt = PL.numclt;
 
 -- 22. Donner la quantité moyenne livrée pour les produits faisant l’objet de plus de 2
 --     livraisons. Trier les données par ordre décroissant de numéro de produits.
-
+SELECT numproduit, AVG(quantite)
+FROM livraisons
+GROUP BY numproduit
+HAVING COUNT(*) > 2
+ORDER BY numproduit DESC;
 
 -- 23. Donner le nom du produit qui a été le plus livré et le nombre de livraisons
 --     correspondant.
-
+SELECT P.libelle, L.countliv
+FROM produits P JOIN (SELECT numproduit, COUNT(*) countliv
+                      FROM livraisons
+                      GROUP BY numproduit
+                      HAVING COUNT(*) = (SELECT
+                                         MAX(COUNT(*))
+                                         FROM livraisons
+                                         GROUP BY numproduit)) L
+ON P.numproduit = L.numproduit;
 
 -- 24. Donner le chiffre d’affaire par produit.
-
+SELECT P.numproduit, L.sommeqt * P.prixbrut
+FROM produits P JOIN (SELECT numproduit, SUM(quantite) sommeqt
+                      FROM livraisons
+                      GROUP BY numproduit) L
+ON P.numproduit = L.numproduit;
 
 -- 25. Pour chaque client (existant dans la table CLIENTS), donner son numéro et son
 --     nom, et pour ceux qui ont été livrés, la liste des produits livrés et en quelle
 --     quantité. S’il n’y a aucun produit livré à un client, il faudrait quand même afficher
 --     le numéro et le nom du client (les autres attributs seront à NULL).
-
+SELECT C.numclt, C.nomCLT, L.numproduit, L.quantite
+FROM clients C LEFT JOIN livraisons L
+ON C.numclt = L.numclt;
 
 -- 26. Donner les produits intervenant dans la fabrication du produit 40, avec leur
 --     niveau dans la hiérarchie et la quantité correspondante.
