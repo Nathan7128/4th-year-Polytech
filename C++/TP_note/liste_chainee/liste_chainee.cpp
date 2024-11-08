@@ -11,6 +11,26 @@ liste_chainee::liste_chainee() {
 	m_debut = NULL;
 }
 
+liste_chainee::liste_chainee(const liste_chainee& l) {
+	noeud* temp_old = l.m_debut, * temp_new = new noeud;
+	m_debut = temp_new;
+	while (temp_old != NULL) {
+		temp_new->suivant = new noeud;
+		temp_new->valeur = temp_old->valeur;
+		temp_new = temp_new->suivant;
+		temp_old = temp_old->suivant;
+	}
+}
+
+liste_chainee::~liste_chainee() {
+	noeud* temp;
+	while (m_debut != NULL) {
+		temp = m_debut->suivant;
+		delete m_debut;
+		m_debut = temp;
+	}
+}
+
 int liste_chainee::front() {
 	if (m_debut != NULL) {
 		return m_debut->valeur;
@@ -225,6 +245,24 @@ void liste_chainee::sort() {
 	}
 }
 
+liste_chainee& liste_chainee::operator=(const liste_chainee& l) {
+	noeud* temp_old = l.m_debut, * temp_new = new noeud;
+	if (this != &l) {
+		this->clear();
+		if (temp_old != NULL) {
+			this->m_debut = temp_new;
+			temp_new->valeur = temp_old->valeur;
+			while (temp_old->suivant != NULL) {
+				temp_new->suivant = new noeud;
+				temp_new->valeur = temp_old->valeur;
+				temp_new = temp_new->suivant;
+				temp_old = temp_old->suivant;
+			}
+		}
+	}
+	return *this;
+}
+
 ostream& operator<<(ostream& f, const liste_chainee& l) {
 	noeud* temp = l.m_debut;
 	if (temp != NULL) {
@@ -273,6 +311,7 @@ liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2) {
 }
 
 void affichage_menu() {
+	cout << "Vous avez a votre disposition 10 listes vides numerotees de 1 a 10" << "\n\n";
 	cout << "0) arreter la saisie" << endl;
 	cout << "1) front : retourne le premier element de la liste" << endl;
 	cout << "2) back : retourne le dernier element de la liste" << endl;
@@ -282,10 +321,11 @@ void affichage_menu() {
 	cout << "6) pop_back : supprimer le dernier element de la liste" << endl;
 	cout << "7) insert(i, elt) : ajoute un element a la ieme position dans la liste" << endl;
 	cout << "8) erase(i) : supprime le ieme element de la liste" << endl;
-	cout << "9) size : renvoie le nombre d’elements stockes dans la liste" << endl;
+	cout << "9) size : renvoie la taille de la liste" << endl;
 	cout << "10) empty : renvoie vrai si la liste est vide, faux sinon" << endl;
 	cout << "11) clear : vide la liste" << endl;
 	cout << "12) remove(elt) : supprime de la liste tous les elements egaux a elt" << endl;
 	cout << "13) sort : trie la liste par ordre croissant" << endl;
-	cout << "14) + : concatener deux listes" << endl;
+	cout << "14) = : attribuer les valeurs d une autre liste a cette liste" << endl;
+	cout << "15) + : concatener deux listes" << endl;
 }

@@ -22,7 +22,7 @@ int main()
 
 			//choix de la liste à manipuler
 			while (choix_liste1 < 1 or choix_liste1 > 10) {
-				cout << "Choisir liste (entre 1 et 10) : ";
+				cout << "Choisir liste a manipuler (entre 1 et 10) : ";
 				cin >> choix_liste1;
 			}
 
@@ -109,14 +109,23 @@ int main()
 				tab_liste[choix_liste1 - 1].sort();
 				break;
 
-			//méthode +
+			//méthode =
 			case 14:
+				while (choix_liste2 < 1 or choix_liste2 > 10) {
+					cout << "Choisir liste a attribuer a la liste actuelle (entre 1 et 10) : ";
+					cin >> choix_liste2;
+				}
+				tab_liste[choix_liste1 - 1] = tab_liste[choix_liste2 - 1];
+				break;
+
+			//méthode +
+			case 15:
 				while (choix_liste2 < 1 or choix_liste2 > 10) {
 					cout << "Choisir liste a additionner (entre 1 et 10) : ";
 					cin >> choix_liste2;
 				}
 				while (choix_liste_add < 1 or choix_liste_add > 11) {
-					cout << "Choisir liste resultante de la concatenation (entre 1 et 10, saisir 11 pour ne pas attribuer la concatenation a une liste) : ";
+					cout << "A quelle liste attribuer le resultat ? (entre 1 et 10, saisir 11 pour ne pas attribuer la concatenation a une liste) : ";
 					cin >> choix_liste_add;
 				}
 				tab_liste[choix_liste_add - 1] = tab_liste[choix_liste1 - 1] + tab_liste[choix_liste2 - 1];

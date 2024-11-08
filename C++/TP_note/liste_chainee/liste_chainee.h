@@ -33,6 +33,8 @@ private:
 
 public:
 	liste_chainee();
+	liste_chainee(const liste_chainee& l);
+	~liste_chainee();
 	int front();
 	int back();
 	void push_front(int elt);
@@ -49,6 +51,7 @@ public:
 	void clear();
 	void remove(int elt);
 	void sort();
+	liste_chainee& operator=(const liste_chainee& l);
 
 	friend ostream& operator<<(ostream& f, const liste_chainee& l);
 	friend liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2);
