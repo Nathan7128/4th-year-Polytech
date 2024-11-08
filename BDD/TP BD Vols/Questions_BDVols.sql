@@ -85,7 +85,7 @@ WHERE villedep = 'PARIS';
 -- REQ 16 : Trouver le nom des pilotes effectuant des vols au depart de Paris sur des Airbus.
 SELECT P.plnom
 FROM avion A JOIN (vol V JOIN pilote P
-                 ON V.plnum = P.plnum)
+                   ON V.plnum = P.plnum)
 ON V.avnum = A.avnum
 WHERE V.villedep = 'PARIS'
 AND A.avnom LIKE 'A%';
@@ -160,24 +160,69 @@ FROM vol
 GROUP BY plnum
 HAVING COUNT(*) > 5;
 
--- REQ 27 : Quels sont les noms des avions de capacite superieure a 250 ou localises a Paris ?
+SELECT P.plnom
+FROM pilote P JOIN (SELECT plnum
+                    FROM vol
+                    GROUP BY plnum
+                    HAVING COUNT(*) >= 5) V
+ON P.plnum = V.plnum;
 
+-- REQ 27 : Quels sont les noms des avions de capacite superieure a 250 ou localises a Paris ?
+SELECT avnom
+FROM avion
+WHERE capacite > 250
+OR localisation = 'PARIS';
 
 --REQ 28 : 
 -- a-	Quels sont les numeros des pilotes pilotant les avions 2 et 4 ?
 -- b-	Quels sont les numeros des pilotes pilotant les avions 2 ou 4 ?
+SELECT plnum
+FROM vol
+WHERE avnum = 2
+INTERSECT
+SELECT plnum
+FROM vol
+WHERE avnum = 4;
 
+SELECT plnum
+FROM vol
+WHERE avnum = 2
+OR avnum = 4;
 
 -- REQ 29 : Quels sont les numeros des pilotes pilotant l’avion 2 mais jamais le 4 ?
-
+SELECT plnum
+FROM vol
+WHERE avnum = 2
+MINUS
+SELECT plnum
+FROM vol
+WHERE avnum = 4;
 
 -- REQ 30 :
 -- a-	Quels sont les numeros des pilotes qui pilotent tous les avions de la compagnie ?
 -- b-	Quels sont les numeros des pilotes qui pilotent tous les avions de type A310 ?
+SELECT plnum
+FROM vol
+GROUP BY plnum
+HAVING COUNT(DISTINCT avnum) = (SELECT COUNT(*)
+                                FROM avion);
 
+SELECT plnum
+FROM vol
+GROUP BY plnum
+HAVING COUNT(DISTINCT avnum) = (SELECT COUNT(*)
+                                FROM avion
+                                WHERE avnom = 'A310');
 
 -- REQ 31 : Lister les noms et numeros des avions autres que ceux de type Boeing, qui sont conduits par tous les pilotes ayant un salaire superieur au salaire des pilotes clermontois.
-
+-- SELECT *
+-- FROM avion A JOIN (vol V JOIN pilote P
+--                    ON V.plnum = P.plnum)
+-- ON A.avnum = V.avnum
+-- WHERE A.avnom NOT LIKE 'B%'
+-- AND P.salaire > ALL (SELECT salaire
+--                      FROM pilote
+--                      WHERE ville = 'CLERMONT');
 
 -- REQ 32 : Lister les paires de numeros de pilote (paires inverses et identiques supprimees).
 
