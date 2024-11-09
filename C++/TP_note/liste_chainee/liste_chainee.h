@@ -2,13 +2,13 @@
 
 
 
-//include gards
+//chiens de garde
 #ifndef _LISTE_CHAINEE_
 #define _LISTE_CHAINEE_
 
 
 
-//import libraries
+//importation des bibliothèques
 #include <iostream>
 #include <string>
 using namespace std;
@@ -23,38 +23,38 @@ struct noeud {
 
 
 
-//classe Liste Chainée : permet de stocker des entiers
+//classe Liste Chainée : permet de stocker des entiers dans une liste chainée
 class liste_chainee {
 private:
-	noeud* m_debut;
-	noeud* sep_list();
-	void merge(const liste_chainee& l_fin);
-	void merge_sort();
+	noeud* m_debut; /*tête de la liste*/
 
 public:
-	liste_chainee();
-	liste_chainee(const liste_chainee& l);
-	~liste_chainee();
-	int front();
-	int back();
-	void push_front(int elt);
-	void push_back(int elt);
-	void pop_front();
-	void pop_back();
-	int size();
-	void insert(int i, int elt); /*exception si i négatif ou si moins de i élément dans la liste
-								  Le 1er élément de la liste (s'il existe) est à la position i = 1
-								  Si la liste contient 3 éléments, il n'est pas possible d'ajouter un élément en position 4 :
+	liste_chainee(); /*constructeur par défaut*/
+	liste_chainee(const liste_chainee& l); /*constructeur de recopie*/
+	~liste_chainee(); /*destructeur*/
+	int front(); /*retourne le premier élément de la liste*/
+	int back(); /*retourne le dernier élément de la liste*/
+	void push_front(int elt); /*ajoute un élément au début de la liste*/
+	void push_back(int elt); /*ajoute un élément à la fin de la liste*/
+	void pop_front(); /*supprime le premier élément de la liste*/
+	void pop_back(); /*supprimer le dernier élement de la liste*/
+	int size(); /*renvoie le nombre d’éléments stockés dans la liste*/
+	void insert(int i, int elt); /*Le 1er élément de la liste (s'il existe) est à la position i = 1
+								  Si la liste contient par exemple 3 éléments, il n'est pas possible d'ajouter un élément en position 4 :
 								  il faut effectuer un push_back*/
-	void erase(int i);
-	bool empty();
-	void clear();
-	void remove(int elt);
-	void sort();
-	liste_chainee& operator=(const liste_chainee& l);
+	void erase(int i); /*supprime le ième élement de la liste*/
+	bool empty(); /*renvoie vrai si la liste est vide, faux sinon*/
+	void clear(); /*vide la liste*/
+	void remove(int elt); /*supprime de la liste tous les éléments égaux à elt*/
+	void sort(); /*trie la liste par ordre croissant*/
+	liste_chainee& operator=(const liste_chainee& l); /*attribrue les valeurs d'une liste à une autre liste*/
 
-	friend ostream& operator<<(ostream& f, const liste_chainee& l);
-	friend liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2);
+	friend noeud* sep_list(noeud* debut); /*permet de séparer la liste chainée en 2 pour le merge sort : renvoie un pointeur
+											vers la deuxième moitié de la liste*/
+	friend noeud* merge(noeud* debut, noeud* fin); /*fusionne 2 listes chainées passées en paramètre*/
+	friend noeud* merge_sort(noeud* debut); /*permet de trier récursivement des sous parties de la liste, puis de fusionner ces sous parties*/
+	friend ostream& operator<<(ostream& f, const liste_chainee& l); /*affiche la liste*/
+	friend liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2); /*concatène 2 listes*/
 };
 
 

@@ -191,57 +191,57 @@ void liste_chainee::remove(int elt) {
 	}
 }
 
-noeud* liste_chainee::sep_list() {
-	noeud* lent = m_debut, * rapide = m_debut->suivant->suivant, * temp;
+noeud* sep_list(noeud* debut) {
+	noeud* lent = debut, * rapide = debut->suivant;
 	while (rapide != NULL and rapide->suivant != NULL) {
-		lent = lent->suivant;
 		rapide = rapide->suivant->suivant;
+		lent = lent->suivant;
 	}
-	temp = lent->suivant;
-	lent->suivant = NULL;
-	return temp;
+	return lent;
 }
 
-void liste_chainee::merge(const liste_chainee& l_fin) {
-	noeud* temp = m_debut, * l1 = m_debut, * l2 = l_fin.m_debut;
-	if (l2->valeur < l1->valeur) {
-		m_debut = l2;
-		l2 = l2->suivant;
-	}
-	else {
-		l1 = l1->suivant;
-	}
-	while (l1 != NULL and l2 != NULL) {
-		if (l2->valeur < l1->valeur) {
-			temp->suivant = l2;
-			l2 = l2->suivant;
+noeud* merge(noeud* debut, noeud* fin) {
+	noeud* nouveau = new noeud, * temp = nouveau;
+	while (debut != NULL and fin != NULL) {
+		if (debut->valeur <= fin->valeur) {
+			temp->suivant = debut;
+			debut = debut->suivant;
 		}
 		else {
-			temp->suivant = l1;
-			l1 = l1->suivant;
+			temp->suivant = fin;
+			fin = fin->suivant;
 		}
+		temp = temp->suivant;
 	}
-	if (l1 != NULL) {
-		temp->suivant = l1;
+	if (debut != NULL) {
+		temp->suivant = debut;
 	}
 	else {
-		temp->suivant = l2;
+		temp->suivant = fin;
 	}
+	return nouveau->suivant;
 }
 
-void liste_chainee::merge_sort() {
-	liste_chainee l_fin;
-	if (m_debut != NULL and m_debut->suivant != NULL) {
-		l_fin.m_debut = sep_list();
-		merge_sort();
-		l_fin.merge_sort();
-		merge(l_fin);
+noeud* merge_sort(noeud* debut) {
+	noeud* fin, * sep, * gauche, * droite, * nouveau;
+	if (debut == NULL or debut->suivant == NULL) {
+		return debut;
 	}
+	sep = sep_list(debut);
+	fin = sep->suivant;
+	sep->suivant = NULL;
+
+	gauche = merge_sort(debut);
+	droite = merge_sort(fin);
+
+	nouveau = merge(gauche, droite);
+
+	return nouveau;
 }
 
 void liste_chainee::sort() {
 	if (m_debut != NULL) {
-		merge_sort();
+		m_debut = merge_sort(m_debut);
 	}
 }
 
@@ -250,14 +250,15 @@ liste_chainee& liste_chainee::operator=(const liste_chainee& l) {
 	if (this != &l) {
 		this->clear();
 		if (temp_old != NULL) {
-			this->m_debut = temp_new;
-			temp_new->valeur = temp_old->valeur;
+			m_debut = temp_new;
 			while (temp_old->suivant != NULL) {
 				temp_new->suivant = new noeud;
 				temp_new->valeur = temp_old->valeur;
 				temp_new = temp_new->suivant;
 				temp_old = temp_old->suivant;
 			}
+			temp_new->suivant = NULL;
+			temp_new->valeur = temp_old->valeur;
 		}
 	}
 	return *this;
