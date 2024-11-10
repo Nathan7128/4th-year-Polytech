@@ -151,28 +151,63 @@ FROM Livraisons
 GROUP BY NumProduit;
 
 -- 20. Quels sont les numéros des clients auxquels on a livré tous les produits ?
-
+SELECT L.NumClt
+FROM Livraisons L JOIN Produits P
+ON L.NumProduit = P.NumProduit
+GROUP BY NumClt
+HAVING COUNT(DISTINCT L.NumProduit) = (SELECT COUNT(*)
+                                       FROM Produits);
 
 -- 21. Quels sont les clients qui ont été livrés de tous les produits coûtant moins 
 --     de 30 euros (numéro et nom) ?
-
+SELECT L.NumClt
+FROM Livraisons L JOIN Produits P
+ON L.NumProduit = P.NumProduit
+WHERE L.NumProduit IN (SELECT NumProduit
+                       FROM Produits
+                       WHERE PrixBrut < 30)
+GROUP BY NumClt
+HAVING COUNT(DISTINCT L.NumProduit) = (SELECT COUNT(*)
+                                       FROM Produits
+                                       WHERE PrixBrut < 30);
 
 -- 22. Donner la quantité moyenne livrée pour les produits faisant l’objet de plus de 2
 --     livraisons. Trier les données par ordre décroissant de numéro de produits.
-
+SELECT NumProduit, AVG(Quantite)
+FROM Livraisons
+GROUP BY NumProduit
+HAVING COUNT(*) > 2
+ORDER BY NumProduit DESC;
 
 -- 23. Donner le nom du produit qui a été le plus livré et le nombre de livraisons
 --     correspondant.
-
+SELECT P.Libelle, COUNT(*)
+FROM Produits P JOIN Livraisons L
+ON P.NumProduit = L.NumProduit
+GROUP BY P.NumProduit, P.Libelle
+HAVING COUNT(*) = (SELECT MAX(COUNT(*))
+                   FROM Livraisons
+                   GROUP BY NumProduit);
 
 -- 24. Donner le chiffre d’affaire par produit.
-
+SELECT P.NumProduit, SUM(L.Quantite) * P.PrixBrut
+FROM Produits P JOIN Livraisons L
+ON P.NumProduit = L.NumProduit
+GROUP BY P.NumProduit, P.PrixBrut;
 
 -- 25. Pour chaque client (existant dans la table CLIENTS), donner son numéro et son
 --     nom, et pour ceux qui ont été livrés, la liste des produits livrés et en quelle
 --     quantité. S’il n’y a aucun produit livré à un client, il faudrait quand même afficher
 --     le numéro et le nom du client (les autres attributs seront à NULL).
-
+SELECT C.NumClt, C.NomClt, L.NumProduit, SUM(Quantite)
+FROM Clients C LEFT JOIN Livraisons L
+ON C.NumClt = L.NumClt
+GROUP BY C.NumClt, C.NomClt, L.NumProduit
+ORDER BY C.NumClt;
 
 -- 26. Donner les produits intervenant dans la fabrication du produit 40, avec leur
 --     niveau dans la hiérarchie et la quantité correspondante.
+SELECT NumProComposant, LEVEL
+FROM Composition
+CONNECT BY PRIOR NumProComposant = NumProCompose
+START WITH NumProCompose = 40;
