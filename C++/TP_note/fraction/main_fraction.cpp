@@ -7,7 +7,7 @@ int main()
 {
 	//déclaration des variables
 	int choix_menu = 1, choix_fraction1 = -1, choix_fraction2 = -1, choix_fraction_res = -1;
-	Fraction tab_fraction[10];
+	Fraction tab_fraction[11] = {Fraction()};
 	bool continuer = true;
 
 	//affichage du menu

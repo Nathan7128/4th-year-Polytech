@@ -137,7 +137,7 @@ istream& operator>>(istream& f, Fraction& frac) {
 }
 
 void affichage_menu() {
-	cout << "Vous avez a votre disposition 10 fractions numerotees de 1 a 10" << "\n\n";
+	cout << "Vous avez a votre disposition 10 fractions nulles numerotees de 1 a 10" << "\n\n";
 	cout << "0) arreter la saisie" << endl;
 	cout << "1) Modifier une fraction" << endl;
 	cout << "2) getNum : retourne le numerateur de la fraction" << endl;
