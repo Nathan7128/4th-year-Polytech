@@ -1,14 +1,14 @@
-//implémentation de la classe fraction
+//implémentation de la classe Liste chainée
 
 
 
-//include gards
+//chiens de garde
 #ifndef _FRACTION_HPP_
 #define _FRACTION_HPP_
 
 
 
-//import libraries
+//importation des bibliothèques
 #include <iostream>
 #include <string>
 using namespace std;
@@ -61,6 +61,11 @@ public:
 	string m_message;
 	ExceptionDivZero(string m = "Divison par 0") { m_message = m; };
 };
+
+
+
+//méthode permettant d'afficher le menu dans la fonction main
+void affichage_menu();
 
 
 

@@ -25,9 +25,11 @@ int main()
 			cin >> choix_menu;
 
 			//choix de la liste à manipuler
-			while (choix_liste1 < 1 or choix_liste1 > 10) {
-				cout << "Choisir liste a manipuler (entre 1 et 10) : ";
-				cin >> choix_liste1;
+			if (choix_menu != 0) {
+				while (choix_liste1 < 1 or choix_liste1 > 10) {
+					cout << "Choisir liste a manipuler (entre 1 et 10) : ";
+					cin >> choix_liste1;
+				}
 			}
 
 			//éxécution du choix

@@ -11,7 +11,6 @@
 //importation des bibliothèques
 #include <iostream>
 #include <string>
-#include "fraction.h"
 using namespace std;
 
 
@@ -29,7 +28,7 @@ struct noeud {
 template <typename T>
 class liste_chainee {
 private:
-	noeud* m_debut; /*tête de la liste*/
+	noeud<T>* m_debut; /*tête de la liste*/
 
 public:
 	liste_chainee(); /*constructeur par défaut*/
@@ -41,7 +40,7 @@ public:
 	void push_back(T elt); /*ajoute un élément à la fin de la liste*/
 	void pop_front(); /*supprime le premier élément de la liste*/
 	void pop_back(); /*supprimer le dernier élement de la liste*/
-	T size(); /*renvoie le nombre d’éléments stockés dans la liste*/
+	int size(); /*renvoie le nombre d’éléments stockés dans la liste*/
 	void insert(int i, T elt); /*Le 1er élément de la liste (s'il existe) est à la position i = 1
 								  Si la liste contient par exemple 3 éléments, il n'est pas possible d'ajouter un élément en position 4 :
 								  il faut effectuer un push_back*/
@@ -50,15 +49,15 @@ public:
 	void clear(); /*vide la liste*/
 	void remove(T elt); /*supprime de la liste tous les éléments égaux à elt*/
 	void sort(); /*trie la liste par ordre croissant*/
-	liste_chainee& operator=(const liste_chainee& l); /*attribrue les valeurs d'une liste à une autre liste*/
+	liste_chainee<T>& operator=(const liste_chainee<T>& l); /*attribrue les valeurs d'une liste à une autre liste*/
 
-	template <typename T>friend noeud* sep_list(noeud* debut); /*permet de séparer la liste chainée en 2 pour le merge sort :
+	template <typename T> friend noeud<T>* sep_list(noeud<T>* debut); /*permet de séparer la liste chainée en 2 pour le merge sort :
 															   renvoie un pointeur vers la deuxième moitié de la liste*/
-	template <typename T>friend noeud* merge(noeud* debut, noeud* fin); /*fusionne 2 listes chainées passées en paramètre*/
-	template <typename T>friend noeud* merge_sort(noeud* debut); /*permet de trier récursivement des sous parties de la liste,
+	template <typename T> friend noeud<T>* merge(noeud<T>* debut, noeud<T>* fin); /*fusionne 2 listes chainées passées en paramètre*/
+	template <typename T> friend noeud<T>* merge_sort(noeud<T>* debut); /*permet de trier récursivement des sous parties de la liste,
 																 puis de fusionner ces sous parties*/
-	template <typename T>friend ostream& operator<<(ostream& f, const liste_chainee& l); /*affiche la liste*/
-	template <typename T>friend liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2); /*concatène 2 listes*/
+	template <typename T> friend ostream& operator<<(ostream& f, const liste_chainee<T>& l); /*affiche la liste*/
+	template <typename T> friend liste_chainee<T> operator+(const liste_chainee<T>& l1, const liste_chainee<T>& l2); /*concatène 2 listes*/
 };
 
 
@@ -96,10 +95,10 @@ liste_chainee<T>::liste_chainee() {
 
 template <typename T>
 liste_chainee<T>::liste_chainee(const liste_chainee& l) {
-	noeud* temp_old = l.m_debut, * temp_new = new noeud;
+	noeud<T>* temp_old = l.m_debut, * temp_new = new noeud<T>;
 	m_debut = temp_new;
 	while (temp_old != NULL) {
-		temp_new->suivant = new noeud;
+		temp_new->suivant = new noeud<T>;
 		temp_new->valeur = temp_old->valeur;
 		temp_new = temp_new->suivant;
 		temp_old = temp_old->suivant;
@@ -108,7 +107,7 @@ liste_chainee<T>::liste_chainee(const liste_chainee& l) {
 
 template <typename T>
 liste_chainee<T>::~liste_chainee() {
-	noeud* temp;
+	noeud<T>* temp;
 	while (m_debut != NULL) {
 		temp = m_debut->suivant;
 		delete m_debut;
@@ -117,7 +116,7 @@ liste_chainee<T>::~liste_chainee() {
 }
 
 template <typename T>
-int liste_chainee<T>::front() {
+T liste_chainee<T>::front() {
 	if (m_debut != NULL) {
 		return m_debut->valeur;
 	}
@@ -127,8 +126,8 @@ int liste_chainee<T>::front() {
 }
 
 template <typename T>
-int liste_chainee<T>::back() {
-	noeud* temp = m_debut;
+T liste_chainee<T>::back() {
+	noeud<T>* temp = m_debut;
 	if (m_debut != NULL) {
 		while (temp->suivant != NULL) {
 			temp = temp->suivant;
@@ -141,16 +140,16 @@ int liste_chainee<T>::back() {
 }
 
 template <typename T>
-void liste_chainee<T>::push_front(int elt) {
-	noeud* new_noeud = new noeud;
+void liste_chainee<T>::push_front(T elt) {
+	noeud<T>* new_noeud = new noeud<T>;
 	new_noeud->suivant = m_debut;
 	new_noeud->valeur = elt;
 	m_debut = new_noeud;
 }
 
 template <typename T>
-void liste_chainee<T>::push_back(int elt) {
-	noeud* new_noeud = new noeud, * temp = m_debut;
+void liste_chainee<T>::push_back(T elt) {
+	noeud<T>* new_noeud = new noeud<T>, * temp = m_debut;
 	new_noeud->suivant = NULL;
 	new_noeud->valeur = elt;
 	if (m_debut == NULL) {
@@ -166,7 +165,7 @@ void liste_chainee<T>::push_back(int elt) {
 
 template <typename T>
 void liste_chainee<T>::pop_front() {
-	noeud* temp;
+	noeud<T>* temp;
 	if (m_debut != NULL) {
 		temp = m_debut->suivant;
 		delete m_debut;
@@ -179,7 +178,7 @@ void liste_chainee<T>::pop_front() {
 
 template <typename T>
 void liste_chainee<T>::pop_back() {
-	noeud* temp = m_debut;
+	noeud<T>* temp = m_debut;
 	if (m_debut == NULL) {
 		throw ExceptionListeVide("Erreur methode pop_back : liste vide");
 	}
@@ -198,7 +197,7 @@ void liste_chainee<T>::pop_back() {
 template <typename T>
 int liste_chainee<T>::size() {
 	int l_size = 0;
-	noeud* temp = m_debut;
+	noeud<T>* temp = m_debut;
 	while (temp != NULL) {
 		temp = temp->suivant;
 		l_size++;
@@ -207,9 +206,10 @@ int liste_chainee<T>::size() {
 }
 
 template <typename T>
-void liste_chainee<T>::insert(int i, int elt) {
+void liste_chainee<T>::insert(int i, T elt) {
 	int l_size = size();
-	noeud* temp = m_debut, * new_noeud = new noeud;
+	noeud<T>* temp = m_debut, * new_noeud = new noeud<T>;
+	new_noeud->valeur = elt;
 	if (i > l_size) {
 		throw ExceptionIndex("Erreur methode insert : la liste contient moins de "
 			+ to_string(i) + " elements", i);
@@ -222,7 +222,6 @@ void liste_chainee<T>::insert(int i, int elt) {
 		m_debut = new_noeud;
 	}
 	else {
-		new_noeud->valeur = elt;
 		for (int j = 1; j < i - 1; j++) {
 			temp = temp->suivant;
 		}
@@ -234,7 +233,7 @@ void liste_chainee<T>::insert(int i, int elt) {
 template <typename T>
 void liste_chainee<T>::erase(int i) {
 	int l_size = size();
-	noeud* temp1, * temp2;
+	noeud<T>* temp1, * temp2;
 	if (i > l_size) {
 		throw ExceptionIndex("Erreur methode erase : la liste contient moins de "
 			+ to_string(i) + " elements", i);
@@ -270,8 +269,8 @@ void liste_chainee<T>::clear() {
 }
 
 template <typename T>
-void liste_chainee<T>::remove(int elt) {
-	noeud* temp1, * temp2;
+void liste_chainee<T>::remove(T elt) {
+	noeud<T>* temp1, * temp2;
 	if (m_debut->valeur == elt) {
 		pop_front();
 	}
@@ -289,8 +288,8 @@ void liste_chainee<T>::remove(int elt) {
 }
 
 template <typename T>
-noeud* sep_list(noeud* debut) {
-	noeud* lent = debut, * rapide = debut->suivant;
+noeud<T>* sep_list(noeud<T>* debut) {
+	noeud<T>* lent = debut, * rapide = debut->suivant;
 	while (rapide != NULL and rapide->suivant != NULL) {
 		rapide = rapide->suivant->suivant;
 		lent = lent->suivant;
@@ -299,8 +298,8 @@ noeud* sep_list(noeud* debut) {
 }
 
 template <typename T>
-noeud* merge(noeud* debut, noeud* fin) {
-	noeud* nouveau = new noeud, * temp = nouveau;
+noeud<T>* merge(noeud<T>* debut, noeud<T>* fin) {
+	noeud<T>* nouveau = new noeud<T>, * temp = nouveau;
 	while (debut != NULL and fin != NULL) {
 		if (debut->valeur <= fin->valeur) {
 			temp->suivant = debut;
@@ -322,8 +321,8 @@ noeud* merge(noeud* debut, noeud* fin) {
 }
 
 template <typename T>
-noeud* merge_sort(noeud* debut) {
-	noeud* fin, * sep, * gauche, * droite, * nouveau;
+noeud<T>* merge_sort(noeud<T>* debut) {
+	noeud<T>* fin, * sep, * gauche, * droite, * nouveau;
 	if (debut == NULL or debut->suivant == NULL) {
 		return debut;
 	}
@@ -347,14 +346,14 @@ void liste_chainee<T>::sort() {
 }
 
 template <typename T>
-liste_chainee& liste_chainee<T>::operator=(const liste_chainee& l) {
-	noeud* temp_old = l.m_debut, * temp_new = new noeud;
+liste_chainee<T>& liste_chainee<T>::operator=(const liste_chainee<T>& l) {
+	noeud<T>* temp_old = l.m_debut, * temp_new = new noeud<T>;
 	if (this != &l) {
 		this->clear();
 		if (temp_old != NULL) {
 			m_debut = temp_new;
 			while (temp_old->suivant != NULL) {
-				temp_new->suivant = new noeud;
+				temp_new->suivant = new noeud<T>;
 				temp_new->valeur = temp_old->valeur;
 				temp_new = temp_new->suivant;
 				temp_old = temp_old->suivant;
@@ -366,8 +365,9 @@ liste_chainee& liste_chainee<T>::operator=(const liste_chainee& l) {
 	return *this;
 }
 
-ostream& operator<<(ostream& f, const liste_chainee& l) {
-	noeud* temp = l.m_debut;
+template <typename T>
+ostream& operator<<(ostream& f, const liste_chainee<T>& l) {
+	noeud<T>* temp = l.m_debut;
 	if (temp != NULL) {
 		while (temp->suivant != NULL) {
 			f << temp->valeur << " -> ";
@@ -378,9 +378,10 @@ ostream& operator<<(ostream& f, const liste_chainee& l) {
 	return f;
 }
 
-liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2) {
-	liste_chainee l_new;
-	noeud* temp_l1 = l1.m_debut, * temp_l2 = l2.m_debut, * temp_lnew, * new_noeud;
+template <typename T>
+liste_chainee<T> operator+(const liste_chainee<T>& l1, const liste_chainee<T>& l2) {
+	liste_chainee<T> l_new;
+	noeud<T>* temp_l1 = l1.m_debut, * temp_l2 = l2.m_debut, * temp_lnew, * new_noeud;
 	if (l1.m_debut != NULL) {
 		l_new.push_front(l1.m_debut->valeur);
 		temp_lnew = l_new.m_debut;
@@ -395,7 +396,7 @@ liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2) {
 		return l_new;
 	}
 	while (temp_l1 != NULL) {
-		new_noeud = new noeud;
+		new_noeud = new noeud<T>;
 		new_noeud->suivant = NULL;
 		new_noeud->valeur = temp_l1->valeur;
 		temp_lnew->suivant = new_noeud;
@@ -403,7 +404,7 @@ liste_chainee operator+(const liste_chainee& l1, const liste_chainee& l2) {
 		temp_l1 = temp_l1->suivant;
 	}
 	while (temp_l2 != NULL) {
-		new_noeud = new noeud;
+		new_noeud = new noeud<T>;
 		new_noeud->suivant = NULL;
 		new_noeud->valeur = temp_l2->valeur;
 		temp_lnew->suivant = new_noeud;

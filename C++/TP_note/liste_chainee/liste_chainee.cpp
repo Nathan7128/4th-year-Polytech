@@ -117,6 +117,7 @@ int liste_chainee::size() {
 void liste_chainee::insert(int i, int elt) {
 	int l_size = size();
 	noeud* temp = m_debut, * new_noeud = new noeud;
+	new_noeud->valeur = elt;
 	if (i > l_size) {
 		throw ExceptionIndex("Erreur methode insert : la liste contient moins de "
 			+ to_string(i) + " elements", i);
@@ -129,7 +130,6 @@ void liste_chainee::insert(int i, int elt) {
 		m_debut = new_noeud;
 	}
 	else {
-		new_noeud->valeur = elt;
 		for (int j = 1; j < i - 1; j++) {
 			temp = temp->suivant;
 		}

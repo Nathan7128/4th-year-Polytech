@@ -2,7 +2,7 @@
 
 
 
-//import libraries
+//importation des bibliothèques
 #include "fraction.h"
 
 
@@ -134,4 +134,24 @@ istream& operator>>(istream& f, Fraction& frac) {
 	cout << "Denominateur : ";
 	f >> frac.m_denominateur;
 	return f;
+}
+
+void affichage_menu() {
+	cout << "Vous avez a votre disposition 10 fractions numerotees de 1 a 10" << "\n\n";
+	cout << "0) arreter la saisie" << endl;
+	cout << "1) Modifier une fraction" << endl;
+	cout << "2) getNum : retourne le numerateur de la fraction" << endl;
+	cout << "3) getDeno : retourne le denominateur de la fraction" << endl;
+	cout << "4) inverse : inverse la fraction" << endl;
+	cout << "5) simplifier : simplifie la fraction" << endl;
+	cout << "6) + : additionne deux fractions" << endl;
+	cout << "7) - : soustrait une fraction a une autre" << endl;
+	cout << "8) * : mutliplie deux fractions" << endl;
+	cout << "9) / : divise deux fractions" << endl;
+	cout << "10) == : renvoie vrai si les deux fractions sont egales, faux sinon" << endl;
+	cout << "11) != : renvoie vrai si les deux fractions sont differentes, faux sinon" << endl;
+	cout << "12) < : renvoie vrai si la premiere fraction est strictement inferieure a la deuxieme, faux sinon" << endl;
+	cout << "13) > : renvoie vrai si la premiere fraction est strictement superieure a la deuxieme, faux sinon" << endl;
+	cout << "14) <= : renvoie vrai si la premiere fraction est inferieure a la deuxieme, faux sinon" << endl;
+	cout << "15) >= : renvoie vrai si la premiere fraction est superieure a la deuxieme, faux sinon" << endl;
 }
