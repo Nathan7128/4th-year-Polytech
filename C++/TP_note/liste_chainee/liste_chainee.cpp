@@ -93,7 +93,7 @@ void liste_chainee::pop_back() {
 		throw ExceptionListeVide("Erreur methode pop_back : liste vide");
 	}
 	else if (m_debut->suivant == NULL) {
-		m_debut = NULL;
+		pop_front();
 	}
 	else {
 		while (temp->suivant->suivant != NULL) {
