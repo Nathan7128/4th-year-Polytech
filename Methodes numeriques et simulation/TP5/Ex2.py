@@ -51,19 +51,11 @@ D = sp.kron(D1, M) + sp.kron(M, D1)
 D[0, 0] = D[I, I] = D[-I - 1, -I - 1] = D[-1, -1] = 1
 
 
-D_d_g = np.zeros(I + 1, I + 1)
-D_d_g[0, 0] = D_d_g[-1, -1] = 1
-D_d_g[0, 1] = D_d_g[-1, -2] = -1
-
-
-D_b_h = np.zeros(I + 1, I + 1)
-D_b_h[0, 0] = D_b_h[-1, -1] = 1
-D_b_h[0, 1] = D_b_h[-1, -2] = -1
-
-
 F = np.zeros((I + 1)**2)
 G = np.zeros((I + 1)**2)
 U_sol = np.zeros((I + 1)**2)
+
+c = 1/h
 
 for j in range(I + 1) :
     xj = j*h
@@ -72,14 +64,18 @@ for j in range(I + 1) :
         
         U_sol[i + j*(I + 1)] = u(xi, xj)
 
-        if i == 0 :
-            G[i + j*(I + 1)] = np.pi*np.sin(np.pi*xj)
+        if j == 0 :
+            D[i, j] += c
+            D[i, j + I + 1] -= c
+        elif j  == I :
+            D[i, j] += c
+            D[i, j - I - 1] -= c
+        elif i == 0 :
+            D[i, j] += c
+            D[i + 1, j] -= c
         elif i == I :
-            G[i + j*(I + 1)] = -np.pi*np.sin(np.pi*xj)
-        elif j == 0 :
-            G[i + j*(I + 1)] = np.pi*np.sin(np.pi*xi)
-        elif j == I :
-            G[i + j*(I + 1)] = -np.pi*np.sin(np.pi*xi)
+            D[i, j] += c
+            D[i - 1, j] -= c
         else :
             F[i + j*(I + 1)] = f(xi, xj)
             

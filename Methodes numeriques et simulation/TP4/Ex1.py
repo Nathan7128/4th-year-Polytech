@@ -25,9 +25,9 @@ def alpha(t) :
 def beta(t) :
     return np.sin(2*np.pi*t) + np.cos(1)
 
-I = 5
+I = 50
 
-N = 100
+N = 10000
 
 K = 1
 
@@ -37,9 +37,9 @@ d_t = T/N
 
 h = 1/I
 
-lambd = (h**2)/(K*d_t)
+lambd = (K*d_t)/(h**2)
 
-print("(d_t*K)/(h**2) = ", 1/lambd)
+print("(d_t*K)/(h**2) = ", lambd)
 
 
 
@@ -48,7 +48,7 @@ sub_x = np.linspace(0, 1, I + 1)
 
 sub_t = np.linspace(0, T, N + 1)
 
-data = [-1*np.ones(I + 1), (2 + lambd)*np.ones(I + 1), -1*np.ones(I + 1)]
+data = [-lambd*np.ones(I + 1), (1 + 2*lambd)*np.ones(I + 1), -lambd*np.ones(I + 1)]
 
 offsets = [-1, 0, 1]
 
@@ -59,8 +59,6 @@ A = csc_matrix(A)
 A[0, 0], A[0, 1] = 1, 0
 A[-1, -1], A[-1, -2] = 1, 0
 
-A = A/lambd
-
 
 
 # Implicit Euler scheme implementation
@@ -68,14 +66,15 @@ U_old = u0(sub_x)
 U_new = np.zeros(I + 1)
 
 for k in range (N) :
-    F = f(sub_x, sub_t[k + 1])
-    F[0] = alpha(sub_t[k + 1])/(lambd*d_t)
-    F[-1] = beta(sub_t[k + 1])/(lambd*d_t)
+    F = d_t*f(sub_x, sub_t[k + 1])
+    F[0] = alpha(sub_t[k + 1])
+    F[-1] = beta(sub_t[k + 1])
     
-    U_new = spsolve(A, U_old + d_t*F)
-    U_old = U_new.copy()
     U_old[0] = 0
     U_old[-1] = 0
+    
+    U_new = spsolve(A, U_old + F)
+    U_old = U_new.copy()
     
     if (k%(N/10) == 0) :
         plotlabel = "t = %1.2f" %(k*d_t)

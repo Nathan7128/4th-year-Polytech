@@ -2,12 +2,7 @@
 import numpy as np
 from scipy.sparse.linalg import spsolve
 from scipy.sparse import dia_matrix, csc_matrix
-
-
-
-# Solution
-def u(x, t) :
-    return np.sin(2*np.pi*t) + np.cos(x)
+import matplotlib.pyplot as plt
 
 
 
@@ -28,7 +23,7 @@ def beta(t) :
 
 I = 100
 
-N = 1000
+N = 10000
 
 K = 2*(10**(-5))
 
@@ -38,9 +33,9 @@ d_t = T/N
 
 h = 1/I
 
-lambd = (h**2)/(K*d_t)
+lambd = (K*d_t)/(h**2)
 
-print("(d_t*K)/(h**2) = ", 1/lambd)
+print("(d_t*K)/(h**2) = ", lambd)
 
 
 
@@ -49,7 +44,7 @@ sub_x = np.linspace(0, 1, I + 1)
 
 sub_t = np.linspace(0, T, N + 1)
 
-data = [-1*np.ones(I + 1), (2 + lambd)*np.ones(I + 1), -1*np.ones(I + 1)]
+data = [-lambd*np.ones(I + 1), (1 + 2*lambd)*np.ones(I + 1), -lambd*np.ones(I + 1)]
 
 offsets = [-1, 0, 1]
 
@@ -60,27 +55,26 @@ A = csc_matrix(A)
 A[0, 0], A[0, 1] = 1, 0
 A[-1, -1], A[-1, -2] = 1, 0
 
-A = A/lambd
-
 
 
 # Implicit Euler scheme implementation
 U_old = u0(sub_x)
 U_new = np.zeros(I + 1)
 
-for k in range (1, N + 1) :
-    F = f(sub_x, sub_t[k])
-    F[0] = alpha(sub_t[k])/(lambd*d_t)
-    F[-1] = beta(sub_t[k])/(lambd*d_t)
+for k in range (N) :
+    F = np.zeros(I + 1)
+    F[0] = alpha(sub_t[k + 1])
+    F[-1] = beta(sub_t[k + 1])
     
-    U_new = spsolve(A, U_old + d_t*F)
-    U_old = U_new.copy()
     U_old[0] = 0
     U_old[-1] = 0
     
+    U_new = spsolve(A, U_old + F)
+    U_old = U_new.copy()
+    
     if k == 0 :
         fig, ax = plt.subplots()
-        line, = plt.plot(x, U_new)
+        line, = plt.plot(sub_x, U_new)
         ax.set_ylim(0, 25)
         
     else :
@@ -89,9 +83,6 @@ for k in range (1, N + 1) :
             plt.xlabel(u"$x$", fontsize = 26)
             plt.ylabel(u"Température", fontsize = 26, rotation = 90)
             plt.title(u"Equation de la chaleur 1D. t="+' ')
-    
-# return error and visualization
-print("Erreur : ", np.linalg.norm(u(sub_x, T) - U_new, np.inf))
 
 
 
