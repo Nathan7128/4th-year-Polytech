@@ -43,7 +43,7 @@ for N in liste_N :
     
     G = np.zeros(N - 1)
     G[0] = -l*a
-    G[-1] = b/h**2 - b
+    G[-1] = b/h - b
     
     
     # Résolution du système

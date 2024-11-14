@@ -13,8 +13,8 @@ def u0(x) :
 
 T = 2
 K = 1
-I = 100
-N = 50000
+I = 10
+N = 500
 h = 1/I
 d_t = 2/N
 print("(d_t*K)/(h**2) = ", (d_t*K)/(h**2))
@@ -35,7 +35,7 @@ for k in range(0, N) :
     if k == 0 :
         fig, ax = plt.subplots()
         line, = plt.plot(sub_x, u_new)
-        ax.set_ylim(0, 5)
+        ax.set_ylim(0, 25)
     else :
         if (k%(int(N/3000) + 1) == 0) :
             line.set_ydata(u_new)

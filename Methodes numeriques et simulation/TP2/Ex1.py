@@ -27,48 +27,48 @@ for N in liste_N :
     
     
     # Matrices méthode 1
-    # data = [l*np.ones(N - 1), d*np.ones(N - 1), v*np.ones(N - 1)]
-    
-    # offsets = [-1, 0, 1]
-    
-    # A = dia_matrix((data, offsets), shape = (N - 1, N - 1))
-    
-    # A = csc_matrix(A)
-    
-    # x = np.arange(1, N)/N
-    
-    # F = f(x)
-    
-    # G = np.zeros(N - 1)
-    # G[0] = -l*a
-    # G[-1] = -v*b
-    
-    
-    # Résolution du système
-    # U = spsolve(A, F + G)
-    
-    
-    
-    # Matrices méthode 2
-    data = [l*np.ones(N + 1), d*np.ones(N + 1), v*np.ones(N + 1)]
+    data = [l*np.ones(N - 1), d*np.ones(N - 1), v*np.ones(N - 1)]
     
     offsets = [-1, 0, 1]
     
-    A = dia_matrix((data, offsets), shape = (N + 1, N + 1))
+    A = dia_matrix((data, offsets), shape = (N - 1, N - 1))
     
     A = csc_matrix(A)
-    A[[0, -1], [0, -1]] = 1
-    A[[0, -1], [1, -2]] = 0
     
-    x = np.linspace(0, 1, N + 1)
+    x = np.arange(1, N)/N
     
     F = f(x)
-    F[0] = a
-    F[-1] = b
+    
+    G = np.zeros(N - 1)
+    G[0] = -l*a
+    G[-1] = -v*b
     
     
-    # Résolution du système
-    U = spsolve(A, F)
+    Résolution du système
+    U = spsolve(A, F + G)
+    
+    
+    
+    # # Matrices méthode 2
+    # data = [l*np.ones(N + 1), d*np.ones(N + 1), v*np.ones(N + 1)]
+    
+    # offsets = [-1, 0, 1]
+    
+    # A = dia_matrix((data, offsets), shape = (N + 1, N + 1))
+    
+    # A = csc_matrix(A)
+    # A[[0, -1], [0, -1]] = 1
+    # A[[0, -1], [1, -2]] = 0
+    
+    # x = np.linspace(0, 1, N + 1)
+    
+    # F = f(x)
+    # F[0] = a
+    # F[-1] = b
+    
+    
+    # # Résolution du système
+    # U = spsolve(A, F)
     
     
     
