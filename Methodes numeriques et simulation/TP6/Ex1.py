@@ -40,13 +40,15 @@ sub_x = np.linspace(0, 1, I + 1)
 sub_y = np.linspace(0, 1, I + 1)
 sub_t = np.linspace(0, T, N + 1)
 
-bord_gauche = range(0, (I + 1)**2, I + 1)
-bord_droit = range(10, (I + 1)**2, I + 1)
-bord_bas = range(0, I + 1)
-bord_haut = range(I*(I + 1), (I + 1)**2)
-bords = list(bord_gauche) + list(bord_droit) + list(bord_bas) + list(bord_haut)
-
 sub_xy = np.array([(x, y) for y in sub_y for x in sub_x])
+
+
+bord_gauche = list(range(I + 1, (I + 1)*I, I + 1))
+bord_droit = list(range(2*I + 1, (I + 1)*I, I + 1))
+bord_bas = list(range(0, I + 1))
+bord_haut = list(range(I*(I + 1), (I + 1)**2))
+
+bords = bord_gauche + bord_droit + bord_bas + bord_haut
 
 lambd = (D*d_t)/(h**2)
 
@@ -55,15 +57,14 @@ print("(d_t*D)/(h**2) = ", lambd)
 
 
 # Matrix
-diag_D1 = [-lambd*np.ones(I + 1), 2*lambd*np.ones(I + 1), -lambd*np.ones(I + 1)]
+diag_D1 = [-lambd*np.ones(I + 1), (2*lambd + 1/2)*np.ones(I + 1), -lambd*np.ones(I + 1)]
 
 off_set_D1 = [-1, 0, 1]
 
 D1 = sp.dia_matrix((diag_D1, off_set_D1), shape = (I + 1, I + 1))
 D1 = sp.csc_matrix(D1)
 
-D1[0, 0] = D1[-1, -1] = 1
-D1[0, 1] = D1[-1, -2] = 0
+D1[0, 0] = D1[-1, -1] = D1[0, 1] = D1[-1, -2] = 0
 
 
 M = sp.dia_matrix((np.ones(I + 1), 0), shape = (I + 1, I + 1))
@@ -74,13 +75,10 @@ M[0, 0] = M[-1, -1] = 0
 
 D = sp.kron(D1, M) + sp.kron(M, D1)
 
-D[bords] = 1
-
+D[bords, bords] = 1
 
 U_old = u0(sub_xy[:, 0], sub_xy[:, 1])
 U_new = np.zeros((I + 1)**2)
-
-U_old[bords] = T_ext
 
 
 
