@@ -6,18 +6,18 @@ ObjetGraphiqueMobile::ObjetGraphiqueMobile(int i, int j, int type):ObjetGraphiqu
 
 }
 
-void deplacerDroite() {
-
+void ObjetGraphiqueMobile::deplacerDroite() {
+	m_j++;
 }
 
-void deplacerGauche() {
-
+void ObjetGraphiqueMobile::deplacerGauche() {
+	m_j--;
 }
 
-void deplacerBas() {
-
+void ObjetGraphiqueMobile::deplacerBas() {
+	m_i--;
 }
 
-void deplacerHaut() {
-
+void ObjetGraphiqueMobile::deplacerHaut() {
+	m_i++;
 }

@@ -7,7 +7,7 @@
 
 
 
-class ObjetGraphiqueMobile : public ObjetGraphique {
+class ObjetGraphiqueMobile : public ObjetGraphique {/*Classe dérivée de ObjetGraphique permettant de manipuler des objets graphiques déplaçables*/
 //Définition des méthodes publiques
 public :
 	ObjetGraphiqueMobile(int i = 0, int j = 0, int type = 0);

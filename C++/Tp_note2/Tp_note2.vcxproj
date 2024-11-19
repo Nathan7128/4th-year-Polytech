@@ -127,13 +127,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Couloir.cpp" />
+    <ClCompile Include="Mur.cpp" />
     <ClCompile Include="ObjetGraphique.cpp" />
+    <ClCompile Include="ObjetGraphiqueFixe.cpp" />
     <ClCompile Include="ObjetGraphiqueMobile.cpp" />
+    <ClCompile Include="Personnage.cpp" />
+    <ClCompile Include="Plateau.cpp" />
+    <ClCompile Include="Sortie.cpp" />
     <ClCompile Include="Tp_note2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Couloir.h" />
+    <ClInclude Include="Mur.h" />
     <ClInclude Include="ObjetGraphique.h" />
+    <ClInclude Include="ObjetGraphiqueFixe.h" />
     <ClInclude Include="ObjetGraphiqueMobile.h" />
+    <ClInclude Include="Personnage.h" />
+    <ClInclude Include="Plateau.h" />
+    <ClInclude Include="Sortie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
