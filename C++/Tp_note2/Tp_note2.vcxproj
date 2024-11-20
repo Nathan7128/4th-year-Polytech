@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Couloir.cpp" />
+    <ClCompile Include="Labyrinthe.cpp" />
     <ClCompile Include="Mur.cpp" />
     <ClCompile Include="ObjetGraphique.cpp" />
     <ClCompile Include="ObjetGraphiqueFixe.cpp" />
@@ -135,16 +136,18 @@
     <ClCompile Include="Personnage.cpp" />
     <ClCompile Include="Plateau.cpp" />
     <ClCompile Include="Sortie.cpp" />
-    <ClCompile Include="Tp_note2.cpp" />
+    <ClCompile Include="Programme.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Couloir.h" />
+    <ClInclude Include="Labyrinthe.h" />
     <ClInclude Include="Mur.h" />
     <ClInclude Include="ObjetGraphique.h" />
     <ClInclude Include="ObjetGraphiqueFixe.h" />
     <ClInclude Include="ObjetGraphiqueMobile.h" />
     <ClInclude Include="Personnage.h" />
     <ClInclude Include="Plateau.h" />
+    <ClInclude Include="Programme.h" />
     <ClInclude Include="Sortie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

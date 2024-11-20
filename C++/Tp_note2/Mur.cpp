@@ -2,8 +2,7 @@
 
 
 
-Mur::Mur(int i, int j, int type) :ObjetGraphiqueFixe(i, j, type) {
-
+Mur::Mur(int i, int j):ObjetGraphiqueFixe(i, j, 1) {
 }
 
 void Mur::afficher() {

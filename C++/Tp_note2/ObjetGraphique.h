@@ -18,13 +18,13 @@ protected :
 
 //Définition des méthodes publiques
 public :
-	ObjetGraphique(int i = 0, int j = 0, int type = 0);
-	int getType();
-	int getI();
-	int getJ();
+	ObjetGraphique(int i = 0, int j = 0, int type = 0); /*Constructeur par défaut*/
+	int getType(); /*Obtenir le type de l'objet graphique*/
+	int getI(); /*Obtenir la position (ligne) de l'objet graphique*/
+	int getJ(); /*Obtenir la position (colonne) de l'objet graphique*/
 
 	//Méthodes abstraites
-	virtual void afficher() = 0;
+	virtual void afficher() = 0; /*Affichage de l'objet graphique*/
 };
 
 

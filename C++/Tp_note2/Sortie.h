@@ -8,10 +8,10 @@
 
 
 class Sortie : public ObjetGraphiqueFixe {
-	//Définition des méthodes publiques
+//Définition des méthodes publiques
 public:
-	Sortie(int i = 0, int j = 0, int type = 0);
-	void afficher();
+	Sortie(int i = 0, int j = 0); /*Constructeur par défaut*/
+	void afficher(); /*Affichage de la sortie*/
 };
 
 

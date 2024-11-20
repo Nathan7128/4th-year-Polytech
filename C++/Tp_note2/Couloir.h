@@ -8,10 +8,10 @@
 
 
 class Couloir : public ObjetGraphiqueFixe {
-	//Définition des méthodes publiques
+//Définition des méthodes publiques
 public:
-	Couloir(int i = 0, int j = 0, int type = 0);
-	void afficher();
+	Couloir(int i = 0, int j = 0); /*Constructeur par défaut*/
+	void afficher(); /*Affichage du couloir*/
 };
 
 

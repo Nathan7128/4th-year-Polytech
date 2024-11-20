@@ -2,8 +2,7 @@
 
 
 
-Personnage::Personnage(int i, int j, int type):ObjetGraphiqueMobile(i, j, type) {
-
+Personnage::Personnage(int i, int j):ObjetGraphiqueMobile(i, j, 4) {
 }
 
 void Personnage::afficher() {

@@ -8,9 +8,9 @@
 
 
 class ObjetGraphiqueFixe : public ObjetGraphique {/*Classe dérivée de ObjetGraphique permettant de manipuler des objets graphiques non déplaçables*/
-	//Définition des méthodes publiques
+//Définition des méthodes publiques
 public:
-	ObjetGraphiqueFixe(int i = 0, int j = 0, int type = 0);
+	ObjetGraphiqueFixe(int i = 0, int j = 0, int type = 0); /*Constructeur par défaut*/
 };
 
 

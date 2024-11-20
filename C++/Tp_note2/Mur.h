@@ -8,10 +8,10 @@
 
 
 class Mur : public ObjetGraphiqueFixe {
-	//Définition des méthodes publiques
+//Définition des méthodes publiques
 public:
-	Mur(int i = 0, int j = 0, int type = 0);
-	void afficher();
+	Mur(int i = 0, int j = 0); /*Constructeur par défaut*/
+	void afficher(); /*Affichage du mur*/
 };
 
 

@@ -10,8 +10,8 @@
 class Personnage : public ObjetGraphiqueMobile {
 	//Définition des méthodes publiques
 public:
-	Personnage(int i = 0, int j = 0, int type = 0);
-	void afficher();
+	Personnage(int i = 0, int j = 0); /*Constructeur par défaut*/
+	void afficher(); /*Affichage du personnage*/
 };
 
 

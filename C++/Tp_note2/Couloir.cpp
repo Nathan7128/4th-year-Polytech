@@ -2,10 +2,9 @@
 
 
 
-Couloir::Couloir(int i, int j, int type) :ObjetGraphiqueFixe(i, j, type) {
-
+Couloir::Couloir(int i, int j):ObjetGraphiqueFixe(i, j, 2) {
 }
 
 void Couloir::afficher() {
-	cout << "*";
+	cout << " ";
 }

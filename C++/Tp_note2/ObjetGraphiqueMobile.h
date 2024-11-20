@@ -10,7 +10,7 @@
 class ObjetGraphiqueMobile : public ObjetGraphique {/*Classe dérivée de ObjetGraphique permettant de manipuler des objets graphiques déplaçables*/
 //Définition des méthodes publiques
 public :
-	ObjetGraphiqueMobile(int i = 0, int j = 0, int type = 0);
+	ObjetGraphiqueMobile(int i = 0, int j = 0, int type = 0); /*Constructeur par défaut*/
 	void deplacerDroite(); /*Déplacer vers la droite et modifier les coordonnées d'un objet mobile*/
 	void deplacerGauche(); /*Déplacer vers la gauche et modifier les coordonnées d'un objet mobile*/
 	void deplacerBas(); /*Déplacer vers le bas et modifier les coordonnées d'un objet mobile*/
