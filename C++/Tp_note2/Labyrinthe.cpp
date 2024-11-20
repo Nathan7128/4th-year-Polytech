@@ -28,19 +28,43 @@ void Labyrinthe::afficher() {
 }
 
 void Labyrinthe::deplacerPersoDroite() {
-	m_personnage->deplacerDroite();
+	int i = m_personnage->getI(), j = m_personnage->getJ();
+	if ((m_plateau->getCase(i, j + 1))->getType() == 1) {
+		cout << "Deplacement impossible : il y'a un mur a droite" << endl;
+	}
+	else {
+		m_personnage->deplacerDroite();
+	}
 }
 
 void Labyrinthe::deplacerPersoGauche() {
-	m_personnage->deplacerGauche();
+	int i = m_personnage->getI(), j = m_personnage->getJ();
+	if ((m_plateau->getCase(i, j - 1))->getType() == 1) {
+		cout << "Deplacement impossible : il y'a un mur a gauche" << endl;
+	}
+	else {
+		m_personnage->deplacerGauche();
+	}
 }
 
 void Labyrinthe::deplacerPersoHaut() {
-	m_personnage->deplacerHaut();
+	int i = m_personnage->getI(), j = m_personnage->getJ();
+	if ((m_plateau->getCase(i - 1, j))->getType() == 1) {
+		cout << "Deplacement impossible : il y'a un mur en haut" << endl;
+	}
+	else {
+		m_personnage->deplacerHaut();
+	}
 }
 
 void Labyrinthe::deplacerPersoBas() {
-	m_personnage->deplacerBas();
+	int i = m_personnage->getI(), j = m_personnage->getJ();
+	if ((m_plateau->getCase(i + 1, j))->getType() == 1) {
+		cout << "Deplacement impossible : il y'a un mur en bas" << endl;
+	}
+	else {
+		m_personnage->deplacerBas();
+	}
 }
 
 bool Labyrinthe::fini() {

@@ -41,6 +41,7 @@ Plateau::~Plateau() {
 }
 
 void Plateau::setCase(int i, int j, ObjetGraphiqueFixe* o) {
+	delete m_plateau[i][j];
 	m_plateau[i][j] = o;
 }
 

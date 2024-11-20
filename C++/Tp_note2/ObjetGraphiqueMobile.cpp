@@ -15,9 +15,9 @@ void ObjetGraphiqueMobile::deplacerGauche() {
 }
 
 void ObjetGraphiqueMobile::deplacerBas() {
-	m_i--;
+	m_i++;
 }
 
 void ObjetGraphiqueMobile::deplacerHaut() {
-	m_i++;
+	m_i--;
 }
