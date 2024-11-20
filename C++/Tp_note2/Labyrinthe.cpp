@@ -54,11 +54,11 @@ bool Labyrinthe::fini() {
 
 Labyrinthe& Labyrinthe::operator=(const Labyrinthe& lab) {
 	if (this != &lab) {
-		//destruction de la mémoire du labyrinthe actuel
+		//Destruction de la mémoire du labyrinthe actuel
 		delete this->m_plateau;
 		delete this->m_personnage;
 
-		//recopie du labyrinthe à assigner dans le nouveau labyrinthe
+		//Recopie du labyrinthe à assigner dans le nouveau labyrinthe
 		this->m_nbl = lab.m_nbl;
 		this->m_nbc = lab.m_nbc;
 		this->m_plateau = new Plateau;
@@ -66,4 +66,5 @@ Labyrinthe& Labyrinthe::operator=(const Labyrinthe& lab) {
 		*this->m_plateau = *lab.m_plateau;
 		*this->m_personnage = *lab.m_personnage;
 	}
+	return *this;
 }

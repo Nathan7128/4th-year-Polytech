@@ -5,6 +5,7 @@
 
 #include "ObjetGraphiqueFixe.h"
 #include "ObjetGraphiqueMobile.h"
+#include "Couloir.h"
 
 
 

@@ -4,10 +4,13 @@
 
 
 #include "Labyrinthe.h"
+#include "Mur.h"
+#include "Couloir.h"
+#include "Sortie.h"
 
 
 
-void initPlateau(); /*Initialisation du plateau*/
+Plateau* initPlateau_V1(); /*Initialisation du plateau*/
 
 
 

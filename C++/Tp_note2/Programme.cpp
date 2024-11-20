@@ -1,9 +1,9 @@
-// Tp_note2.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
+#include "Fonctions.h"
 
-#include <iostream>
+
 
 int main()
 {
-    
+    Plateau* plateau = initPlateau_V1();
+    plateau->afficher();
 }

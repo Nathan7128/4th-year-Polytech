@@ -5,10 +5,16 @@
 Plateau::Plateau(int nbl, int nbc) {
 	m_nbl = nbl;
 	m_nbc = nbc;
+	Couloir* couloir;
 
 	m_plateau = new ObjetGraphiqueFixe**[nbl];
 	for (int i = 0; i < nbl; i++) {
 		m_plateau[i] = new ObjetGraphiqueFixe*[nbc];
+		for (int j = 0; j < m_nbc; j++) {
+			couloir = new Couloir;
+			*couloir = Couloir(i, j);
+			m_plateau[i][j] = couloir;
+		}
 	}
 }
 
@@ -18,7 +24,7 @@ Plateau::Plateau(const Plateau& plat) {
 	m_plateau = new ObjetGraphiqueFixe**[m_nbl];
 	for (int i = 0; i < m_nbl; i++) {
 		m_plateau[i] = new ObjetGraphiqueFixe * [m_nbc];
-		for (int j = 0; j < m_nbl; j++) {
+		for (int j = 0; j < m_nbc; j++) {
 			*(m_plateau[i][j]) = *(plat.m_plateau[i][j]);
 		}
 	}
@@ -67,7 +73,7 @@ void Plateau::afficher(ObjetGraphiqueMobile& p) {
 
 Plateau& Plateau::operator=(const Plateau& plat) {
 	if (this != &plat) {
-		//destruction de la mémoire du plateau actuel
+		//Destruction de la mémoire du plateau actuel
 		for (int i = 0; i < this->m_nbl; i++) {
 			for (int j = 0; j < this->m_nbc; j++) {
 				delete this->m_plateau[i][j];
@@ -76,13 +82,14 @@ Plateau& Plateau::operator=(const Plateau& plat) {
 		}
 		delete[] this->m_plateau;
 
-		//recopie du plateau à assigner dans le nouveau plateau
+		//Recopie du plateau à assigner dans le nouveau plateau
 		this->m_nbl = plat.m_nbl;
 		this->m_nbc = plat.m_nbc;
 		this->m_plateau = new ObjetGraphiqueFixe * *[this->m_nbl];
 		for (int i = 0; i < this->m_nbl; i++) {
 			this->m_plateau[i] = new ObjetGraphiqueFixe * [this->m_nbc];
-			for (int j = 0; j < this->m_nbl; j++) {
+			for (int j = 0; j < this->m_nbc; j++) {
+				this->m_plateau[i][j] = new Couloir;
 				*(this->m_plateau[i][j]) = *(plat.m_plateau[i][j]);
 			}
 		}
