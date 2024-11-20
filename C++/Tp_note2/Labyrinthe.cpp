@@ -9,7 +9,16 @@ Labyrinthe::Labyrinthe(int nbl, int nbc, Plateau* plateau, Personnage* personnag
 	m_personnage = personnage;
 }
 
-Labyrinthe::~Labyrinthe(){
+Labyrinthe::Labyrinthe(const Labyrinthe& lab) {
+	m_nbl = lab.m_nbl;
+	m_nbc = lab.m_nbc;
+	m_plateau = new Plateau;
+	m_personnage = new Personnage;
+	*m_plateau = *lab.m_plateau;
+	*m_personnage = *lab.m_personnage;
+}
+
+Labyrinthe::~Labyrinthe() {
 	delete m_plateau;
 	delete m_personnage;
 }
@@ -40,5 +49,21 @@ bool Labyrinthe::fini() {
 	}
 	else {
 		return false;
+	}
+}
+
+Labyrinthe& Labyrinthe::operator=(const Labyrinthe& lab) {
+	if (this != &lab) {
+		//destruction de la mémoire du labyrinthe actuel
+		delete this->m_plateau;
+		delete this->m_personnage;
+
+		//recopie du labyrinthe à assigner dans le nouveau labyrinthe
+		this->m_nbl = lab.m_nbl;
+		this->m_nbc = lab.m_nbc;
+		this->m_plateau = new Plateau;
+		this->m_personnage = new Personnage;
+		*this->m_plateau = *lab.m_plateau;
+		*this->m_personnage = *lab.m_personnage;
 	}
 }

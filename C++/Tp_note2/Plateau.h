@@ -3,11 +3,8 @@
 
 
 
-#include <iostream>
 #include "ObjetGraphiqueFixe.h"
 #include "ObjetGraphiqueMobile.h"
-
-using namespace std;
 
 
 

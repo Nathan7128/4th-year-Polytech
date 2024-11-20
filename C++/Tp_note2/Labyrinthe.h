@@ -3,11 +3,8 @@
 
 
 
-#include <iostream>
 #include "Plateau.h"
 #include "Personnage.h"
-
-using namespace std;
 
 
 
@@ -22,6 +19,7 @@ protected:
 //Définition des méthodes publiques
 public:
 	Labyrinthe(int nbl, int nbc, Plateau* plateau, Personnage* personnage); /*Constructeur par défaut*/
+	Labyrinthe(const Labyrinthe& lab); /*Constructeur de recopie*/
 	~Labyrinthe(); /*Destructeur*/
 	void afficher(); /*Affichage du labyrinthe*/
 	void deplacerPersoDroite(); /*Déplacer le personnage vers la droite sur le plateau*/
@@ -29,6 +27,7 @@ public:
 	void deplacerPersoHaut(); /*Déplacer le personnage vers le haut sur le plateau*/
 	void deplacerPersoBas(); /*Déplacer le personnage vers le bas sur le plateau*/
 	bool fini(); /*Permet de savoir si le jeu est terminé*/
+	Labyrinthe& operator=(const Labyrinthe& lab); /*Surcharge de l'opérateur =*/
 };
 
 
