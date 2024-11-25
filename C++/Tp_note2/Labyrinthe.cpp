@@ -3,10 +3,18 @@
 
 
 Labyrinthe::Labyrinthe(int nbl, int nbc, Plateau* plateau, Personnage* personnage) {
-	m_nbl = nbl;
-	m_nbc = nbc;
-	m_plateau = plateau;
-	m_personnage = personnage;
+	if (nbl < 0) {
+		throw ExceptionTailleNeg("Erreur : le nombre de lignes ne peut pas etre negatif");
+	}
+	else if (nbc < 0) {
+		throw ExceptionTailleNeg("Erreur : le nombre de colonnes ne peut pas etre negatif");
+	}
+	else {
+		m_nbl = nbl;
+		m_nbc = nbc;
+		m_plateau = plateau;
+		m_personnage = personnage;
+	}
 }
 
 Labyrinthe::Labyrinthe(const Labyrinthe& lab) {
@@ -29,7 +37,7 @@ void Labyrinthe::afficher() {
 
 void Labyrinthe::deplacerPersoDroite() {
 	int i = m_personnage->getI(), j = m_personnage->getJ();
-	if ((m_plateau->getCase(i, j + 1))->getType() == 1) {
+	if ((m_plateau->getCase(i, j + 1))->getType() == 1) { /*Cas ou le déplacement est bloqué par un mur*/
 		cout << "Deplacement impossible : il y'a un mur a droite" << endl;
 	}
 	else {
@@ -39,7 +47,7 @@ void Labyrinthe::deplacerPersoDroite() {
 
 void Labyrinthe::deplacerPersoGauche() {
 	int i = m_personnage->getI(), j = m_personnage->getJ();
-	if ((m_plateau->getCase(i, j - 1))->getType() == 1) {
+	if ((m_plateau->getCase(i, j - 1))->getType() == 1) { /*Cas ou le déplacement est bloqué par un mur*/
 		cout << "Deplacement impossible : il y'a un mur a gauche" << endl;
 	}
 	else {
@@ -49,7 +57,7 @@ void Labyrinthe::deplacerPersoGauche() {
 
 void Labyrinthe::deplacerPersoHaut() {
 	int i = m_personnage->getI(), j = m_personnage->getJ();
-	if ((m_plateau->getCase(i - 1, j))->getType() == 1) {
+	if ((m_plateau->getCase(i - 1, j))->getType() == 1) { /*Cas ou le déplacement est bloqué par un mur*/
 		cout << "Deplacement impossible : il y'a un mur en haut" << endl;
 	}
 	else {
@@ -59,7 +67,7 @@ void Labyrinthe::deplacerPersoHaut() {
 
 void Labyrinthe::deplacerPersoBas() {
 	int i = m_personnage->getI(), j = m_personnage->getJ();
-	if ((m_plateau->getCase(i + 1, j))->getType() == 1) {
+	if ((m_plateau->getCase(i + 1, j))->getType() == 1) { /*Cas ou le déplacement est bloqué par un mur*/
 		cout << "Deplacement impossible : il y'a un mur en bas" << endl;
 	}
 	else {
@@ -68,7 +76,7 @@ void Labyrinthe::deplacerPersoBas() {
 }
 
 bool Labyrinthe::fini() {
-	if (m_plateau->getCase(m_personnage->getI(), m_personnage->getJ())->getType() == 3) {
+	if (m_plateau->getCase(m_personnage->getI(), m_personnage->getJ())->getType() == 3) { /*Cas ou le personnage a atteint la sortie*/
 		return true;
 	}
 	else {

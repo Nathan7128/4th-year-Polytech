@@ -2,7 +2,7 @@
 
 
 
-Plateau* initPlateauV1() {
+Plateau* initPlateau() {
 	//Création du plateau
 	Plateau* plateau = new Plateau;
 	int nbl = 11, nbc = 12, l, c;
@@ -159,13 +159,13 @@ Plateau* initPlateauV1() {
 	return plateau;
 }
 
-Personnage* initPersoV1() {
+Personnage* initPerso() {
 	Personnage* perso = new Personnage;
 	*perso = Personnage(1, 6);
 	return perso;
 }
 
-Labyrinthe initLabyrintheV1(Plateau* plat, Personnage* perso) {
+Labyrinthe initLabyrinthe(Plateau* plat, Personnage* perso) {
 	Labyrinthe lab(11, 12, plat, perso);
 	return lab;
 }

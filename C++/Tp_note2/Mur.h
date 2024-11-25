@@ -7,7 +7,7 @@
 
 
 
-class Mur : public ObjetGraphiqueFixe {
+class Mur : public ObjetGraphiqueFixe { /*Classe permettant d'implémenter les murs du labyrinthe*/
 //Définition des méthodes publiques
 public:
 	Mur(int i = 0, int j = 0); /*Constructeur par défaut*/

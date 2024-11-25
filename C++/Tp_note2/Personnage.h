@@ -7,7 +7,7 @@
 
 
 
-class Personnage : public ObjetGraphiqueMobile {
+class Personnage : public ObjetGraphiqueMobile { /*Classe permettant de définir un personnage pour le labyrinthe*/
 	//Définition des méthodes publiques
 public:
 	Personnage(int i = 0, int j = 0); /*Constructeur par défaut*/

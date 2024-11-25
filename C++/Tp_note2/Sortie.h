@@ -7,7 +7,7 @@
 
 
 
-class Sortie : public ObjetGraphiqueFixe {
+class Sortie : public ObjetGraphiqueFixe { /*Classe permettant d'implémenter la sortie du labyrinthe*/
 //Définition des méthodes publiques
 public:
 	Sortie(int i = 0, int j = 0); /*Constructeur par défaut*/

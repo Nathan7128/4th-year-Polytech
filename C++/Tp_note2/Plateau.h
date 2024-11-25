@@ -9,7 +9,17 @@
 
 
 
-class Plateau { /*Classe permettant de définir le plateau du jeu : il est composé d'objet fixe : mur, couloir et sortie*/
+//Classe exception si le nombre de lignes ou de colonnes est négatif
+class ExceptionTailleNeg {
+public :
+	string m_message; /*Message décrivant l'erreur*/
+	ExceptionTailleNeg(string m = "Erreur de saisie de taille du plateau") { m_message = m; };
+};
+
+
+
+class Plateau { /*Classe permettant de définir le plateau du jeu : il est composé d'objet fixe : mur, couloir et sortie
+				  A l'état initial, le plateau ne comprend que des couloirs*/
 //Définition des attributs protégés
 protected:
 	int m_nbl; /*nombre de lignes du plateau*/

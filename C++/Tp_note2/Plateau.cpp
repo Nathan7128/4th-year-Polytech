@@ -3,17 +3,26 @@
 
 
 Plateau::Plateau(int nbl, int nbc) {
-	m_nbl = nbl;
-	m_nbc = nbc;
-	Couloir* couloir;
+	if (nbl < 0) {
+		throw ExceptionTailleNeg("Erreur : le nombre de lignes ne peut pas etre negatif");
+	}
+	else if (nbc < 0) {
+		throw ExceptionTailleNeg("Erreur : le nombre de colonnes ne peut pas etre negatif");
+	}
+	else {
+		m_nbl = nbl;
+		m_nbc = nbc;
+		Couloir* couloir;
 
-	m_plateau = new ObjetGraphiqueFixe**[nbl];
-	for (int i = 0; i < nbl; i++) {
-		m_plateau[i] = new ObjetGraphiqueFixe*[nbc];
-		for (int j = 0; j < m_nbc; j++) {
-			couloir = new Couloir;
-			*couloir = Couloir(i, j);
-			m_plateau[i][j] = couloir;
+		m_plateau = new ObjetGraphiqueFixe * *[nbl]; /*Définition de la matrice de pointeurs vers des obtets graphiques fixes
+													   C'est un tableau de tableau de pointeurs*/
+		for (int i = 0; i < nbl; i++) {
+			m_plateau[i] = new ObjetGraphiqueFixe * [nbc];
+			for (int j = 0; j < m_nbc; j++) {
+				couloir = new Couloir; /*Déclaration d'un nouveau pointeur vers un couloir à chaque itération*/
+				*couloir = Couloir(i, j);
+				m_plateau[i][j] = couloir;
+			}
 		}
 	}
 }
@@ -21,6 +30,7 @@ Plateau::Plateau(int nbl, int nbc) {
 Plateau::Plateau(const Plateau& plat) {
 	m_nbl = plat.m_nbl;
 	m_nbc = plat.m_nbc;
+
 	m_plateau = new ObjetGraphiqueFixe**[m_nbl];
 	for (int i = 0; i < m_nbl; i++) {
 		m_plateau[i] = new ObjetGraphiqueFixe * [m_nbc];
@@ -41,12 +51,22 @@ Plateau::~Plateau() {
 }
 
 void Plateau::setCase(int i, int j, ObjetGraphiqueFixe* o) {
-	delete m_plateau[i][j];
-	m_plateau[i][j] = o;
+	if (i >= 0 and j >= 0) {
+		delete m_plateau[i][j];
+		m_plateau[i][j] = o;
+	}
+	else {
+		throw ExceptionPbCoord("Erreur de saisie des coordonnees : coordonnees negatives");
+	}
 }
 
 ObjetGraphiqueFixe* Plateau::getCase(int i, int j) {
-	return m_plateau[i][j];
+	if (i >= 0 and j >= 0) {
+		return m_plateau[i][j];
+	}
+	else {
+		throw ExceptionPbCoord("Erreur de saisie des coordonnees : coordonnees negatives");
+	}
 }
 
 void Plateau::afficher() {
@@ -61,10 +81,10 @@ void Plateau::afficher() {
 void Plateau::afficher(ObjetGraphiqueMobile& p) {
 	for (int i = 0; i < m_nbl; i++) {
 		for (int j = 0; j < m_nbc; j++) {
-			if (i == p.getI() and j == p.getJ()) {
+			if (i == p.getI() and j == p.getJ()) { /*Cas ou on la case itérée contient le personnage*/
 				p.afficher();
 			}
-			else {
+			else { /*Cas ou on la case itérée contient un objet graphique fixe*/
 				m_plateau[i][j]->afficher();
 			}
 		}

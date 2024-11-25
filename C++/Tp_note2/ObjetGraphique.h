@@ -30,8 +30,8 @@ public:
 class ObjetGraphique { /*Classe permettant de définir des objets graphiques à afficher lors du jeu*/
 //Définition des attributs protégés
 protected :
-	int m_i; /*Coordonnées (ligne) de l'objet*/
-	int m_j; /*coordonnées (colonne) de l'objet*/
+	int m_i; /*Coordonnée (ligne) de l'objet*/
+	int m_j; /*coordonnée (colonne) de l'objet*/
 	int m_type; /*type de l'objet : 0 = Valeur par défaut, 1 = Mur, 2 = Couloir, 3 = Sortie, 4 = Personnage*/
 
 //Définition des méthodes publiques

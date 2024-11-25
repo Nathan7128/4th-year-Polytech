@@ -10,11 +10,11 @@
 
 
 
-Plateau* initPlateauV1(); /*Initialisation du plateau version 1*/
+Plateau* initPlateau(); /*Initialisation du plateau*/
 
-Personnage* initPersoV1(); /*Initialisation du personnage version 1*/
+Personnage* initPerso(); /*Initialisation du personnage*/
 
-Labyrinthe initLabyrintheV1(Plateau* plat, Personnage* perso); /*Initialisation du labyrinthe version 1*/
+Labyrinthe initLabyrinthe(Plateau* plat, Personnage* perso); /*Initialisation du labyrinthe*/
 
 
 
