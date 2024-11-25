@@ -19,8 +19,7 @@ Plateau::Plateau(int nbl, int nbc) {
 		for (int i = 0; i < nbl; i++) {
 			m_plateau[i] = new ObjetGraphiqueFixe * [nbc];
 			for (int j = 0; j < m_nbc; j++) {
-				couloir = new Couloir; /*Déclaration d'un nouveau pointeur vers un couloir à chaque itération*/
-				*couloir = Couloir(i, j);
+				couloir = new Couloir(i, j); /*Déclaration d'un nouveau pointeur vers un couloir à chaque itération*/
 				m_plateau[i][j] = couloir;
 			}
 		}
