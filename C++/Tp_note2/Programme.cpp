@@ -31,7 +31,6 @@ int main()
         default :
             cout << "Saisie invalide";
         }
-        cout << endl;
     }
-    cout << "Felicitations !";
+    cout << "FELICITATIONS !";
 }

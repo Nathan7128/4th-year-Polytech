@@ -9,12 +9,30 @@ using namespace std;
 
 
 
+//Classe exception pour saisie de coordonnées incohérentes pour un objet graphique
+class ExceptionPbCoord {
+public :
+	string m_message; /*Message décrivant l'erreur*/
+	ExceptionPbCoord(string m = "Erreur de saisie des coordonnees") { m_message = m; };
+};
+
+
+
+//Classe exception pour saisie de type inexistant pour un objet graphique (pas compris dans {0, 1, 2, 3, 4})
+class ExceptionTypeInexistant {
+public:
+	string m_message; /*Message décrivant l'erreur*/
+	ExceptionTypeInexistant(string m = "Erreur : saisie de type inexistant") { m_message = m; };
+};
+
+
+
 class ObjetGraphique { /*Classe permettant de définir des objets graphiques à afficher lors du jeu*/
 //Définition des attributs protégés
 protected :
 	int m_i; /*Coordonnées (ligne) de l'objet*/
 	int m_j; /*coordonnées (colonne) de l'objet*/
-	int m_type; /*type de l'objet : 1 = Mur, 2 = Couloir, 3 = Sortie, 4 = Personnage*/
+	int m_type; /*type de l'objet : 0 = Valeur par défaut, 1 = Mur, 2 = Couloir, 3 = Sortie, 4 = Personnage*/
 
 //Définition des méthodes publiques
 public :
