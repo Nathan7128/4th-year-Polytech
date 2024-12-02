@@ -7,25 +7,21 @@ Plateau* initPlateau() {
 	Plateau* plateau = new Plateau;
 	int nbl = 11, nbc = 12, l, c;
 	Mur* mur1, * mur2;
-	Sortie* sortie = new Sortie;
+	Sortie* sortie = new Sortie(10, 7);
 	*plateau = Plateau(nbl, nbc);
 	
 	//Construction des murs en haut et en bas
 	for (int j = 0; j < nbc; j++) {
-		mur1 = new Mur;
-		mur2 = new Mur;
-		*mur1 = Mur(0, j);
-		*mur2 = Mur(nbl - 1, j);
+		mur1 = new Mur(0, j);
+		mur2 = new Mur(nbl - 1, j);
 		plateau->setCase(0, j, mur1);
 		plateau->setCase(nbl - 1, j, mur2);
 	}
 
 	//Construction des murs à gauche et à droite
 	for (int i = 0; i < nbl; i++) {
-		mur1 = new Mur;
-		mur2 = new Mur;
-		*mur1 = Mur(i, 0);
-		*mur2 = Mur(i, nbc - 1);
+		mur1 = new Mur(i, 0);
+		mur2 = new Mur(i, nbc - 1);
 		plateau->setCase(i, 0, mur1);
 		plateau->setCase(i, nbc - 1, mur2);
 	}
@@ -151,10 +147,8 @@ Plateau* initPlateau() {
 	*mur1 = Mur(l, c);
 	plateau->setCase(l, c, mur1);
 
-	l = 10;
-	c = 7;
-	*sortie = Sortie(l, c);
-	plateau->setCase(l, c, sortie);
+	//Construction de la sortie
+	plateau->setCase(10, 7, sortie);
 
 	return plateau;
 }

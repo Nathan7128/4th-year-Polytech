@@ -51,10 +51,10 @@ int main()
 
         /*Saisie de déplacement invalide*/
         default :
-            cout << "Saisie invalide";
+            cout << "Saisie invalide" << endl;
         }
     }
 
     /*Message de fin de la partie*/
-    cout << "FELICITATIONS !";
+    cout << "FELICITATIONS !" << endl;
 }
