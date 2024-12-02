@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-1e0a201aa0d818a47b3a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ExempleCours",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ExempleCours::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExempleCours-Debug-0779a69b0431f0a17324.json",
+					"name" : "ExempleCours",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExempleCours_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExempleCours_autogen-Debug-a14f2e35557f903d5054.json",
+					"name" : "ExempleCours_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ExempleCours_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ExempleCours_autogen_timestamp_deps-Debug-b2a6be98eff6806821a8.json",
+					"name" : "ExempleCours_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ExempleCours/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug",
+		"source" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ExempleCours"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

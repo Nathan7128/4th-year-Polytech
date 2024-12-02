@@ -1,0 +1,9 @@
+# ninja log v6
+6	499	7548512593781990	ExempleCours_autogen/timestamp	e0883c020a4cf772
+6	499	7548512593781990	ExempleCours_autogen/mocs_compilation.cpp	e0883c020a4cf772
+6	499	7548512593781990	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ExempleCours/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/ExempleCours_autogen/timestamp	e0883c020a4cf772
+6	499	7548512593781990	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ExempleCours/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/ExempleCours_autogen/mocs_compilation.cpp	e0883c020a4cf772
+503	2230	7548512594401965	CMakeFiles/ExempleCours.dir/ExempleCours_autogen/mocs_compilation.cpp.obj	eba77eaab2baef0c
+506	2261	7548512594431973	CMakeFiles/ExempleCours.dir/main.cpp.obj	3adb7fcb37c46352
+508	2279	7548512594451979	CMakeFiles/ExempleCours.dir/mainwindow.cpp.obj	32cececcac21c7c9
+2279	2418	7548512612156861	ExempleCours.exe	a95677e3da01c997
