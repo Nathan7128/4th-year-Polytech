@@ -1,0 +1,19 @@
+# ninja log v6
+4	601	7549416868086780	ProjetRectangle_autogen/timestamp	918bce48cbe463ae
+4	601	7549416868086780	ProjetRectangle_autogen/mocs_compilation.cpp	918bce48cbe463ae
+4	601	7549416868086780	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ProjetRectangle/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/ProjetRectangle_autogen/timestamp	918bce48cbe463ae
+4	601	7549416868086780	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ProjetRectangle/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/ProjetRectangle_autogen/mocs_compilation.cpp	918bce48cbe463ae
+616	2570	7549416868973618	CMakeFiles/ProjetRectangle.dir/crectangle.cpp.obj	a24e4f5a0bd2ca77
+609	2784	7549416868961738	CMakeFiles/ProjetRectangle.dir/main.cpp.obj	725f2f718a7ac0a7
+605	2834	7549416868931684	CMakeFiles/ProjetRectangle.dir/ProjetRectangle_autogen/mocs_compilation.cpp.obj	ed3dc35e3b7f64f9
+612	2949	7549416868973618	CMakeFiles/ProjetRectangle.dir/mainwindow.cpp.obj	c8da5085920d0194
+2949	3164	7549416892368002	ProjetRectangle.exe	8214718cd795dd24
+24	513	7549421301506028	ProjetRectangle_autogen/timestamp	918bce48cbe463ae
+24	513	7549421301506028	ProjetRectangle_autogen/mocs_compilation.cpp	918bce48cbe463ae
+24	513	7549421301506028	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ProjetRectangle/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/ProjetRectangle_autogen/timestamp	918bce48cbe463ae
+24	513	7549421301506028	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/ProjetRectangle/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/ProjetRectangle_autogen/mocs_compilation.cpp	918bce48cbe463ae
+521	2061	7549421302240190	CMakeFiles/ProjetRectangle.dir/crectangle.cpp.obj	a24e4f5a0bd2ca77
+516	2417	7549421302208916	CMakeFiles/ProjetRectangle.dir/main.cpp.obj	725f2f718a7ac0a7
+513	2476	7549421302178818	CMakeFiles/ProjetRectangle.dir/ProjetRectangle_autogen/mocs_compilation.cpp.obj	ed3dc35e3b7f64f9
+519	2490	7549421302228877	CMakeFiles/ProjetRectangle.dir/mainwindow.cpp.obj	c8da5085920d0194
+2490	2658	7549421321952931	ProjetRectangle.exe	8214718cd795dd24
