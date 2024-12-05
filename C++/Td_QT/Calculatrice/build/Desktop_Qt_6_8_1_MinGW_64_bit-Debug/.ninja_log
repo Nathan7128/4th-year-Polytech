@@ -1,0 +1,9 @@
+# ninja log v6
+7	660	7549527094986264	Calculatrice_autogen/timestamp	f87bf6a611231e6
+7	660	7549527094986264	Calculatrice_autogen/mocs_compilation.cpp	f87bf6a611231e6
+7	660	7549527094986264	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Calculatrice_autogen/timestamp	f87bf6a611231e6
+7	660	7549527094986264	C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Calculatrice_autogen/mocs_compilation.cpp	f87bf6a611231e6
+666	2655	7549527095872180	CMakeFiles/Calculatrice.dir/Calculatrice_autogen/mocs_compilation.cpp.obj	b553aaec30778885
+669	2658	7549527095872180	CMakeFiles/Calculatrice.dir/main.cpp.obj	3eef2593473dbc94
+673	2821	7549527095872180	CMakeFiles/Calculatrice.dir/mainwindow.cpp.obj	5f653cae384e410e
+2822	3010	7549527117440976	Calculatrice.exe	3e52c10f9c20d78a
