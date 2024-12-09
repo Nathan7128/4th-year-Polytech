@@ -362,6 +362,6 @@ C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/mainwin
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Calculatrice_autogen/moc_predefs.h
  mdp:C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/mainwindow.h
+C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/main.cpp
 C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/mainwindow.cpp
  uic:./ui_mainwindow.h
-C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/main.cpp

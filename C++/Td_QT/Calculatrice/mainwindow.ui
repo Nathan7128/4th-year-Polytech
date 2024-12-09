@@ -14,17 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>120</y>
-      <width>171</width>
-      <height>41</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Boutton1">
+   <widget class="QPushButton" name="boutton8">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -37,7 +27,7 @@
      <string>8</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton2">
+   <widget class="QPushButton" name="boutton9">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -50,7 +40,7 @@
      <string>9</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton3">
+   <widget class="QPushButton" name="boutton5">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -63,7 +53,7 @@
      <string>5</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton4">
+   <widget class="QPushButton" name="boutton4">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -76,7 +66,7 @@
      <string>4</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton5">
+   <widget class="QPushButton" name="boutton1">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -89,7 +79,7 @@
      <string>1</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton6">
+   <widget class="QPushButton" name="boutton2">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -102,7 +92,7 @@
      <string>2</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton7">
+   <widget class="QPushButton" name="boutton3">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -115,7 +105,7 @@
      <string>3</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton8">
+   <widget class="QPushButton" name="boutton6">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -128,7 +118,7 @@
      <string>6</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton9">
+   <widget class="QPushButton" name="boutton7">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -141,7 +131,7 @@
      <string>7</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton5_2">
+   <widget class="QPushButton" name="bouttonMult">
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -154,7 +144,7 @@
      <string>*</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton4_2">
+   <widget class="QPushButton" name="bouttonSoustr">
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -167,7 +157,7 @@
      <string>-</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton9_2">
+   <widget class="QPushButton" name="bouttonAdd">
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -180,7 +170,7 @@
      <string>+</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton5_3">
+   <widget class="QPushButton" name="boutton0">
     <property name="geometry">
      <rect>
       <x>430</x>
@@ -193,20 +183,7 @@
      <string>0</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton6_2">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>330</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>8</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Boutton7_2">
+   <widget class="QPushButton" name="bouttonEgal">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -219,7 +196,7 @@
      <string>=</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Boutton5_4">
+   <widget class="QPushButton" name="bouttonDiv">
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -230,6 +207,29 @@
     </property>
     <property name="text">
      <string>/</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="resCalcul">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>120</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bouttonReinit">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>330</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>C</string>
     </property>
    </widget>
   </widget>
