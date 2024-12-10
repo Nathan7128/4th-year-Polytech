@@ -3,11 +3,11 @@
 	"BUILD_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Calculatrice_autogen",
 	"CMAKE_BINARY_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug",
 	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice",
 	"CMAKE_EXECUTABLE" : "C:/Qt/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/CMakeLists.txt",
+		"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice/CMakeLists.txt",
 		"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/CMakeSystem.cmake.in",
@@ -328,14 +328,14 @@
 		"C:/Qt/6.8.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.29/Modules/GNUInstallDirs.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice",
+	"CMAKE_SOURCE_DIR" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice",
 	"CROSS_CONFIG" : false,
 	"DEP_FILE" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/Calculatrice_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "Calculatrice_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/mainwindow.h",
+			"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
@@ -413,12 +413,12 @@
 	"SOURCES" : 
 	[
 		[
-			"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/main.cpp",
+			"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice/main.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice/mainwindow.cpp",
+			"C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice/mainwindow.cpp",
 			"MU",
 			null
 		]

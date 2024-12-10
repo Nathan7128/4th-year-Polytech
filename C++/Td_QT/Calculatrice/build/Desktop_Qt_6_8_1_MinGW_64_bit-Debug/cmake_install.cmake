@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/Calculatrice
+# Install script for directory: C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/QT/Calculatrice
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-53ecdb80807c0dd514b6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CalculatriceEtat",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CalculatriceEtat::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CalculatriceEtat-Debug-bf35e41e15b3b86b5216.json",
+					"name" : "CalculatriceEtat",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CalculatriceEtat_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CalculatriceEtat_autogen-Debug-da7191373dae3e1d410b.json",
+					"name" : "CalculatriceEtat_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CalculatriceEtat_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CalculatriceEtat_autogen_timestamp_deps-Debug-a19b99f48fd1816b6fc7.json",
+					"name" : "CalculatriceEtat_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/CalculatriceEtat/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug",
+		"source" : "C:/Users/natha/Documents/GitHub/4th-year-Polytech/C++/Td_QT/CalculatriceEtat"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
