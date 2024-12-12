@@ -1,0 +1,42 @@
+---
+title: "Ex1"
+output: html_document
+date: "2024-12-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Chargement et analyse des données
+
+```{r message = FALSE}
+data("USArrests")
+summary(USArrests)
+```
+
+------------------------------------------------------------------------
+
+## Mise en place de la classification Kmeans 
+
+```{r}
+k = 3
+resKmeans = kmeans(USArrests, k, )
+```
+
+------------------------------------------------------------------------
+## Étude de la classification
+```{r}
+resKmeans$cluster
+resKmeans$size
+```
+Étude des variables pour les différents clusters
+
+```{r}
+mu = matrix(0, k, dim(USArrests)[2])
+for(i in 1:k) {
+  mu[i, ] = colMeans(USArrests[resKmeans$cluster==i,])
+}
+colnames(mu) = colnames(USArrests)
+print(mu)
+```

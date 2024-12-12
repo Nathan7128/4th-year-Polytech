@@ -1,0 +1,86 @@
+---
+title: "Ex1"
+output: html_document
+date: "2024-12-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Chargement et analyse des données
+
+```{r message = FALSE}
+data("USArrests")
+str(USArrests)
+```
+
+------------------------------------------------------------------------
+
+## Mise en place de la CAH
+
+```{r}
+resCAH = hclust(dist(USArrests), method="ward.D2") # CAH avec Ward
+plot(resCAH)
+```
+
+------------------------------------------------------------------------
+
+## Partitionnement à 3 clusters
+
+```{r}
+K = 3
+cl_cah = cutree(resCAH, K)
+cl_cah
+```
+
+------------------------------------------------------------------------
+
+Taille des clusters
+
+```{r}
+table(cl_cah) # 1) parler de la taille des clusters
+```
+
+------------------------------------------------------------------------
+
+Étude des variables pour les différents clusters
+
+```{r}
+mu = matrix(0, K, dim(USArrests)[2])
+for(k in 1:K) {
+mu[k, ] = colMeans(USArrests[cl_cah==k,])
+}
+colnames(mu) = colnames(USArrests)
+print(mu)
+```
+
+------------------------------------------------------------------------
+
+## Estimation du nombre de clusters
+
+```{r}
+resCAH$height
+```
+
+------------------------------------------------------------------------
+
+Affichage de la courbe de W en fonction du nombre de clusters
+
+```{r}
+W = c(0, resCAH$height)
+plot(1:50, W[50:1], type = "b", col = "red")
+```
+
+On remarque une cassure à n = 3 clusters
+
+------------------------------------------------------------------------
+```{r}
+plotCAH <- function(res) {
+  W = c(0, resCAH$height)
+  taille = length(W)
+  plot(1:taille, W[taille:1], type="b", col="red")
+}
+plotCAH(resCAH)
+```
+

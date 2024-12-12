@@ -1,0 +1,72 @@
+---
+title: "Ex2"
+output:
+  pdf_document: default
+  html_document: default
+date: "2024-12-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+---
+## Chargement et analyse des données
+
+```{r}
+library(FactoMineR)
+data("decathlon")
+str(decathlon)
+```
+```{r}
+summary(decathlon)
+```
+```{r}
+X = decathlon[1:10]
+```
+---
+## Mise en place de la CAH
+
+```{r}
+resCAH = hclust(dist(X), method="ward.D")
+plot(resCAH) 
+```
+## Partitionnement à 3 clusters
+
+```{r}
+K = 5
+cl_cah = cutree(resCAH, K)
+cl_cah
+```
+
+------------------------------------------------------------------------
+
+Taille des clusters
+
+```{r}
+table(cl_cah) # 1) parler de la taille des clusters
+```
+Étude des variables pour les différents clusters
+
+```{r}
+mu = matrix(0, K, dim(X)[2])
+for(k in 1:K) {
+  mu[k, ] = colMeans(X[cl_cah==k,])
+}
+colnames(mu) = colnames(X)
+print(mu)
+```
+------------------------------------------------------------------------
+
+Affichage de la courbe de W en fonction du nombre de clusters
+
+------------------------------------------------------------------------
+```{r}
+plotCAH <- function(res) {
+  W = c(0, resCAH$height)
+  taille = length(W)
+  plot(1:taille, W[taille:1], type="b", col="red")
+}
+plotCAH(resCAH)
+```
+On remarque une cassure à n = 5 clusters
+
