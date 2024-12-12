@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 OPR/114.0.0.0" version="25.0.3">
   <diagram name="Page-1" id="7P6HtjNaz7a8SoBl_NWe">
-    <mxGraphModel dx="1823" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1657" dy="435" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -29,14 +29,6 @@
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-7" value="dbo:Singer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="230" y="110" width="170" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" source="TIq-oRl3Ylk5bGe3MBM8-1" target="TIq-oRl3Ylk5bGe3MBM8-15" parent="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-13" value="dbo:nationality" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-12">
-          <mxGeometry x="0.09" relative="1" as="geometry">
-            <mxPoint x="-40" y="19" as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-1" target="TIq-oRl3Ylk5bGe3MBM8-50">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="360" y="300" as="targetPoint" />
@@ -50,9 +42,6 @@
           <mxGeometry x="-0.2067" y="-1" relative="1" as="geometry">
             <mxPoint x="1" y="10" as="offset" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-15" value="&quot;Royaume-Uni&quot;@fr" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="100" y="290" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-50" value="&quot;1947-01-08&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="259.5" y="340" width="111" height="20" as="geometry" />
@@ -88,18 +77,18 @@
             <mxPoint x="10" y="-9" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="TIq-oRl3Ylk5bGe3MBM8-66" source="TIq-oRl3Ylk5bGe3MBM8-1">
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="TIq-oRl3Ylk5bGe3MBM8-66" source="TIq-oRl3Ylk5bGe3MBM8-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="145" y="175" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="140" y="200" />
-              <mxPoint x="140" y="168" />
+              <mxPoint x="100" y="220" />
+              <mxPoint x="100" y="243" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-65" value="dbo:birthPlace" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-64">
           <mxGeometry x="0.09" relative="1" as="geometry">
-            <mxPoint x="-39" y="-17" as="offset" />
+            <mxPoint x="19" y="-10" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-66" target="TIq-oRl3Ylk5bGe3MBM8-67">
@@ -110,11 +99,78 @@
             <mxPoint x="49" y="14" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-66" target="TIq-oRl3Ylk5bGe3MBM8-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-72" value="dbo:country" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-71">
+          <mxGeometry x="0.22" y="-3" relative="1" as="geometry">
+            <mxPoint x="-3" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-66" value="dbr:London" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="-110" y="150" width="120" height="35" as="geometry" />
+          <mxGeometry x="-40" y="225" width="120" height="35" as="geometry" />
         </mxCell>
         <mxCell id="TIq-oRl3Ylk5bGe3MBM8-67" value="8 961 989" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
-          <mxGeometry x="-110" y="250" width="120" height="30" as="geometry" />
+          <mxGeometry x="-40" y="325" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-70" target="TIq-oRl3Ylk5bGe3MBM8-66">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-60" y="150" />
+              <mxPoint x="-60" y="243" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-74" value="dbo:capital" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-73">
+          <mxGeometry x="-0.2543" y="-1" relative="1" as="geometry">
+            <mxPoint x="-9" y="21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-70" target="TIq-oRl3Ylk5bGe3MBM8-76">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="150" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="80" y="130" />
+              <mxPoint x="195" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-77" value="dbo:populationTotal" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-75">
+          <mxGeometry x="-0.2971" y="2" relative="1" as="geometry">
+            <mxPoint x="54" y="-33" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-70" target="TIq-oRl3Ylk5bGe3MBM8-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="20" y="105" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-80" value="dbo:currency" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-78">
+          <mxGeometry x="0.18" relative="1" as="geometry">
+            <mxPoint y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-70" value="dbr:United_Kingdom" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="135" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-76" value="67791400&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="110.5" height="22.5" as="geometry" />
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="TIq-oRl3Ylk5bGe3MBM8-79" target="TIq-oRl3Ylk5bGe3MBM8-82">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-110" y="95" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-83" value="dbo:wikiPageWikiLink" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TIq-oRl3Ylk5bGe3MBM8-81">
+          <mxGeometry x="-0.3184" relative="1" as="geometry">
+            <mxPoint x="-13" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-79" value="dbr:Pound_sterling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="-35" y="70" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="TIq-oRl3Ylk5bGe3MBM8-82" value="dbr:Saint_Helena" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="128.75" width="110" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
