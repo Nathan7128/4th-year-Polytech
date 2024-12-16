@@ -1,0 +1,32 @@
+---
+title: "Ex1"
+output: html_document
+date: "2024-12-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(mclust)
+data("diabetes")
+```
+
+```{r}
+str(diabetes)
+```
+
+```{r}
+X = diabetes[, -1]
+dim(X)
+```
+```{r}
+K = 3
+clustering = Mclust(X, K)
+```
+
+```{r}
+clustering$BIC
+```
+
