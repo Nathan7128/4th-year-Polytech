@@ -8,4 +8,80 @@ date: "2024-12-16"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+N = 200
+D = 2
+pi = c(0.7, 0.3)
+mu1_star = c(10, 0)
+Sigma1_star = matrix(c(1, 0.2, 0.2, 0.1), nrow = 2)
+mu2_star = c(2, 2)
+Sigma2_star = matrix(c(1, 0.5, 0.5, 0.7), nrow = 2)
+```
+
+```{r}
+Z = rmultinom(n = N, size = 1, prob = pi) # Attention aux dimensions finales non naturelles
+Z = t(Z)
+N_k = colSums(Z) # Nombre d'individus dans chaque cluster
+# Echantillonage des clusters
+X1 = MASS::mvrnorm(n = N_k[1], mu = mu1_star, Sigma = Sigma1_star)
+X2 = MASS::mvrnorm(n = N_k[2], mu = mu2_star, Sigma = Sigma2_star)
+# Création de la matrice X de dimensions N x D contenant les données
+X = matrix(0, nrow = N, ncol = D)
+X[Z[, 1] == 1, ] = X1
+X[Z[, 2] == 1, ] = X2
+x1min = min(X[,1])
+x1max = max(X[,1])
+x2min = min(X[,2])
+x2max = max(X[, 2])
+plot(X1, col='red', xlim=c(x1min, x1max), ylim = c(x2min, x2max))
+points(X2, col='blue')
+```
+```{r}
+library(mclust)
+mclust.options("hcUse")
+res = Mclust(X)
+summary(res, parameters = TRUE)
+```
+
+```{r}
+plot(res, what = "uncertainty")
+```
+
+```{r}
+library(ellipse)
+Sigma1_hat = res$parameters$variance$sigma[, , 1]
+Sigma2_hat = res$parameters$variance$sigma[, , 2]
+mu1_hat = res$parameters$mean[, 1]
+mu2_hat = res$parameters$mean[, 2]
+plot(X1, col='red', xlim=c(x1min, x1max), ylim = c(x2min, x2max))
+points(X2, col='blue')
+lines(ellipse(Sigma1_star, center=mu1_star), col="red")
+lines(ellipse(Sigma2_star, center=mu2_star), col="blue")
+lines(ellipse(Sigma1_hat, center=mu1_hat), col="red", lty=2)
+lines(ellipse(Sigma2_hat, center=mu2_hat), col="blue", lty=2)
+legend(x="topright", legend=c("Vraie distribution 1",
+"Vraie distribution 2",
+"Estim. distrib 1 par Mclust",
+"Estim. distrib 2 par Mclust"),
+lty=c(1,1,2,2), col=c('blue', "red"))
+
+```
+```{r}
+resICL = mclustICL(X)
+summary(resICL, parameters = TRUE)
+```
+
+
+```{r}
+plot(resICL)
+```
+
+```{r}
+resBIC = mclustBIC(X)
+summary(resBIC, parameters = TRUE)
+```
+
+```{r}
+plot(resBIC)
+```
 

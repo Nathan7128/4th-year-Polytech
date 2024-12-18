@@ -1,0 +1,103 @@
+---
+title: "Ex1"
+output: html_document
+date: "2024-12-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+N = 200
+D = 2
+pi = c(0.7, 0.3)
+mu1_star = c(10, 0)
+Sigma1_star = matrix(c(1, 0.2, 0.2, 0.1), nrow = 2)
+mu2_star = c(2, 2)
+Sigma2_star = matrix(c(1, 0.5, 0.5, 0.7), nrow = 2)
+```
+
+```{r}
+Z = rmultinom(n = N, size = 1, prob = pi) # Attention aux dimensions finales non naturelles
+Z = t(Z)
+N_k = colSums(Z) # Nombre d'individus dans chaque cluster
+# Echantillonage des clusters
+X1 = MASS::mvrnorm(n = N_k[1], mu = mu1_star, Sigma = Sigma1_star)
+X2 = MASS::mvrnorm(n = N_k[2], mu = mu2_star, Sigma = Sigma2_star)
+# Création de la matrice X de dimensions N x D contenant les données
+X = matrix(0, nrow = N, ncol = D)
+X[Z[, 1] == 1, ] = X1
+X[Z[, 2] == 1, ] = X2
+x1min = min(X[,1])
+x1max = max(X[,1])
+x2min = min(X[,2])
+x2max = max(X[, 2])
+plot(X1, col='red', xlim=c(x1min, x1max), ylim = c(x2min, x2max))
+points(X2, col='blue')
+```
+```{r}
+softmax <- function (x) {
+  # Fonction softmax codée de façon à améliorer sa stabilité numérique
+  1
+  y = max(x)
+  y = y + log(sum(exp(x - y)))
+  exp(x - y)
+}
+```
+
+```{r}
+etape_E <- function(x, pi, mus, Sigmas, K){
+  # Etape E de l'algorithme EM
+  # X : données de dimensions N x D
+  # pi : proportions des clusters de dimensions K
+  # mus : array de dimensions D x K
+  # Sigmas : array de dimensions D x D x K
+  # K : entier, nombre de clusters
+  log_tau = matrix(0, nrow = N, ncol = K)
+  for (k in 1:K){
+    # On utilise le log pour plus de stabilité numérique
+    log_tau[,k] = log(pi[k]) + log(dnorm(x[, k], mus, Sigmas))
+  }
+  # On normalise en utilisant la fonction softmax bien codée pour éviter
+  # les problèmes numériques
+  tau = t(apply(log_tau, 1, softmax))
+  return(tau)
+}
+```
+
+```{r}
+etape_M <- function(X, tau){
+  eps = .Machine$double.eps
+  # Etape M de l'algorithme EM
+  # X : données de dimensions N x D
+  # tau : probabilités à posteriori d'appartenance aux clusters
+  # de dimensions N x K
+  N = dim(X)[1]
+  D = dim(X)[2]
+  mus_new = array(0, dim=c(D, K))
+  Sigmas_new = array(0, dim=c(D, D, K))
+  # Estimation a posterio d'individus par cluster
+  N_k_new <- colSums(tau) + 10 * eps
+  # Equation pour pi
+  pi_new <- _ / _
+  for (k in 1:K){
+    # Equation pour mu
+    mus_new[,k] <- colSums(tau[,k]) / N
+    for (i in 1:N){
+      # Equation pour Sigmas
+      Sigmas_new[,,k] <- Sigmas_new[,,k] +
+      tau[i,k] * _ %*% _
+    }
+    # Normalisation de la matrice de var/covar
+    Sigmas_new[,,k] <- _
+    # On ajoute cette ligne pour s'assurer de la positivité de la matrice de var/covar
+    Sigmas_new[,,k] <- Sigmas_new[,,k] + (eps* 10) * diag(1, nrow = D, ncol = D)
+  }
+  return(list("pi"=pi_new, "mus"=mus_new, "Sigmas"=Sigmas_new))
+}
+```
+
+
+
+
