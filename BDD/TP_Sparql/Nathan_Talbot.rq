@@ -1,0 +1,166 @@
+###########
+# Base & Prefixes
+###########
+
+BASE <https://swapi.co/resource/> 
+PREFIX voc:   <https://swapi.co/vocabulary/> 
+PREFIX owl:   <http://www.w3.org/2002/07/owl#> 
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wd:    <http://www.wikidata.org/entity/> 
+PREFIX xml:   <http://www.w3.org/XML/1998/namespace> 
+PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#> 
+
+###########
+# Partie I :Interroger
+###########
+
+# Question 1 Lancer la commande DESCRIBE <human/14>. De qui s’agit-il ?
+# (URI complète de la ressource : <https ://swapi.co/resource/human/14>)
+
+# L'humain n°14 correspond au personnage (humain) Han Solo (label fr)
+
+# Question 2 L’humain 14 est-il un homme ?
+
+ASK
+WHERE {
+  <human/14> voc:gender "male"
+}
+
+# Question 3 Lister l’ensemble des types (directs) de l’humain 14.
+
+SELECT *
+WHERE {
+  <human/14> rdf:type ?type
+}
+
+# Question 4 Donner le nombre de personnages.
+
+SELECT(COUNT(DISTINCT?Persos) AS ?nbPersos)
+WHERE {
+    ?Persos rdf:type voc:Character
+}
+
+# Question 5 Donner les couleurs des yeux des personnages (sans doublons).
+
+SELECT distinct ?Couleur
+WHERE {
+    ?Persos rdf:type voc:Character
+    ?Persos voc:eyeColor ?Couleur
+}
+
+# Question 6 Donner la couleur de cheveux des personnages originaires des planètes 17 et 42.
+
+SELECT ?Couleur ?Planete
+WHERE {
+    ?Persos voc:hairColor ?Couleur .
+  	{?Persos voc:homeworld <https://swapi.co/resource/planet/17>.}
+  	UNION
+  	{?Persos voc:homeworld <https://swapi.co/resource/planet/42>}
+}
+
+# Question 7 Lister les personnages qui apparaissent dans plus de deux films.
+
+SELECT ?Persos
+WHERE {
+    ?Persos rdf:type voc:Character .
+    ?Persos voc:film ?Film
+}
+GROUP BY ?Persos
+HAVING (COUNT(DISTINCT(?Film)) > 2)
+
+# Question 8 Quels sont les personnages qui sont apparus dans l’intégralité des
+# films de la saga ?
+
+SELECT ?Persos ?Count
+WHERE {
+    ?Persos rdf:type voc:Character .
+    ?Persos voc:film ?Film2
+    
+    {SELECT (COUNT(DISTINCT(?Film)) AS ?Count)
+    WHERE {
+        ?Film rdf:type voc:Film
+    }}
+
+}
+GROUP BY ?Persos ?Count
+HAVING (COUNT(?Film) = ?Count)
+
+# Question 9 Donner la description du personnage qui s’apelle "Dart Fener" en
+# italien. Attention, on souhaite cette fois-ci se limiter aux résultats en français.
+
+SELECT ?desc
+WHERE {
+  ?perso rdf:type voc:Character .
+  ?perso rdfs:label "Dart Fener"@it .
+  ?perso voc:desc ?desc
+  FILTER( lang(?desc) = 'fr' ) 
+}
+
+# Question 10 Construire le graph correspondant à Yoda. Si vous le souhaitez,
+# vous pouvez limiter les informations descriptives (label et description) à une seule
+# langue.
+
+SELECT ?desc
+WHERE {
+  ?perso rdf:type voc:Character .
+  ?perso rdfs:label "Yoda"@fr
+}
+
+# Question 11 Citer les personnages sauf ceux qui ont participé au 3eme film ?
+
+# Question 12 Lister les films dans lesquels au moins 4 planètes différentes sont
+# visitées. Organiser la liste selon l’ordre alphabétique de leur nom.
+
+# Question 13 Reprendre la question précédente et y ajouter les planètes visitées
+# et leur climat.
+
+
+# Question 14 Quels sont les duos de personnages participants au même film ?
+# Limiter votre réponse aux 100 premiers duos.
+
+
+# Question 15 Pour chaque type, donner le poids moyen.
+
+# Question 16 Lister les personnages avec le nom des films dans lesquels ils aparaissent
+# ainsi que leur planète d’origine accompagnée de leur population.
+
+# Question 17 Donner les individus qui ont un poids moyen supèrieur au poids
+# moyen de leur type.
+
+# Question 18 Donner l’ensemble des types directs et indirects d’Anakin Skywalker.
+
+
+# Question 19 Malheureusement, la base ne contient pas les acteurs. En revanche,
+# certaines descriptions contiennent leur nom. Essayer avec l’acteur "Alec Guinnesss".
+# S’il existe un resultat, afficher le nom français des personnages correspondants et
+# leur description.
+
+
+# Question 20 Donner les planètes pour lesquelles il n’existe aucun résident.
+
+# Question 21 Quels sont les films qui sont sortis avant 1990 ?
+
+# Question 22 Nous avons la chance d’avoir l’identifiant wikidata des personnages.
+# Faites une requête conjointe pour récupérer les informations disponibles du personnage Chewbacca.
+
+# Question 23 Quel est le nom des parents d’Anakin Skywalker ?
+
+###########
+# Partie II : Modifier
+###########
+
+# Question 24 Vous décidez d’incarner un personnage dans le monde de starwars. 
+# Choisissez une espèce et ajouter votre personnage avec quelques attributs.
+
+# Question 25 Un nouveau star wars se profil et pour faire plaisir au fan l’intégralité des personnages y seront présents. 
+# Ajouter ce-nouveau film dans la base sous le nom de fanService.
+
+# Question 26 Après évaluation du budget, le studio vous informe que les costumes pour les espèces Aleena et Besalisk couteraient trop cher. 
+# Retirez ces personnages du films.
+
+# Question 27 Suite à une énorme explosion, la rotation des planètes est doublée.
+# Reportez ce changement.
+
+# Question 28 Les effets de l’explosion s’estompe et la rotation des planètes retourne 
+# à son état initial. Reportez ce changement.

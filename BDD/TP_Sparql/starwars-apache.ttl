@@ -1,0 +1,3276 @@
+@prefix commons:  <https://commons.wikimedia.org/wiki/Special:FilePath/> .
+@prefix dc:       <http://purl.org/dc/elements/1.1/> .
+@prefix dct:      <http://purl.org/dc/terms/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix p:        <http://www.wikidata.org/prop/> .
+@prefix pq:       <http://www.wikidata.org/prop/qualifier/> .
+@prefix ps:       <http://www.wikidata.org/prop/statement/> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix voc:      <https://swapi.co/vocabulary/> .
+@prefix wd:       <http://www.wikidata.org/entity/> .
+@prefix wds:      <http://www.wikidata.org/entity/statement/> .
+@prefix wdt:      <http://www.wikidata.org/prop/direct/> .
+@prefix wgs:      <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix xml:      <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+<https://swapi.co/resource/neimodian/33>
+        rdf:type          voc:Character , voc:Neimodian ;
+        rdfs:label        "Nute Gunray"@it , "Nute Gunray"@fr , "Nute Gunray"@en ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "Star Wars character"@en , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "red" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:height        191.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/18> ;
+        voc:mass          90.0 ;
+        voc:skinColor     "mottled green" ;
+        voc:wikidataLink  wd:Q51791 .
+
+<https://swapi.co/resource/planet/16>
+        rdf:type            voc:Planet ;
+        voc:climate         "frigid" ;
+        voc:diameter        10088 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   167 ;
+        voc:population      19000000 ;
+        voc:rotationPeriod  12 ;
+        voc:terrain         "glaciers, mountains, ice canyons" .
+
+<https://swapi.co/resource/planet/44>
+        rdf:type            voc:Planet ;
+        voc:climate         "tropical, temperate" ;
+        voc:diameter        15600 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   206 ;
+        voc:population      500000000 ;
+        voc:resident        <https://swapi.co/resource/nautolan/53> ;
+        voc:rotationPeriod  33 ;
+        voc:surfaceWater    80 ;
+        voc:terrain         "lakes, islands, swamps, seas" .
+
+<https://swapi.co/resource/quermian/57>
+        rdf:type       voc:Character , voc:Quermian ;
+        voc:eyeColor   "yellow" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     264.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/48> ;
+        voc:skinColor  "white" .
+
+<https://swapi.co/resource/planet/10>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        19720 ;
+        voc:film            <https://swapi.co/resource/film/5> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   463 ;
+        voc:population      1000000000 ;
+        voc:resident        <https://swapi.co/resource/human/22> , <https://swapi.co/resource/kaminoan/72> , <https://swapi.co/resource/kaminoan/73> ;
+        voc:rotationPeriod  27 ;
+        voc:surfaceWater    100 ;
+        voc:terrain         "ocean" .
+
+<https://swapi.co/resource/planet/54>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/clawdite/70> .
+
+<https://swapi.co/resource/starship/43>
+        rdf:type                  voc:Starship ;
+        voc:consumables           "1 year" ;
+        voc:costInCredits         2000000 ;
+        voc:crew                  5 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating      0.7 ;
+        voc:length                39.0 ;
+        voc:manufacturer          "Theed Palace Space Vessel Engineering Corps, Nubia Star Drives" ;
+        voc:maxAtmospheringSpeed  2000 ;
+        voc:model                 "J-type diplomatic barge" ;
+        voc:passengers            10 ;
+        voc:starshipClass         "Diplomatic barge" .
+
+<https://swapi.co/resource/starship/47>
+        rdf:type           voc:Starship ;
+        voc:film           <https://swapi.co/resource/film/5> ;
+        voc:length         390.0 ;
+        voc:manufacturer   "Botajef Shipyards" ;
+        voc:model          "Botajef AA-9 Freighter-Liner" ;
+        voc:passengers     30000 ;
+        voc:starshipClass  "freighter" .
+
+voc:Ewok  rdf:type         voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  100.0 ;
+        voc:character      <https://swapi.co/resource/ewok/30> ;
+        voc:eyeColor       "orange" , "brown" ;
+        voc:film           <https://swapi.co/resource/film/3> ;
+        voc:hairColor      "black" , "brown" , "white" ;
+        voc:language       "Ewokese" ;
+        voc:planet         <https://swapi.co/resource/planet/7> ;
+        voc:skinColor      "brown" .
+
+<https://swapi.co/resource/human/51>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Mace Windu"@en , "Mace Windu"@fr , "Mace Windu"@it ;
+        voc:birthYear     "72BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "fictional character in Star Wars"@en , "personnage dans Star Wars"@fr ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:height        188.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/42> ;
+        voc:mass          84.0 ;
+        voc:skinColor     "dark" ;
+        voc:wikidataLink  wd:Q51725 .
+
+<https://swapi.co/resource/starship/28>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         40 ;
+        voc:consumables           "1 week" ;
+        voc:costInCredits         175000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                9.6 ;
+        voc:manufacturer          "Alliance Underground Engineering, Incom Corporation" ;
+        voc:maxAtmospheringSpeed  1300 ;
+        voc:mglt                  120 ;
+        voc:model                 "RZ-1 A-wing Interceptor" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/29> ;
+        voc:starshipClass         "Starfighter" .
+
+<https://swapi.co/resource/iktotchi/56>
+        rdf:type       voc:Character , voc:Iktotchi ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:gender     "male" ;
+        voc:height     188.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/47> ;
+        voc:skinColor  "pale" .
+
+<https://swapi.co/resource/droid/2>
+        rdf:type          voc:Character , voc:Droid ;
+        rdfs:label        "C-3PO"@fr , "C-3PO"@it , "C-3PO"@en ;
+        voc:birthYear     "112BBY" ;
+        voc:degree        "Class Three" ;
+        voc:desc          "robot character from the Star Wars universe"@en , "personaggio dell'universo di Guerre stellari"@it , "droïde de protocole de la saga Star Wars"@fr ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> ;
+        voc:height        167.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Star%20Wars%20-%20A%20New%20Hope%2C%20filming%20in%20Death%20Valley.jpg> ;
+        voc:mass          75.0 ;
+        voc:skinColor     "gold" ;
+        voc:wikidataLink  wd:Q51787 .
+
+<https://swapi.co/resource/human/61>
+        rdf:type       voc:Character , voc:Human ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:hairColor  "brown" ;
+        voc:height     157.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/8> ;
+        voc:skinColor  "light" .
+
+<https://swapi.co/resource/starship/15>
+        rdf:type              voc:Starship ;
+        voc:cargoCapacity     250000000 ;
+        voc:consumables       "6 years" ;
+        voc:costInCredits     1143350000 ;
+        voc:crew              279144 ;
+        voc:film              <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating  2.0 ;
+        voc:length            19000.0 ;
+        voc:manufacturer      "Kuat Drive Yards, Fondor Shipyards" ;
+        voc:mglt              40 ;
+        voc:model             "Executor-class star dreadnought" ;
+        voc:passengers        38000 ;
+        voc:starshipClass     "Star dreadnought" .
+
+<https://swapi.co/resource/vehicle/67>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         0 ;
+        voc:costInCredits         20000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                5.4 ;
+        voc:manufacturer          "Colla Designs, Phlac-Arphocc Automata Industries" ;
+        voc:maxAtmospheringSpeed  1180 ;
+        voc:model                 "tri-fighter" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "droid starfighter" .
+
+<https://swapi.co/resource/twilek/45>
+        rdf:type          voc:Character , voc:Twilek ;
+        rdfs:label        "Bib Fortuna"@en , "Bib Fortuna"@it ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "pink" ;
+        voc:film          <https://swapi.co/resource/film/3> ;
+        voc:gender        "male" ;
+        voc:height        180.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/37> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Bib%20Fortuna.jpg> ;
+        voc:skinColor     "pale" ;
+        voc:wikidataLink  wd:Q2706202 .
+
+voc:Gungan  rdf:type       voc:Species ;
+        rdfs:subClassOf    voc:Amphibian , voc:Sentient ;
+        voc:averageHeight  190.0 ;
+        voc:character      <https://swapi.co/resource/gungan/36> , <https://swapi.co/resource/gungan/38> , <https://swapi.co/resource/gungan/37> ;
+        voc:eyeColor       "orange" ;
+        voc:film           <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:language       "Gungan basic" ;
+        voc:planet         <https://swapi.co/resource/planet/8> ;
+        voc:skinColor      "brown" , "green" .
+
+<https://swapi.co/resource/mirialan/64>
+        rdf:type       voc:Character , voc:Mirialan ;
+        voc:birthYear  "58BBY" ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:hairColor  "black" ;
+        voc:height     170.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/51> ;
+        voc:mass       56.2 ;
+        voc:skinColor  "yellow" .
+
+<https://swapi.co/resource/human/43>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Shmi Skywalker"@it , "Shmi Skywalker"@fr , "Shmi Skywalker"@en ;
+        voc:birthYear     "72BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "personnage de Star Wars"@fr , "character in Star Wars"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "female" ;
+        voc:hairColor     "black" ;
+        voc:height        163.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:skinColor     "fair" ;
+        voc:wikidataLink  wd:Q51804 .
+
+<https://swapi.co/resource/mirialan/65>
+        rdf:type       voc:Character , voc:Mirialan ;
+        voc:birthYear  "40BBY" ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:hairColor  "black" ;
+        voc:height     166.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/51> ;
+        voc:mass       50.0 ;
+        voc:skinColor  "yellow" .
+
+voc:Kaleesh  rdf:type        voc:Species ;
+        rdfs:subClassOf      voc:Reptile , voc:Sentient ;
+        voc:averageHeight    170.0 ;
+        voc:averageLifespan  "80" ;
+        voc:character        <https://swapi.co/resource/kaleesh/79> ;
+        voc:eyeColor         "yellow" ;
+        voc:film             <https://swapi.co/resource/film/6> ;
+        voc:language         "Kaleesh" ;
+        voc:planet           <https://swapi.co/resource/planet/59> ;
+        voc:skinColor        "tan" , "orange" , "brown" .
+
+voc:Chagrian  rdf:type     voc:Species ;
+        rdfs:subClassOf    voc:Amphibian , voc:Sentient ;
+        voc:averageHeight  190.0 ;
+        voc:character      <https://swapi.co/resource/chagrian/59> ;
+        voc:eyeColor       "blue" ;
+        voc:film           <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:language       "Chagria" ;
+        voc:planet         <https://swapi.co/resource/planet/50> ;
+        voc:skinColor      "blue" .
+
+<https://swapi.co/resource/starship/12>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         110 ;
+        voc:consumables           "1 week" ;
+        voc:costInCredits         149999 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                12.5 ;
+        voc:manufacturer          "Incom Corporation" ;
+        voc:maxAtmospheringSpeed  1050 ;
+        voc:mglt                  100 ;
+        voc:model                 "T-65 X-wing" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/9> , <https://swapi.co/resource/human/19> , <https://swapi.co/resource/human/18> , <https://swapi.co/resource/human/1> ;
+        voc:starshipClass         "Starfighter" .
+
+<https://swapi.co/resource/yodasspecies/20>
+        rdf:type          voc:Character , voc:Yodasspecies ;
+        rdfs:label        "Yoda"@it , "Yoda"@fr , "Yoda"@en ;
+        voc:birthYear     "896BBY" ;
+        voc:desc          "personnage fictif de l'univers Star Wars"@fr , "fictional character in the Star Wars universe"@en , "personaggio della saga di Guerre stellari"@it ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "white" ;
+        voc:height        66.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/28> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Retrato%20del%20Maestro%20Yoda.jpg> ;
+        voc:mass          17.0 ;
+        voc:skinColor     "green" ;
+        voc:wikidataLink  wd:Q51730 .
+
+<https://swapi.co/resource/planet/15>
+        rdf:type            voc:Planet ;
+        voc:climate         "artificial temperate " ;
+        voc:diameter        0 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "0.56 standard" ;
+        voc:orbitalPeriod   590 ;
+        voc:population      1000000 ;
+        voc:rotationPeriod  24 ;
+        voc:surfaceWater    0 ;
+        voc:terrain         "airless asteroid" .
+
+<https://swapi.co/resource/vehicle/62>
+        rdf:type          voc:Vehicle ;
+        voc:crew          2 ;
+        voc:film          <https://swapi.co/resource/film/6> ;
+        voc:model         "Fire suppression speeder" ;
+        voc:vehicleClass  "fire suppression ship" .
+
+<https://swapi.co/resource/human/25>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Lando Calrissian"@it , "Lando Calrissian"@fr , "Lando Calrissian"@en ;
+        voc:birthYear     "31BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "personnage de la saga de Star Wars"@fr , "fictional character in the Star Wars universe"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:gender        "male" ;
+        voc:hairColor     "black" ;
+        voc:height        177.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/30> ;
+        voc:mass          79.0 ;
+        voc:skinColor     "dark" ;
+        voc:starship      <https://swapi.co/resource/starship/10> ;
+        voc:wikidataLink  wd:Q51799 .
+
+<https://swapi.co/resource/droid/87>
+        rdf:type       voc:Character , voc:Droid ;
+        voc:degree     "Astromech droid" ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/7> ;
+        voc:homeworld  <https://swapi.co/resource/planet/28> .
+
+<https://swapi.co/resource/besalisk/71>
+        rdf:type       voc:Character , voc:Besalisk ;
+        voc:eyeColor   "yellow" ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     198.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/55> ;
+        voc:mass       102.0 ;
+        voc:skinColor  "brown" .
+
+<https://swapi.co/resource/wookiee/80>
+        rdf:type       voc:Character , voc:Wookiee ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/6> ;
+        voc:gender     "male" ;
+        voc:hairColor  "brown" ;
+        voc:height     234.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/14> ;
+        voc:mass       136.0 ;
+        voc:skinColor  "brown" .
+
+<https://swapi.co/resource/human/66>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Dormé"@fr , "Dormé"@en ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/5> ;
+        voc:gender        "female" ;
+        voc:hairColor     "brown" ;
+        voc:height        165.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/8> ;
+        voc:skinColor     "light" ;
+        voc:wikidataLink  wd:Q11681172 .
+
+<https://swapi.co/resource/planet/5>
+        rdf:type            voc:Planet ;
+        voc:climate         "murky" ;
+        voc:diameter        8900 ;
+        voc:film            <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> ;
+        voc:gravity         "N/A" ;
+        voc:orbitalPeriod   341 ;
+        voc:rotationPeriod  23 ;
+        voc:surfaceWater    8 ;
+        voc:terrain         "swamp, jungles" .
+
+<https://swapi.co/resource/film/2>
+        rdf:type                voc:Film ;
+        rdfs:label              "L'Impero colpisce ancora"@it , "Star Wars, épisode V : L'Empire contre-attaque"@fr , "The Empire Strikes Back"@en ;
+        voc:boxOffice           547879454.0 ;
+        voc:character           <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/yodasspecies/20> , <https://swapi.co/resource/human/25> , <https://swapi.co/resource/human/22> , <https://swapi.co/resource/droid/23> , <https://swapi.co/resource/human/14> , <https://swapi.co/resource/trandoshan/24> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/4> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/human/5> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/human/18> , <https://swapi.co/resource/human/26> , <https://swapi.co/resource/human/21> , <https://swapi.co/resource/human/1> ;
+        voc:cost                18000000.0 ;
+        voc:desc                "film del 1980 diretto da Irvin Kershner"@it , "film américain de la saga Star Wars sorti en 1980"@fr , "1980 American science fiction film directed by Irvin Kershner"@en ;
+        voc:episodeId           5 ;
+        voc:image               <http://commons.wikimedia.org/wiki/Special:FilePath/Theempirestrikesback-logo2.svg> ;
+        voc:location            wd:Q2381588 ;
+        voc:openingCrawl        "It is a dark time for the\r\nRebellion. Although the Death\r\nStar has been destroyed,\r\nImperial troops have driven the\r\nRebel forces from their hidden\r\nbase and pursued them across\r\nthe galaxy.\r\n\r\nEvading the dreaded Imperial\r\nStarfleet, a group of freedom\r\nfighters led by Luke Skywalker\r\nhas established a new secret\r\nbase on the remote ice world\r\nof Hoth.\r\n\r\nThe evil lord Darth Vader,\r\nobsessed with finding young\r\nSkywalker, has dispatched\r\nthousands of remote probes into\r\nthe far reaches of space...." ;
+        voc:planet              <https://swapi.co/resource/planet/5> , <https://swapi.co/resource/planet/4> , <https://swapi.co/resource/planet/27> , <https://swapi.co/resource/planet/6> ;
+        voc:releaseDate         "1980-05-17"^^xsd:date ;
+        voc:returnOnInvestment  30.43774744444444444444 ;
+        voc:starship            <https://swapi.co/resource/starship/15> , <https://swapi.co/resource/starship/12> , <https://swapi.co/resource/starship/11> , <https://swapi.co/resource/starship/21> , <https://swapi.co/resource/starship/10> , <https://swapi.co/resource/starship/23> , <https://swapi.co/resource/starship/17> , <https://swapi.co/resource/starship/22> , <https://swapi.co/resource/starship/3> ;
+        voc:vehicle             <https://swapi.co/resource/vehicle/20> , <https://swapi.co/resource/vehicle/19> , <https://swapi.co/resource/vehicle/16> , <https://swapi.co/resource/vehicle/8> , <https://swapi.co/resource/vehicle/18> , <https://swapi.co/resource/vehicle/14> ;
+        voc:wikidataLink        wd:Q181795 .
+
+voc:Toong  rdf:type        voc:Species ;
+        rdfs:subClassOf    voc:Unknown , voc:Sentient ;
+        voc:averageHeight  200.0 ;
+        voc:character      <https://swapi.co/resource/toong/50> ;
+        voc:eyeColor       "orange" ;
+        voc:film           <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:language       "Tundan" ;
+        voc:planet         <https://swapi.co/resource/planet/41> ;
+        voc:skinColor      "yellow" , "green" , "grey" .
+
+<https://swapi.co/resource/planet/41>
+        rdf:type            voc:Planet ;
+        voc:diameter        12190 ;
+        voc:orbitalPeriod   1770 ;
+        voc:population      0 ;
+        voc:resident        <https://swapi.co/resource/toong/50> ;
+        voc:rotationPeriod  48 ;
+        voc:terrain         "barren, ash" .
+
+<https://swapi.co/resource/vehicle/38>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         1600 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:length                15.0 ;
+        voc:manufacturer          "Otoh Gunga Bongameken Cooperative" ;
+        voc:maxAtmospheringSpeed  85 ;
+        voc:model                 "Tribubble bongo" ;
+        voc:passengers            2 ;
+        voc:pilot                 <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/32> ;
+        voc:vehicleClass          "submarine" .
+
+<https://swapi.co/resource/human/22>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Boba Fett"@en , "Boba Fett"@fr , "Boba Fett"@it ;
+        voc:birthYear     "31.5BBY" ;
+        voc:desc          "Personnage de Star Wars"@fr , "personaggio dell'universo di Guerre stellari"@it , "fictional character in Star Wars"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "black" ;
+        voc:height        183.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/10> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Boba%20Fett.jpg> ;
+        voc:mass          78.2 ;
+        voc:skinColor     "fair" ;
+        voc:starship      <https://swapi.co/resource/starship/21> ;
+        voc:wikidataLink  wd:Q51790 .
+
+<https://swapi.co/resource/vehicle/53>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         10000 ;
+        voc:consumables           "21 days" ;
+        voc:crew                  6 ;
+        voc:film                  <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:length                13.2 ;
+        voc:manufacturer          "Rothana Heavy Engineering, Kuat Drive Yards" ;
+        voc:maxAtmospheringSpeed  60 ;
+        voc:model                 "All Terrain Tactical Enforcer" ;
+        voc:passengers            36 ;
+        voc:vehicleClass          "walker" .
+
+<https://swapi.co/resource/vehicle/30>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         4 ;
+        voc:consumables           "1 day" ;
+        voc:costInCredits         8000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/3> ;
+        voc:length                3.0 ;
+        voc:manufacturer          "Aratech Repulsor Company" ;
+        voc:maxAtmospheringSpeed  360 ;
+        voc:model                 "74-Z speeder bike" ;
+        voc:passengers            1 ;
+        voc:pilot                 <https://swapi.co/resource/human/5> , <https://swapi.co/resource/human/1> ;
+        voc:vehicleClass          "speeder" .
+
+voc:Iktotchi  rdf:type     voc:Species ;
+        rdfs:subClassOf    voc:Unknown , voc:Sentient ;
+        voc:averageHeight  180.0 ;
+        voc:character      <https://swapi.co/resource/iktotchi/56> ;
+        voc:eyeColor       "orange" ;
+        voc:film           <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:language       "Iktotchese" ;
+        voc:planet         <https://swapi.co/resource/planet/47> ;
+        voc:skinColor      "pink" .
+
+<https://swapi.co/resource/human/74>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Jocasta Nu"@fr , "Jocasta Nu"@it , "Jocasta Nu"@en ;
+        voc:desc          "Star Wars character"@en , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/5> ;
+        voc:gender        "female" ;
+        voc:hairColor     "white" ;
+        voc:height        167.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/9> ;
+        voc:skinColor     "fair" ;
+        voc:wikidataLink  wd:Q2248965 .
+
+<https://swapi.co/resource/gungan/36>
+        rdf:type          voc:Character , voc:Gungan ;
+        rdfs:label        "Jar Jar Binks"@en , "Jar Jar Binks"@fr , "Jar Jar Binks"@it ;
+        voc:birthYear     "52BBY" ;
+        voc:desc          "Star Wars character"@en , "Personaggio della saga di Guerre stellari"@it , "personnage de l'univers Star Wars"@fr ;
+        voc:eyeColor      "orange" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:height        196.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/8> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/WonderCon%202012%20%286856134014%29.jpg> ;
+        voc:mass          66.0 ;
+        voc:skinColor     "orange" ;
+        voc:wikidataLink  wd:Q51793 .
+
+<https://swapi.co/resource/human/86>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Poe Dameron"@fr , "Poe Dameron"@en ;
+        voc:desc          "personnage de fiction de l'univers Star Wars"@fr , "fictional character in Star Wars"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/7> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" ;
+        voc:homeworld     <https://swapi.co/resource/planet/28> ;
+        voc:skinColor     "light" ;
+        voc:starship      <https://swapi.co/resource/starship/77> ;
+        voc:wikidataLink  wd:Q21782656 .
+
+<https://swapi.co/resource/planet/53>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/human/69> ;
+        voc:terrain   "jungles, forests, deserts" .
+
+<https://swapi.co/resource/human/35>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Padmé Amidala"@it , "Padmé Amidala"@fr , "Padmé Amidala"@en ;
+        voc:birthYear     "46BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "personnage de Star Wars"@fr , "fictional character in the Star Wars universe"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "female" ;
+        voc:hairColor     "brown" ;
+        voc:height        165.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/8> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Padme2%20%281%29.jpg> ;
+        voc:mass          45.0 ;
+        voc:skinColor     "light" ;
+        voc:starship      <https://swapi.co/resource/starship/49> , <https://swapi.co/resource/starship/64> , <https://swapi.co/resource/starship/39> ;
+        voc:wikidataLink  wd:Q51789 .
+
+<https://swapi.co/resource/human/11>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Anakin Skywalker"@it , "Anakin Skywalker"@fr , "Anakin Skywalker"@en ;
+        voc:birthYear     "41.9BBY" ;
+        voc:cybernetics   "Cybernetic right arm" ;
+        voc:desc          "fictional character of Star Wars"@en , "personnage de Star Wars"@fr , "personaggio immaginario di Guerre stellari"@it ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "blond" ;
+        voc:height        188.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Anakin%20Skywalker%20costume%20Retouched.jpg> ;
+        voc:mass          84.0 ;
+        voc:skinColor     "fair" ;
+        voc:starship      <https://swapi.co/resource/starship/65> , <https://swapi.co/resource/starship/59> , <https://swapi.co/resource/starship/39> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/46> , <https://swapi.co/resource/vehicle/44> ;
+        voc:wikidataLink  wd:Q51752 .
+
+<https://swapi.co/resource/starship/11>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         110 ;
+        voc:consumables           "1 week" ;
+        voc:costInCredits         134999 ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                14.0 ;
+        voc:manufacturer          "Koensayr Manufacturing" ;
+        voc:maxAtmospheringSpeed  1000 ;
+        voc:mglt                  80 ;
+        voc:model                 "BTL Y-wing" ;
+        voc:passengers            0 ;
+        voc:starshipClass         "assault starfighter" .
+
+<https://swapi.co/resource/planet/4>
+        rdf:type            voc:Planet ;
+        voc:climate         "frozen" ;
+        voc:diameter        7200 ;
+        voc:film            <https://swapi.co/resource/film/2> ;
+        voc:gravity         "1.1 standard" ;
+        voc:orbitalPeriod   549 ;
+        voc:rotationPeriod  23 ;
+        voc:surfaceWater    100 ;
+        voc:terrain         "tundra, ice caves, mountain ranges" .
+
+<https://swapi.co/resource/vehicle/46>
+        rdf:type                  voc:Vehicle ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                6.23 ;
+        voc:manufacturer          "Narglatch AirTech prefabricated kit" ;
+        voc:maxAtmospheringSpeed  720 ;
+        voc:model                 "XJ-6 airspeeder" ;
+        voc:passengers            1 ;
+        voc:pilot                 <https://swapi.co/resource/human/11> ;
+        voc:vehicleClass          "airspeeder" .
+
+<https://swapi.co/resource/human/60>
+        rdf:type       voc:Character , voc:Human ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:hairColor  "black" ;
+        voc:height     185.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/8> ;
+        voc:mass       85.0 ;
+        voc:skinColor  "dark" ;
+        voc:starship   <https://swapi.co/resource/starship/39> .
+
+<https://swapi.co/resource/planet/50>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   318 ;
+        voc:population      3500000000 ;
+        voc:resident        <https://swapi.co/resource/chagrian/59> ;
+        voc:rotationPeriod  27 ;
+        voc:terrain         "oceans, rainforests, plateaus" .
+
+<https://swapi.co/resource/planet/23>
+        rdf:type            voc:Planet ;
+        voc:climate         "hot" ;
+        voc:diameter        7549 ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   305 ;
+        voc:population      1300000000 ;
+        voc:resident        <https://swapi.co/resource/rodian/15> ;
+        voc:rotationPeriod  29 ;
+        voc:surfaceWater    60 ;
+        voc:terrain         "jungles, oceans, urban, swamps" .
+
+<https://swapi.co/resource/planet/36>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        10480 ;
+        voc:gravity         "0.9" ;
+        voc:orbitalPeriod   491 ;
+        voc:population      5200 ;
+        voc:resident        <https://swapi.co/resource/zabrak/44> ;
+        voc:rotationPeriod  24 ;
+        voc:terrain         "forests, deserts, savannas" .
+
+<https://swapi.co/resource/starship/65>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         60 ;
+        voc:consumables           "2 days" ;
+        voc:costInCredits         320000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                5.47 ;
+        voc:manufacturer          "Kuat Systems Engineering" ;
+        voc:maxAtmospheringSpeed  1500 ;
+        voc:model                 "Eta-2 Actis-class light interceptor" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/11> , <https://swapi.co/resource/human/10> ;
+        voc:starshipClass         "starfighter" .
+
+<https://swapi.co/resource/starship/29>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         45 ;
+        voc:consumables           "1 week" ;
+        voc:costInCredits         220000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating      2.0 ;
+        voc:length                16.9 ;
+        voc:manufacturer          "Slayn & Korpil" ;
+        voc:maxAtmospheringSpeed  950 ;
+        voc:mglt                  91 ;
+        voc:model                 "A/SF-01 B-wing starfighter" ;
+        voc:passengers            0 ;
+        voc:starshipClass         "Assault Starfighter" .
+
+voc:Xexto  rdf:type        voc:Species ;
+        rdfs:subClassOf    voc:Unknown , voc:Sentient ;
+        voc:averageHeight  125.0 ;
+        voc:character      <https://swapi.co/resource/xexto/49> ;
+        voc:eyeColor       "black" ;
+        voc:film           <https://swapi.co/resource/film/4> ;
+        voc:language       "Xextese" ;
+        voc:planet         <https://swapi.co/resource/planet/40> ;
+        voc:skinColor      "purple" , "yellow" , "grey" .
+
+<https://swapi.co/resource/vehicle/33>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         0 ;
+        voc:crew                  0 ;
+        voc:film                  <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:length                3.5 ;
+        voc:manufacturer          "Haor Chall Engineering, Baktoid Armor Workshop" ;
+        voc:maxAtmospheringSpeed  1200 ;
+        voc:model                 "Vulture-class droid starfighter" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "starfighter" .
+
+<https://swapi.co/resource/starship/21>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         70000 ;
+        voc:consumables           "1 month" ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating      3.0 ;
+        voc:length                21.5 ;
+        voc:manufacturer          "Kuat Systems Engineering" ;
+        voc:maxAtmospheringSpeed  1000 ;
+        voc:mglt                  70 ;
+        voc:model                 "Firespray-31-class patrol and attack" ;
+        voc:passengers            6 ;
+        voc:pilot                 <https://swapi.co/resource/human/22> ;
+        voc:starshipClass         "Patrol craft" .
+
+<https://swapi.co/resource/planet/47>
+        rdf:type            voc:Planet ;
+        voc:climate         "arid, rocky, windy" ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   481 ;
+        voc:resident        <https://swapi.co/resource/iktotchi/56> ;
+        voc:rotationPeriod  22 ;
+        voc:terrain         "rocky" .
+
+<https://swapi.co/resource/droid/23>
+        rdf:type       voc:Character , voc:Droid ;
+        voc:birthYear  "15BBY" ;
+        voc:degree     "Class Four" ;
+        voc:eyeColor   "red" ;
+        voc:film       <https://swapi.co/resource/film/2> ;
+        voc:height     200.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/28> ;
+        voc:mass       140.0 ;
+        voc:skinColor  "metal" .
+
+<https://swapi.co/resource/droid/75>
+        rdf:type       voc:Character , voc:Droid ;
+        voc:degree     "Astromech droid" ;
+        voc:eyeColor   "blue" , "red" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:height     96.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/28> ;
+        voc:skinColor  "silver" , "red" .
+
+<https://swapi.co/resource/droid/8>
+        rdf:type       voc:Character , voc:Droid ;
+        voc:degree     "Class Two" ;
+        voc:eyeColor   "red" ;
+        voc:film       <https://swapi.co/resource/film/1> ;
+        voc:height     97.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/1> ;
+        voc:mass       32.0 ;
+        voc:skinColor  "red" , "white" .
+
+voc:Clawdite  rdf:type       voc:Species ;
+        rdfs:subClassOf      voc:Reptilian , voc:Sentient ;
+        voc:averageHeight    180.0 ;
+        voc:averageLifespan  "70" ;
+        voc:character        <https://swapi.co/resource/clawdite/70> ;
+        voc:eyeColor         "yellow" ;
+        voc:film             <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:language         "Clawdite" ;
+        voc:planet           <https://swapi.co/resource/planet/54> ;
+        voc:skinColor        "yellow" , "green" .
+
+<https://swapi.co/resource/vehicle/25>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         135000 ;
+        voc:consumables           "1 day" ;
+        voc:costInCredits         8000 ;
+        voc:crew                  5 ;
+        voc:film                  <https://swapi.co/resource/film/3> ;
+        voc:length                9.5 ;
+        voc:manufacturer          "Ubrikkian Industries" ;
+        voc:maxAtmospheringSpeed  250 ;
+        voc:model                 "Bantha-II" ;
+        voc:passengers            16 ;
+        voc:vehicleClass          "repulsorcraft cargo skiff" .
+
+<https://swapi.co/resource/planet/56>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   384 ;
+        voc:population      500000000000 ;
+        voc:resident        <https://swapi.co/resource/skakoan/76> ;
+        voc:rotationPeriod  27 ;
+        voc:terrain         "urban, vines" .
+
+<https://swapi.co/resource/pauan/83>
+        rdf:type          voc:Character , voc:Pauan ;
+        rdfs:label        "Tion Medon"@en , "Tion Medon"@fr ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "black" ;
+        voc:film          <https://swapi.co/resource/film/6> ;
+        voc:gender        "male" ;
+        voc:height        206.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/12> ;
+        voc:mass          80.0 ;
+        voc:skinColor     "grey" ;
+        voc:wikidataLink  wd:Q10382624 .
+
+<https://swapi.co/resource/human/69>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Jango Fett"@it , "Jango Fett"@fr , "Jango Fett"@en ;
+        voc:birthYear     "66BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "personnage de Star Wars"@fr , "fictional character in the Star Wars universe"@en ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "black" ;
+        voc:height        183.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/53> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Jango%20Fett%20Retouched.jpg> ;
+        voc:mass          79.0 ;
+        voc:skinColor     "tan" ;
+        voc:wikidataLink  wd:Q51795 .
+
+voc:Rodian  rdf:type       voc:Species ;
+        rdfs:subClassOf    voc:Reptilian , voc:Sentient ;
+        voc:averageHeight  170.0 ;
+        voc:character      <https://swapi.co/resource/rodian/15> ;
+        voc:eyeColor       "black" ;
+        voc:film           <https://swapi.co/resource/film/1> ;
+        voc:language       "Galactic Basic" ;
+        voc:planet         <https://swapi.co/resource/planet/23> ;
+        voc:skinColor      "blue" , "green" .
+
+<https://swapi.co/resource/human/14>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Han Solo"@en , "Han Solo"@fr , "Han Solo"@it ;
+        voc:birthYear     "29BBY" ;
+        voc:desc          "fictional Star Wars character"@en , "personaggio di Guerre stellari"@it , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "brown" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" ;
+        voc:height        180.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/22> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Han%20Solo%20and%20Chewbacca%20costumes.jpg> ;
+        voc:mass          80.0 ;
+        voc:skinColor     "fair" ;
+        voc:starship      <https://swapi.co/resource/starship/10> , <https://swapi.co/resource/starship/22> ;
+        voc:wikidataLink  wd:Q51802 .
+
+<https://swapi.co/resource/planet/9>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        12240 ;
+        voc:film            <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   368 ;
+        voc:population      1000000000000 ;
+        voc:resident        <https://swapi.co/resource/human/74> , <https://swapi.co/resource/human/34> , <https://swapi.co/resource/tholothian/55> ;
+        voc:rotationPeriod  24 ;
+        voc:terrain         "cityscape, mountains" .
+
+<https://swapi.co/resource/trandoshan/24>
+        rdf:type       voc:Character , voc:Trandoshan ;
+        voc:birthYear  "53BBY" ;
+        voc:eyeColor   "red" ;
+        voc:film       <https://swapi.co/resource/film/2> ;
+        voc:gender     "male" ;
+        voc:height     190.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/29> ;
+        voc:mass       113.0 ;
+        voc:skinColor  "green" .
+
+<https://swapi.co/resource/planet/18>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate, moist" ;
+        voc:diameter        0 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   278 ;
+        voc:population      10000000 ;
+        voc:resident        <https://swapi.co/resource/neimodian/33> ;
+        voc:rotationPeriod  25 ;
+        voc:terrain         "mountains, fields, forests, rock arches" .
+
+<https://swapi.co/resource/starship/10>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         100000 ;
+        voc:consumables           "2 months" ;
+        voc:costInCredits         100000 ;
+        voc:crew                  4 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:hyperdriveRating      0.5 ;
+        voc:length                34.37 ;
+        voc:manufacturer          "Corellian Engineering Corporation" ;
+        voc:maxAtmospheringSpeed  1050 ;
+        voc:mglt                  75 ;
+        voc:model                 "YT-1300 light freighter" ;
+        voc:passengers            6 ;
+        voc:pilot                 <https://swapi.co/resource/human/25> , <https://swapi.co/resource/human/14> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/sullustan/31> ;
+        voc:starshipClass         "Light freighter" .
+
+<https://swapi.co/resource/geonosian/63>
+        rdf:type          voc:Character , voc:Geonosian ;
+        rdfs:label        "Poggle the Lesser"@en ;
+        voc:desc          "character of Star Wars"@en ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:height        183.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/11> ;
+        voc:mass          80.0 ;
+        voc:skinColor     "green" ;
+        voc:wikidataLink  wd:Q7714506 .
+
+<https://swapi.co/resource/starship/5>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         180000 ;
+        voc:consumables           "1 month" ;
+        voc:costInCredits         240000 ;
+        voc:crew                  5 ;
+        voc:film                  <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                38.0 ;
+        voc:manufacturer          "Sienar Fleet Systems, Cyngus Spaceworks" ;
+        voc:maxAtmospheringSpeed  1000 ;
+        voc:mglt                  70 ;
+        voc:model                 "Sentinel-class landing craft" ;
+        voc:passengers            75 ;
+        voc:starshipClass         "landing craft" .
+
+<https://swapi.co/resource/starship/23>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         6000000 ;
+        voc:consumables           "2 years" ;
+        voc:costInCredits         8500000 ;
+        voc:crew                  854 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating      2.0 ;
+        voc:length                300.0 ;
+        voc:manufacturer          "Kuat Drive Yards" ;
+        voc:maxAtmospheringSpeed  800 ;
+        voc:mglt                  40 ;
+        voc:model                 "EF76 Nebulon-B escort frigate" ;
+        voc:passengers            75 ;
+        voc:starshipClass         "Escort ship" .
+
+voc:Dug  rdf:type          voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  100.0 ;
+        voc:character      <https://swapi.co/resource/dug/41> ;
+        voc:eyeColor       "blue" , "yellow" ;
+        voc:film           <https://swapi.co/resource/film/4> ;
+        voc:language       "Dugese" ;
+        voc:planet         <https://swapi.co/resource/planet/35> ;
+        voc:skinColor      "purple" , "brown" , "red" , "grey" .
+
+<https://swapi.co/resource/starship/13>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         150 ;
+        voc:consumables           "5 days" ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                9.2 ;
+        voc:manufacturer          "Sienar Fleet Systems" ;
+        voc:maxAtmospheringSpeed  1200 ;
+        voc:mglt                  105 ;
+        voc:model                 "Twin Ion Engine Advanced x1" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/4> ;
+        voc:starshipClass         "Starfighter" .
+
+<https://swapi.co/resource/planet/45>
+        rdf:type            voc:Planet ;
+        voc:orbitalPeriod   413 ;
+        voc:resident        <https://swapi.co/resource/zabrak/54> ;
+        voc:rotationPeriod  29 ;
+        voc:terrain         "rocky canyons, acid pools" .
+
+voc:Cerean  rdf:type       voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  200.0 ;
+        voc:character      <https://swapi.co/resource/cerean/52> ;
+        voc:eyeColor       "hazel" ;
+        voc:film           <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:hairColor      "blond" , "black" , "red" , "white" ;
+        voc:language       "Cerean" ;
+        voc:planet         <https://swapi.co/resource/planet/43> ;
+        voc:skinColor      "pale pink" .
+
+<https://swapi.co/resource/planet/42>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        10120 ;
+        voc:gravity         "0.98" ;
+        voc:orbitalPeriod   383 ;
+        voc:population      705300 ;
+        voc:resident        <https://swapi.co/resource/human/51> ;
+        voc:rotationPeriod  25 ;
+        voc:terrain         "toxic cloudsea, plateaus, volcanoes" .
+
+<https://swapi.co/resource/planet/8>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        12120 ;
+        voc:film            <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   312 ;
+        voc:population      4500000000 ;
+        voc:resident        <https://swapi.co/resource/human/61> , <https://swapi.co/resource/human/66> , <https://swapi.co/resource/gungan/36> , <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/60> , <https://swapi.co/resource/gungan/38> , <https://swapi.co/resource/human/42> , <https://swapi.co/resource/gungan/37> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/human/39> , <https://swapi.co/resource/human/21> ;
+        voc:rotationPeriod  26 ;
+        voc:surfaceWater    12 ;
+        voc:terrain         "grassy hills, swamps, forests, mountains" .
+
+voc:Mirialan  rdf:type     voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  180.0 ;
+        voc:character      <https://swapi.co/resource/mirialan/64> , <https://swapi.co/resource/mirialan/65> ;
+        voc:eyeColor       "blue" , "orange" , "yellow" , "brown" , "red" , "green" ;
+        voc:film           <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:hairColor      "black" , "brown" ;
+        voc:language       "Mirialan" ;
+        voc:planet         <https://swapi.co/resource/planet/51> ;
+        voc:skinColor      "yellow" , "green" .
+
+<https://swapi.co/resource/starship/2>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         3000000 ;
+        voc:consumables           "1 year" ;
+        voc:costInCredits         3500000 ;
+        voc:crew                  165 ;
+        voc:film                  <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating      2.0 ;
+        voc:length                150.0 ;
+        voc:manufacturer          "Corellian Engineering Corporation" ;
+        voc:maxAtmospheringSpeed  950 ;
+        voc:mglt                  60 ;
+        voc:model                 "CR90 corvette" ;
+        voc:passengers            600 ;
+        voc:starshipClass         "corvette" .
+
+<https://swapi.co/resource/planet/32>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        13500 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   368 ;
+        voc:population      1200000000 ;
+        voc:resident        <https://swapi.co/resource/human/28> ;
+        voc:rotationPeriod  20 ;
+        voc:surfaceWater    40 ;
+        voc:terrain         "plains, forests" .
+
+<https://swapi.co/resource/planet/20>
+        rdf:type      voc:Planet ;
+        voc:climate   "temperate" ;
+        voc:diameter  0 ;
+        voc:gravity   "1 standard" ;
+        voc:resident  <https://swapi.co/resource/human/10> ;
+        voc:terrain   "grass" .
+
+<https://swapi.co/resource/skakoan/76>
+        rdf:type       voc:Character , voc:Skakoan ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     193.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/56> ;
+        voc:mass       48.0 ;
+        voc:skinColor  "green" , "grey" .
+
+<https://swapi.co/resource/planet/24>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        12150 ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   413 ;
+        voc:population      7000000000 ;
+        voc:resident        <https://swapi.co/resource/hutt/16> ;
+        voc:rotationPeriod  87 ;
+        voc:terrain         "urban, oceans, swamps, bogs" .
+
+voc:Besalisk  rdf:type       voc:Species ;
+        rdfs:subClassOf      voc:Amphibian , voc:Sentient ;
+        voc:averageHeight    178.0 ;
+        voc:averageLifespan  "75" ;
+        voc:character        <https://swapi.co/resource/besalisk/71> ;
+        voc:eyeColor         "yellow" ;
+        voc:film             <https://swapi.co/resource/film/5> ;
+        voc:language         "besalisk" ;
+        voc:planet           <https://swapi.co/resource/planet/55> ;
+        voc:skinColor        "brown" .
+
+<https://swapi.co/resource/planet/27>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        14050 ;
+        voc:film            <https://swapi.co/resource/film/2> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   334 ;
+        voc:population      4000000000 ;
+        voc:rotationPeriod  26 ;
+        voc:surfaceWater    10 ;
+        voc:terrain         "plains, seas, mesas" .
+
+<https://swapi.co/resource/planet/57>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        13800 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   412 ;
+        voc:population      5000000000 ;
+        voc:resident        <https://swapi.co/resource/muun/77> ;
+        voc:rotationPeriod  28 ;
+        voc:surfaceWater    25 ;
+        voc:terrain         "plains, forests, hills, mountains" .
+
+<https://swapi.co/resource/planet/60>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/umbaran/82> .
+
+<https://swapi.co/resource/clawdite/70>
+        rdf:type          voc:Character , voc:Clawdite ;
+        rdfs:label        "Zam Wesell"@en , "Zam Wesell"@it , "Zam Wesell"@fr ;
+        voc:desc          "personnage de l'univers de Star Wars"@fr , "character in Star Wars"@en ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/5> ;
+        voc:gender        "female" ;
+        voc:hairColor     "blonde" ;
+        voc:height        168.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/54> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Zam%20Wesell.jpg> ;
+        voc:mass          55.0 ;
+        voc:skinColor     "fair" , "yellow" , "green" ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/45> ;
+        voc:wikidataLink  wd:Q2737965 .
+
+<https://swapi.co/resource/vehicle/26>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         75 ;
+        voc:consumables           "2 days" ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/3> ;
+        voc:length                9.6 ;
+        voc:manufacturer          "Sienar Fleet Systems" ;
+        voc:maxAtmospheringSpeed  1250 ;
+        voc:model                 "Twin Ion Engine Interceptor" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "starfighter" .
+
+<https://swapi.co/resource/human/34>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Finis Valorum"@it , "Finis Valorum"@en , "Finis Valorum"@fr ;
+        voc:birthYear     "91BBY" ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/4> ;
+        voc:gender        "male" ;
+        voc:hairColor     "blond" ;
+        voc:height        170.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/9> ;
+        voc:skinColor     "fair" ;
+        voc:wikidataLink  wd:Q1844301 .
+
+<https://swapi.co/resource/starship/32>
+        rdf:type              voc:Starship ;
+        voc:cargoCapacity     4000000000 ;
+        voc:consumables       "500 days" ;
+        voc:crew              175 ;
+        voc:film              <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating  2.0 ;
+        voc:length            3170.0 ;
+        voc:manufacturer      "Hoersch-Kessel Drive, Inc." ;
+        voc:model             "Lucrehulk-class Droid Control Ship" ;
+        voc:passengers        139000 ;
+        voc:starshipClass     "Droid control ship" .
+
+<https://swapi.co/resource/vehicle/20>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         10 ;
+        voc:consumables           "1 day" ;
+        voc:costInCredits         75000 ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/2> ;
+        voc:length                7.0 ;
+        voc:manufacturer          "Bespin Motors" ;
+        voc:maxAtmospheringSpeed  1500 ;
+        voc:model                 "Storm IV Twin-Pod" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "repulsorcraft" .
+
+<https://swapi.co/resource/planet/39>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate, artic" ;
+        voc:diameter        14900 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   391 ;
+        voc:population      421000000 ;
+        voc:resident        <https://swapi.co/resource/vulptereen/48> ;
+        voc:rotationPeriod  22 ;
+        voc:terrain         "urban, barren" .
+
+<https://swapi.co/resource/vehicle/19>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         200 ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:length                2.0 ;
+        voc:manufacturer          "Kuat Drive Yards, Imperial Department of Military Research" ;
+        voc:maxAtmospheringSpeed  90 ;
+        voc:model                 "All Terrain Scout Transport" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/wookiee/13> ;
+        voc:vehicleClass          "walker" .
+
+<https://swapi.co/resource/planet/2>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        12500 ;
+        voc:film            <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   364 ;
+        voc:population      2000000000 ;
+        voc:resident        <https://swapi.co/resource/human/68> , <https://swapi.co/resource/human/81> , <https://swapi.co/resource/human/5> ;
+        voc:rotationPeriod  24 ;
+        voc:surfaceWater    40 ;
+        voc:terrain         "grasslands, mountains" .
+
+<https://swapi.co/resource/vehicle/35>
+        rdf:type                  voc:Vehicle ;
+        voc:crew                  4 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:length                9.75 ;
+        voc:manufacturer          "Baktoid Armor Workshop" ;
+        voc:maxAtmospheringSpeed  55 ;
+        voc:model                 "Armoured Assault Tank" ;
+        voc:passengers            6 ;
+        voc:vehicleClass          "repulsorcraft" .
+
+<https://swapi.co/resource/togruta/78>
+        rdf:type       voc:Character , voc:Togruta ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:height     178.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/58> ;
+        voc:mass       57.0 ;
+        voc:skinColor  "blue" , "red" , "white" .
+
+<https://swapi.co/resource/vehicle/16>
+        rdf:type                  voc:Vehicle ;
+        voc:consumables           "2 days" ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:length                7.8 ;
+        voc:manufacturer          "Sienar Fleet Systems" ;
+        voc:maxAtmospheringSpeed  850 ;
+        voc:model                 "TIE/sa bomber" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "space/planetary bomber" .
+
+<https://swapi.co/resource/planet/11>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate, arid" ;
+        voc:diameter        11370 ;
+        voc:film            <https://swapi.co/resource/film/5> ;
+        voc:gravity         "0.9 standard" ;
+        voc:orbitalPeriod   256 ;
+        voc:population      100000000000 ;
+        voc:resident        <https://swapi.co/resource/geonosian/63> ;
+        voc:rotationPeriod  30 ;
+        voc:surfaceWater    5 ;
+        voc:terrain         "rock, desert, mountain, barren" .
+
+<https://swapi.co/resource/starship/9>
+        rdf:type              voc:Starship ;
+        voc:cargoCapacity     1000000000000 ;
+        voc:consumables       "3 years" ;
+        voc:costInCredits     1000000000000 ;
+        voc:crew              342953 ;
+        voc:film              <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating  4.0 ;
+        voc:length            120000.0 ;
+        voc:manufacturer      "Imperial Department of Military Research, Sienar Fleet Systems" ;
+        voc:mglt              10 ;
+        voc:model             "DS-1 Orbital Battle Station" ;
+        voc:passengers        843342 ;
+        voc:starshipClass     "Deep Space Mobile Battlestation" .
+
+voc:Muun  rdf:type           voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    190.0 ;
+        voc:averageLifespan  "100" ;
+        voc:character        <https://swapi.co/resource/muun/77> ;
+        voc:eyeColor         "black" ;
+        voc:film             <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:language         "Muun" ;
+        voc:planet           <https://swapi.co/resource/planet/57> ;
+        voc:skinColor        "grey" , "white" .
+
+<https://swapi.co/resource/planet/14>
+        rdf:type            voc:Planet ;
+        voc:climate         "tropical" ;
+        voc:diameter        12765 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   381 ;
+        voc:population      45000000 ;
+        voc:resident        <https://swapi.co/resource/wookiee/80> , <https://swapi.co/resource/wookiee/13> ;
+        voc:rotationPeriod  26 ;
+        voc:surfaceWater    60 ;
+        voc:terrain         "jungle, forests, lakes, rivers" .
+
+<https://swapi.co/resource/film/3>
+        rdf:type          voc:Film ;
+        rdfs:label        "Star Wars, épisode VI : Le Retour du Jedi"@fr , "Return of the Jedi"@en , "Il ritorno dello Jedi"@it ;
+        voc:boxOffice     475100000.0 ;
+        voc:character     <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/twilek/45> , <https://swapi.co/resource/yodasspecies/20> , <https://swapi.co/resource/human/25> , <https://swapi.co/resource/human/22> , <https://swapi.co/resource/human/14> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/28> , <https://swapi.co/resource/human/4> , <https://swapi.co/resource/moncalamari/27> , <https://swapi.co/resource/human/29> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/human/5> , <https://swapi.co/resource/hutt/16> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/human/18> , <https://swapi.co/resource/sullustan/31> , <https://swapi.co/resource/ewok/30> , <https://swapi.co/resource/human/21> , <https://swapi.co/resource/human/1> ;
+        voc:desc          "film del 1983 diretto da Richard Marquand"@it , "film américain de la saga Star Wars sorti en 1983"@fr , "1983 American epic space opera film directed by Richard Marquand"@en ;
+        voc:episodeId     6 ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Returnofthejedi-logo2.svg> ;
+        voc:location      wd:Q2660872 , wd:Q99 , wd:Q816 ;
+        voc:openingCrawl  "Luke Skywalker has returned to\r\nhis home planet of Tatooine in\r\nan attempt to rescue his\r\nfriend Han Solo from the\r\nclutches of the vile gangster\r\nJabba the Hutt.\r\n\r\nLittle does Luke know that the\r\nGALACTIC EMPIRE has secretly\r\nbegun construction on a new\r\narmored space station even\r\nmore powerful than the first\r\ndreaded Death Star.\r\n\r\nWhen completed, this ultimate\r\nweapon will spell certain doom\r\nfor the small band of rebels\r\nstruggling to restore freedom\r\nto the galaxy..." ;
+        voc:planet        <https://swapi.co/resource/planet/5> , <https://swapi.co/resource/planet/9> , <https://swapi.co/resource/planet/8> , <https://swapi.co/resource/planet/7> , <https://swapi.co/resource/planet/1> ;
+        voc:releaseDate   "1983-05-25"^^xsd:date ;
+        voc:starship      <https://swapi.co/resource/starship/28> , <https://swapi.co/resource/starship/15> , <https://swapi.co/resource/starship/12> , <https://swapi.co/resource/starship/11> , <https://swapi.co/resource/starship/29> , <https://swapi.co/resource/starship/10> , <https://swapi.co/resource/starship/23> , <https://swapi.co/resource/starship/2> , <https://swapi.co/resource/starship/27> , <https://swapi.co/resource/starship/17> , <https://swapi.co/resource/starship/22> , <https://swapi.co/resource/starship/3> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/30> , <https://swapi.co/resource/vehicle/25> , <https://swapi.co/resource/vehicle/26> , <https://swapi.co/resource/vehicle/19> , <https://swapi.co/resource/vehicle/16> , <https://swapi.co/resource/vehicle/8> , <https://swapi.co/resource/vehicle/18> , <https://swapi.co/resource/vehicle/24> ;
+        voc:wikidataLink  wd:Q181803 .
+
+<https://swapi.co/resource/human/10>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Obi-Wan Kenobi"@it , "Obi-Wan Kenobi"@fr , "Obi-Wan Kenobi"@en ;
+        voc:birthYear     "57BBY" ;
+        voc:desc "Obi-Wan \"Ben\" Kenobi is a fictional character in the Star Wars franchise. Within the original trilogy he is portrayed by Sir Alec Guinness, while in the prequel trilogy a younger version of the character is portrayed by Ewan McGregor. In the original trilogy, he is a mentor to Luke Skywalker, to whom he introduces the ways of the Jedi. In the prequel trilogy, he is a master and friend to Anakin Skywalker. He is frequently featured as a main character in various other Star Wars media. Sir Alec Guinnesss portrayal of Obi-Wan in the original Star Wars (1977) remains the only time an actor has received an Oscar nomination (Best Supporting Actor) for acting in a Star Wars film." ,
+                 "fictional character in the Star Wars universe"@en ,
+                 "personaggio della saga di Guerre stellari"@it ,
+                 "personnage de fiction de l'univers Star Wars"@fr ;
+        voc:eyeColor      "blue-gray" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> ;
+        voc:gender        "male" ;
+        voc:hairColor     "auburn" , "white" ;
+        voc:height        182.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/20> ;
+        voc:mass          77.0 ;
+        voc:skinColor     "fair" ;
+        voc:starship      <https://swapi.co/resource/starship/65> , <https://swapi.co/resource/starship/74> , <https://swapi.co/resource/starship/64> , <https://swapi.co/resource/starship/59> , <https://swapi.co/resource/starship/48> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/38> ;
+        voc:wikidataLink  wd:Q51740 .
+
+<https://swapi.co/resource/planet/38>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/aleena/47> .
+
+<https://swapi.co/resource/vehicle/34>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         12000 ;
+        voc:costInCredits         138000 ;
+        voc:crew                  4 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:length                31.0 ;
+        voc:manufacturer          "Baktoid Armor Workshop" ;
+        voc:maxAtmospheringSpeed  35 ;
+        voc:model                 "Multi-Troop Transport" ;
+        voc:passengers            112 ;
+        voc:vehicleClass          "repulsorcraft" .
+
+voc:Neimodian  rdf:type    voc:Species ;
+        rdfs:subClassOf    voc:Unknown , voc:Sentient ;
+        voc:averageHeight  180.0 ;
+        voc:character      <https://swapi.co/resource/neimodian/33> ;
+        voc:eyeColor       "pink" , "red" ;
+        voc:film           <https://swapi.co/resource/film/4> ;
+        voc:language       "Neimoidia" ;
+        voc:planet         <https://swapi.co/resource/planet/18> ;
+        voc:skinColor      "green" , "grey" .
+
+<https://swapi.co/resource/vehicle/73>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         0 ;
+        voc:costInCredits         60000 ;
+        voc:crew                  0 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                12.3 ;
+        voc:manufacturer          "Baktoid Fleet Ordnance, Haor Chall Engineering" ;
+        voc:maxAtmospheringSpeed  820 ;
+        voc:model                 "HMP droid gunship" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "airspeeder" .
+
+<https://swapi.co/resource/starship/49>
+        rdf:type                  voc:Starship ;
+        voc:crew                  4 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating      0.9 ;
+        voc:length                47.9 ;
+        voc:manufacturer          "Theed Palace Space Vessel Engineering Corps" ;
+        voc:maxAtmospheringSpeed  8000 ;
+        voc:model                 "H-type Nubian yacht" ;
+        voc:pilot                 <https://swapi.co/resource/human/35> ;
+        voc:starshipClass         "yacht" .
+
+<https://swapi.co/resource/starship/58>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         240 ;
+        voc:consumables           "7 days" ;
+        voc:costInCredits         35700 ;
+        voc:crew                  3 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating      1.5 ;
+        voc:length                15.2 ;
+        voc:manufacturer          "Huppla Pasa Tisc Shipwrights Collective" ;
+        voc:maxAtmospheringSpeed  1600 ;
+        voc:model                 "Punworcca 116-class interstellar sloop" ;
+        voc:passengers            11 ;
+        voc:starshipClass         "yacht" .
+
+<https://swapi.co/resource/vehicle/54>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         500 ;
+        voc:consumables           "7 days" ;
+        voc:crew                  25 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                140.0 ;
+        voc:manufacturer          "Rothana Heavy Engineering" ;
+        voc:maxAtmospheringSpeed  35 ;
+        voc:model                 "Self-Propelled Heavy Artillery" ;
+        voc:passengers            30 ;
+        voc:vehicleClass          "walker" .
+
+<https://swapi.co/resource/planet/48>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/quermian/57> .
+
+<https://swapi.co/resource/starship/41>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         2500000 ;
+        voc:consumables           "30 days" ;
+        voc:costInCredits         55000000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:hyperdriveRating      1.5 ;
+        voc:length                26.5 ;
+        voc:manufacturer          "Republic Sienar Systems" ;
+        voc:maxAtmospheringSpeed  1180 ;
+        voc:model                 "Star Courier" ;
+        voc:passengers            6 ;
+        voc:pilot                 <https://swapi.co/resource/zabrak/44> ;
+        voc:starshipClass         "Space Transport" .
+
+<https://swapi.co/resource/vehicle/56>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         1000 ;
+        voc:consumables           "7 days" ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:length                20.0 ;
+        voc:manufacturer          "Haor Chall Engineering" ;
+        voc:maxAtmospheringSpeed  880 ;
+        voc:model                 "Sheathipede-class transport shuttle" ;
+        voc:passengers            6 ;
+        voc:vehicleClass          "transport" .
+
+<https://swapi.co/resource/starship/27>
+        rdf:type              voc:Starship ;
+        voc:consumables       "2 years" ;
+        voc:costInCredits     104000000 ;
+        voc:crew              5400 ;
+        voc:film              <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating  1.0 ;
+        voc:length            1200.0 ;
+        voc:manufacturer      "Mon Calamari shipyards" ;
+        voc:mglt              60 ;
+        voc:model             "MC80 Liberty type Star Cruiser" ;
+        voc:passengers        1200 ;
+        voc:starshipClass     "Star Cruiser" .
+
+<https://swapi.co/resource/planet/30>
+        rdf:type            voc:Planet ;
+        voc:climate         "arid" ;
+        voc:diameter        0 ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   326 ;
+        voc:population      300000000 ;
+        voc:resident        <https://swapi.co/resource/human/25> ;
+        voc:rotationPeriod  20 ;
+        voc:terrain         "deserts, mountains" .
+
+<https://swapi.co/resource/starship/74>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         140 ;
+        voc:consumables           "7 days" ;
+        voc:costInCredits         168000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      6.0 ;
+        voc:length                6.71 ;
+        voc:manufacturer          "Feethan Ottraw Scalable Assemblies" ;
+        voc:maxAtmospheringSpeed  1100 ;
+        voc:model                 "Belbullab-22 starfighter" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/10> , <https://swapi.co/resource/kaleesh/79> ;
+        voc:starshipClass         "starfighter" .
+
+<https://swapi.co/resource/human/68>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "67BBY" ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:hairColor  "black" ;
+        voc:height     191.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/2> ;
+        voc:skinColor  "tan" .
+
+<https://swapi.co/resource/vehicle/70>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         20 ;
+        voc:costInCredits         14750 ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                7.0 ;
+        voc:manufacturer          "Appazanna Engineering Works" ;
+        voc:maxAtmospheringSpeed  310 ;
+        voc:model                 "Raddaugh Gnasp fluttercraft" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "air speeder" .
+
+<https://swapi.co/resource/nautolan/53>
+        rdf:type       voc:Character , voc:Nautolan ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     196.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/44> ;
+        voc:mass       87.0 ;
+        voc:skinColor  "green" .
+
+<https://swapi.co/resource/starship/68>
+        rdf:type              voc:Starship ;
+        voc:cargoCapacity     40000000 ;
+        voc:consumables       "2 years" ;
+        voc:costInCredits     57000000 ;
+        voc:crew              200 ;
+        voc:film              <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating  1.0 ;
+        voc:length            825.0 ;
+        voc:manufacturer      "Hoersch-Kessel Drive, Inc, Gwori Revolutionary Industries" ;
+        voc:model             "Munificent-class star frigate" ;
+        voc:starshipClass     "cruiser" .
+
+<https://swapi.co/resource/dug/41>
+        rdf:type       voc:Character , voc:Dug ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     112.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/35> ;
+        voc:mass       40.0 ;
+        voc:skinColor  "red" , "grey" .
+
+<https://swapi.co/resource/human/28>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Mon Mothma"@en , "Mon Mothma"@it , "Mon Mothma"@fr ;
+        voc:birthYear     "48BBY" ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/3> ;
+        voc:gender        "female" ;
+        voc:hairColor     "auburn" ;
+        voc:height        150.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/32> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Mon%20Mothma.JPG> ;
+        voc:skinColor     "fair" ;
+        voc:wikidataLink  wd:Q2631047 .
+
+<https://swapi.co/resource/human/4>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Dark Vador"@fr , "Dart Fener"@it , "Darth Vader"@en ;
+        voc:birthYear     "41.9BBY" ;
+        voc:cybernetics   "life-support system" , "Cybernetic right arm" , "prosthetic arms and legs" ;
+        voc:desc          "main villain of the Star Wars Trilogy"@en , "personaggio dell'universo di Guerre stellari"@it , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> ;
+        voc:gender        "male" ;
+        voc:height        202.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Star%20Wars%20%40%20the%20Discovery%20Science%20Center%20-%20Darth%20Vader%20%287034250885%29.jpg> ;
+        voc:mass          136.0 ;
+        voc:skinColor     "white" ;
+        voc:starship      <https://swapi.co/resource/starship/13> ;
+        voc:wikidataLink  wd:Q12206942 .
+
+<https://swapi.co/resource/starship/64>
+        rdf:type                  voc:Starship ;
+        voc:crew                  3 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      0.5 ;
+        voc:length                29.2 ;
+        voc:manufacturer          "Theed Palace Space Vessel Engineering Corps/Nubia Star Drives, Incorporated" ;
+        voc:maxAtmospheringSpeed  1050 ;
+        voc:model                 "J-type star skiff" ;
+        voc:passengers            3 ;
+        voc:pilot                 <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/10> ;
+        voc:starshipClass         "yacht" .
+
+<https://swapi.co/resource/toydarian/40>
+        rdf:type          voc:Character , voc:Toydarian ;
+        rdfs:label        "Watto"@fr , "Watto"@en , "Watto"@it ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "personnage de Star Wars"@fr , "fictional character in the Star Wars universe"@en ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "black" ;
+        voc:height        137.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/34> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Watto.png> ;
+        voc:skinColor     "blue" , "grey" ;
+        voc:wikidataLink  wd:Q51801 .
+
+<https://swapi.co/resource/planet/51>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/mirialan/64> , <https://swapi.co/resource/mirialan/65> ;
+        voc:terrain   "deserts" .
+
+<https://swapi.co/resource/starship/77>
+        rdf:type           voc:Starship ;
+        voc:crew           1 ;
+        voc:film           <https://swapi.co/resource/film/7> ;
+        voc:manufacturer   "Incom" ;
+        voc:model          "T-70 X-wing fighter" ;
+        voc:pilot          <https://swapi.co/resource/human/86> ;
+        voc:starshipClass  "fighter" .
+
+<https://swapi.co/resource/vulptereen/48>
+        rdf:type       voc:Character , voc:Vulptereen ;
+        voc:eyeColor   "yellow" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     94.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/39> ;
+        voc:mass       45.0 ;
+        voc:skinColor  "blue" , "grey" .
+
+<https://swapi.co/resource/human/9>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "24BBY" ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/1> ;
+        voc:gender     "male" ;
+        voc:hairColor  "black" ;
+        voc:height     183.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/1> ;
+        voc:mass       84.0 ;
+        voc:skinColor  "light" ;
+        voc:starship   <https://swapi.co/resource/starship/12> .
+
+<https://swapi.co/resource/planet/33>
+        rdf:type            voc:Planet ;
+        voc:climate         "superheated" ;
+        voc:diameter        12780 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   263 ;
+        voc:population      18500000000 ;
+        voc:resident        <https://swapi.co/resource/sullustan/31> ;
+        voc:rotationPeriod  20 ;
+        voc:surfaceWater    5 ;
+        voc:terrain         "mountains, volcanoes, rocky deserts" .
+
+<https://swapi.co/resource/human/81>
+        rdf:type       voc:Character , voc:Human ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> ;
+        voc:gender     "male" ;
+        voc:hairColor  "brown" ;
+        voc:height     188.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/2> ;
+        voc:mass       79.0 ;
+        voc:skinColor  "light" .
+
+<https://swapi.co/resource/gungan/38>
+        rdf:type       voc:Character , voc:Gungan ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     206.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/8> ;
+        voc:skinColor  "green" .
+
+<https://swapi.co/resource/starship/75>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         60 ;
+        voc:consumables           "15 hours" ;
+        voc:costInCredits         102500 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                7.9 ;
+        voc:manufacturer          "Kuat Systems Engineering" ;
+        voc:maxAtmospheringSpeed  1050 ;
+        voc:model                 "Alpha-3 Nimbus-class V-wing starfighter" ;
+        voc:passengers            0 ;
+        voc:starshipClass         "starfighter" .
+
+<https://swapi.co/resource/film/4>
+        rdf:type                voc:Film ;
+        rdfs:label              "Star Wars: Episode I – The Phantom Menace"@en , "Star Wars: Episodio I - La minaccia fantasma"@it , "Star Wars, épisode I : La Menace fantôme"@fr ;
+        voc:boxOffice           1027082707.0 ;
+        voc:character           <https://swapi.co/resource/neimodian/33> , <https://swapi.co/resource/quermian/57> , <https://swapi.co/resource/human/51> , <https://swapi.co/resource/iktotchi/56> , <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/human/43> , <https://swapi.co/resource/yodasspecies/20> , <https://swapi.co/resource/gungan/36> , <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/11> , <https://swapi.co/resource/human/34> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/nautolan/53> , <https://swapi.co/resource/dug/41> , <https://swapi.co/resource/toydarian/40> , <https://swapi.co/resource/vulptereen/48> , <https://swapi.co/resource/gungan/38> , <https://swapi.co/resource/human/42> , <https://swapi.co/resource/human/32> , <https://swapi.co/resource/aleena/47> , <https://swapi.co/resource/keldor/58> , <https://swapi.co/resource/twilek/46> , <https://swapi.co/resource/xexto/49> , <https://swapi.co/resource/tholothian/55> , <https://swapi.co/resource/hutt/16> , <https://swapi.co/resource/gungan/37> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/chagrian/59> , <https://swapi.co/resource/zabrak/54> , <https://swapi.co/resource/zabrak/44> , <https://swapi.co/resource/human/39> , <https://swapi.co/resource/human/21> , <https://swapi.co/resource/toong/50> , <https://swapi.co/resource/cerean/52> ;
+        voc:cost                115000000.0 ;
+        voc:desc                "1999 American epic space opera film directed by George Lucas"@en , "film américain de la saga Star Wars sorti en 1999"@fr , "film del 1999 scritto e diretto da George Lucas"@it ;
+        voc:episodeId           1 ;
+        voc:image               <http://commons.wikimedia.org/wiki/Special:FilePath/Star-wars-episode-i---the-phantom-menace.png> ;
+        voc:location            wd:Q5049457 , wd:Q948 , wd:Q327983 , wd:Q19835 ;
+        voc:openingCrawl        "Turmoil has engulfed the\r\nGalactic Republic. The taxation\r\nof trade routes to outlying star\r\nsystems is in dispute.\r\n\r\nHoping to resolve the matter\r\nwith a blockade of deadly\r\nbattleships, the greedy Trade\r\nFederation has stopped all\r\nshipping to the small planet\r\nof Naboo.\r\n\r\nWhile the Congress of the\r\nRepublic endlessly debates\r\nthis alarming chain of events,\r\nthe Supreme Chancellor has\r\nsecretly dispatched two Jedi\r\nKnights, the guardians of\r\npeace and justice in the\r\ngalaxy, to settle the conflict...." ;
+        voc:planet              <https://swapi.co/resource/planet/9> , <https://swapi.co/resource/planet/8> , <https://swapi.co/resource/planet/1> ;
+        voc:releaseDate         "1999-05-19"^^xsd:date ;
+        voc:returnOnInvestment  8.93115397391304347826 ;
+        voc:starship            <https://swapi.co/resource/starship/32> , <https://swapi.co/resource/starship/41> , <https://swapi.co/resource/starship/40> , <https://swapi.co/resource/starship/31> , <https://swapi.co/resource/starship/39> ;
+        voc:vehicle             <https://swapi.co/resource/vehicle/38> , <https://swapi.co/resource/vehicle/33> , <https://swapi.co/resource/vehicle/35> , <https://swapi.co/resource/vehicle/34> , <https://swapi.co/resource/vehicle/36> , <https://swapi.co/resource/vehicle/37> , <https://swapi.co/resource/vehicle/42> ;
+        voc:wikidataLink        wd:Q165713 .
+
+<https://swapi.co/resource/planet/28>
+        rdf:type            voc:Planet ;
+        voc:diameter        0 ;
+        voc:orbitalPeriod   0 ;
+        voc:resident        <https://swapi.co/resource/yodasspecies/20> , <https://swapi.co/resource/droid/87> , <https://swapi.co/resource/human/86> , <https://swapi.co/resource/droid/23> , <https://swapi.co/resource/droid/75> , <https://swapi.co/resource/human/88> , <https://swapi.co/resource/human/32> , <https://swapi.co/resource/human/29> , <https://swapi.co/resource/human/84> , <https://swapi.co/resource/human/85> ;
+        voc:rotationPeriod  0 .
+
+<https://swapi.co/resource/vehicle/72>
+        rdf:type                  voc:Vehicle ;
+        voc:costInCredits         49000 ;
+        voc:crew                  0 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                10.96 ;
+        voc:manufacturer          "Techno Union" ;
+        voc:maxAtmospheringSpeed  100 ;
+        voc:model                 "NR-N99 Persuader-class droid enforcer" ;
+        voc:passengers            4 ;
+        voc:vehicleClass          "droid tank" .
+
+<https://swapi.co/resource/planet/3>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate, tropical" ;
+        voc:diameter        10200 ;
+        voc:film            <https://swapi.co/resource/film/1> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   4818 ;
+        voc:population      1000 ;
+        voc:rotationPeriod  24 ;
+        voc:surfaceWater    8 ;
+        voc:terrain         "jungle, rainforests" .
+
+<https://swapi.co/resource/planet/21>
+        rdf:type            voc:Planet ;
+        voc:climate         "polluted" ;
+        voc:diameter        13490 ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   360 ;
+        voc:population      22000000000 ;
+        voc:resident        <https://swapi.co/resource/human/12> ;
+        voc:rotationPeriod  24 ;
+        voc:terrain         "cityscape" .
+
+<https://swapi.co/resource/planet/25>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        9830 ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   378 ;
+        voc:population      1000 ;
+        voc:rotationPeriod  25 ;
+        voc:terrain         "oceans, savannas, mountains, grasslands" .
+
+<https://swapi.co/resource/human/88>
+        rdf:type       voc:Character , voc:Human ;
+        voc:film       <https://swapi.co/resource/film/7> ;
+        voc:gender     "female" ;
+        voc:homeworld  <https://swapi.co/resource/planet/28> .
+
+<https://swapi.co/resource/human/42>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "62BBY" ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:hairColor  "black" ;
+        voc:height     183.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/8> ;
+        voc:skinColor  "dark" .
+
+<https://swapi.co/resource/planet/43>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   386 ;
+        voc:population      450000000 ;
+        voc:resident        <https://swapi.co/resource/cerean/52> ;
+        voc:rotationPeriod  27 ;
+        voc:surfaceWater    20 ;
+        voc:terrain         "verdant" .
+
+<https://swapi.co/resource/starship/61>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         50000 ;
+        voc:consumables           "56 days" ;
+        voc:costInCredits         1000000 ;
+        voc:crew                  5 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                18.5 ;
+        voc:manufacturer          "Cygnus Spaceworks" ;
+        voc:maxAtmospheringSpeed  2000 ;
+        voc:model                 "Theta-class T-2c shuttle" ;
+        voc:passengers            16 ;
+        voc:starshipClass         "transport" .
+
+<https://swapi.co/resource/planet/26>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        6400 ;
+        voc:orbitalPeriod   680 ;
+        voc:population      62000000 ;
+        voc:resident        <https://swapi.co/resource/human/19> ;
+        voc:rotationPeriod  26 ;
+        voc:surfaceWater    98 ;
+        voc:terrain         "rocky islands, oceans" .
+
+<https://swapi.co/resource/human/32>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Qui-Gon Jinn"@it , "Qui-Gon Jinn"@fr , "Qui-Gon Jinn"@en ;
+        voc:birthYear     "92BBY" ;
+        voc:desc          "Gobernador municipal de Chihuahua"@en , "personnage de l'univers de Star Wars"@fr , "personaggio della saga di Guerre stellari"@it ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/4> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" ;
+        voc:height        193.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/28> ;
+        voc:mass          89.0 ;
+        voc:skinColor     "fair" ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/38> ;
+        voc:wikidataLink  wd:Q51736 .
+
+<https://swapi.co/resource/aleena/47>
+        rdf:type       voc:Character , voc:Aleena ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     79.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/38> ;
+        voc:mass       15.0 ;
+        voc:skinColor  "blue" , "grey" .
+
+<https://swapi.co/resource/human/12>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "64BBY" ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> ;
+        voc:gender     "male" ;
+        voc:hairColor  "auburn" , "grey" ;
+        voc:height     180.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/21> ;
+        voc:skinColor  "fair" .
+
+<https://swapi.co/resource/vehicle/8>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         65 ;
+        voc:consumables           "2 days" ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> ;
+        voc:length                6.4 ;
+        voc:manufacturer          "Sienar Fleet Systems" ;
+        voc:maxAtmospheringSpeed  1200 ;
+        voc:model                 "Twin Ion Engine/Ln Starfighter" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "starfighter" .
+
+<https://swapi.co/resource/planet/19>
+        rdf:type            voc:Planet ;
+        voc:climate         "hot" ;
+        voc:diameter        14920 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:orbitalPeriod   392 ;
+        voc:population      1400000000 ;
+        voc:rotationPeriod  26 ;
+        voc:terrain         "caves, desert, mountains, volcanoes" .
+
+<https://swapi.co/resource/planet/52>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/human/67> ;
+        voc:terrain   "rainforests, rivers, mountains" .
+
+<https://swapi.co/resource/moncalamari/27>
+        rdf:type       voc:Character , voc:Moncalamari ;
+        voc:birthYear  "41BBY" ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/7> ;
+        voc:gender     "male" ;
+        voc:height     180.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/31> ;
+        voc:mass       83.0 ;
+        voc:skinColor  "brown mottle" .
+
+<https://swapi.co/resource/umbaran/82>
+        rdf:type       voc:Character , voc:Umbaran ;
+        voc:eyeColor   "white" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:height     178.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/60> ;
+        voc:mass       48.0 ;
+        voc:skinColor  "pale" .
+
+<https://swapi.co/resource/keldor/58>
+        rdf:type       voc:Character , voc:Keldor ;
+        voc:birthYear  "22BBY" ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     188.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/49> ;
+        voc:mass       80.0 ;
+        voc:skinColor  "orange" ;
+        voc:starship   <https://swapi.co/resource/starship/48> .
+
+<https://swapi.co/resource/planet/12>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate, arid, windy" ;
+        voc:diameter        12900 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   351 ;
+        voc:population      95000000 ;
+        voc:resident        <https://swapi.co/resource/pauan/83> ;
+        voc:rotationPeriod  27 ;
+        voc:surfaceWater    0.9 ;
+        voc:terrain         "scrublands, savanna, canyons, sinkholes" .
+
+voc:Kaminoan  rdf:type       voc:Species ;
+        rdfs:subClassOf      voc:Amphibian , voc:Sentient ;
+        voc:averageHeight    220.0 ;
+        voc:averageLifespan  "80" ;
+        voc:character        <https://swapi.co/resource/kaminoan/72> , <https://swapi.co/resource/kaminoan/73> ;
+        voc:eyeColor         "black" ;
+        voc:film             <https://swapi.co/resource/film/5> ;
+        voc:language         "Kaminoan" ;
+        voc:planet           <https://swapi.co/resource/planet/10> ;
+        voc:skinColor        "blue" , "grey" .
+
+<https://swapi.co/resource/vehicle/7>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         5 ;
+        voc:costInCredits         10550 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/1> ;
+        voc:length                3.4 ;
+        voc:manufacturer          "SoroSuub Corporation" ;
+        voc:maxAtmospheringSpeed  250 ;
+        voc:model                 "X-34 landspeeder" ;
+        voc:passengers            1 ;
+        voc:vehicleClass          "repulsorcraft" .
+
+voc:Togruta  rdf:type        voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    180.0 ;
+        voc:averageLifespan  "94" ;
+        voc:character        <https://swapi.co/resource/togruta/78> ;
+        voc:eyeColor         "blue" , "black" , "orange" , "yellow" , "red" , "green" ;
+        voc:film             <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:language         "Togruti" ;
+        voc:planet           <https://swapi.co/resource/planet/58> ;
+        voc:skinColor        "blue" , "orange" , "yellow" , "red" , "green" , "white" .
+
+<https://swapi.co/resource/vehicle/50>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         170 ;
+        voc:crew                  6 ;
+        voc:film                  <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:length                17.4 ;
+        voc:manufacturer          "Rothana Heavy Engineering" ;
+        voc:maxAtmospheringSpeed  620 ;
+        voc:model                 "Low Altitude Assault Transport/infrantry" ;
+        voc:passengers            30 ;
+        voc:vehicleClass          "gunship" .
+
+<https://swapi.co/resource/kaminoan/72>
+        rdf:type       voc:Character , voc:Kaminoan ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     229.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/10> ;
+        voc:mass       88.0 ;
+        voc:skinColor  "grey" .
+
+<https://swapi.co/resource/starship/17>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         19000000 ;
+        voc:consumables           "6 months" ;
+        voc:crew                  6 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating      4.0 ;
+        voc:length                90.0 ;
+        voc:manufacturer          "Gallofree Yards, Inc." ;
+        voc:maxAtmospheringSpeed  650 ;
+        voc:mglt                  20 ;
+        voc:model                 "GR-75 medium transport" ;
+        voc:passengers            90 ;
+        voc:starshipClass         "Medium transport" .
+
+<https://swapi.co/resource/vehicle/71>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         30000 ;
+        voc:consumables           "20 days" ;
+        voc:costInCredits         350000 ;
+        voc:crew                  20 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                49.4 ;
+        voc:manufacturer          "Kuat Drive Yards" ;
+        voc:maxAtmospheringSpeed  160 ;
+        voc:model                 "HAVw A6 Juggernaut" ;
+        voc:passengers            300 ;
+        voc:vehicleClass          "wheeled walker" .
+
+<https://swapi.co/resource/human/29>
+        rdf:type       voc:Character , voc:Human ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/3> ;
+        voc:gender     "male" ;
+        voc:hairColor  "brown" ;
+        voc:homeworld  <https://swapi.co/resource/planet/28> ;
+        voc:skinColor  "fair" ;
+        voc:starship   <https://swapi.co/resource/starship/28> .
+
+<https://swapi.co/resource/starship/22>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         80000 ;
+        voc:consumables           "2 months" ;
+        voc:costInCredits         240000 ;
+        voc:crew                  6 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                20.0 ;
+        voc:manufacturer          "Sienar Fleet Systems" ;
+        voc:maxAtmospheringSpeed  850 ;
+        voc:mglt                  50 ;
+        voc:model                 "Lambda-class T-4a shuttle" ;
+        voc:passengers            20 ;
+        voc:pilot                 <https://swapi.co/resource/human/14> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/human/1> ;
+        voc:starshipClass         "Armed government transport" .
+
+<https://swapi.co/resource/twilek/46>
+        rdf:type       voc:Character , voc:Twilek ;
+        voc:birthYear  "48BBY" ;
+        voc:eyeColor   "hazel" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "female" ;
+        voc:height     178.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/37> ;
+        voc:mass       55.0 ;
+        voc:skinColor  "blue" .
+
+<https://swapi.co/resource/planet/49>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        13400 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   409 ;
+        voc:resident        <https://swapi.co/resource/keldor/58> ;
+        voc:rotationPeriod  22 .
+
+<https://swapi.co/resource/film/6>
+        rdf:type          voc:Film ;
+        rdfs:label        "Star Wars: Episodio III - La vendetta dei Sith"@it , "Star Wars, épisode III : La Revanche des Sith"@fr , "Star Wars: Episode III – Revenge of the Sith"@en ;
+        voc:boxOffice     850035635.0 ;
+        voc:character     <https://swapi.co/resource/neimodian/33> , <https://swapi.co/resource/human/51> , <https://swapi.co/resource/iktotchi/56> , <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/mirialan/64> , <https://swapi.co/resource/yodasspecies/20> , <https://swapi.co/resource/wookiee/80> , <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/11> , <https://swapi.co/resource/droid/75> , <https://swapi.co/resource/pauan/83> , <https://swapi.co/resource/geonosian/63> , <https://swapi.co/resource/togruta/78> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/68> , <https://swapi.co/resource/nautolan/53> , <https://swapi.co/resource/human/4> , <https://swapi.co/resource/human/81> , <https://swapi.co/resource/human/12> , <https://swapi.co/resource/umbaran/82> , <https://swapi.co/resource/keldor/58> , <https://swapi.co/resource/twilek/46> , <https://swapi.co/resource/human/67> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/human/5> , <https://swapi.co/resource/human/6> , <https://swapi.co/resource/tholothian/55> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/kaleesh/79> , <https://swapi.co/resource/zabrak/54> , <https://swapi.co/resource/human/21> , <https://swapi.co/resource/human/7> , <https://swapi.co/resource/human/1> , <https://swapi.co/resource/cerean/52> ;
+        voc:desc          "2005 American epic space opera film directed by George Lucas"@en , "film américain de la saga Star Wars sorti en 2005"@fr , "film del 2005 scritto e diretto da George Lucas"@it ;
+        voc:episodeId     3 ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Revengeofthesith-logo.svg> ;
+        voc:location      wd:Q39 , wd:Q1460 , wd:Q3130 , wd:Q869 , wd:Q408 ;
+        voc:openingCrawl  "War! The Republic is crumbling\r\nunder attacks by the ruthless\r\nSith Lord, Count Dooku.\r\nThere are heroes on both sides.\r\nEvil is everywhere.\r\n\r\nIn a stunning move, the\r\nfiendish droid leader, General\r\nGrievous, has swept into the\r\nRepublic capital and kidnapped\r\nChancellor Palpatine, leader of\r\nthe Galactic Senate.\r\n\r\nAs the Separatist Droid Army\r\nattempts to flee the besieged\r\ncapital with their valuable\r\nhostage, two Jedi Knights lead a\r\ndesperate mission to rescue the\r\ncaptive Chancellor...." ;
+        voc:planet        <https://swapi.co/resource/planet/16> , <https://swapi.co/resource/planet/15> , <https://swapi.co/resource/planet/5> , <https://swapi.co/resource/planet/9> , <https://swapi.co/resource/planet/18> , <https://swapi.co/resource/planet/8> , <https://swapi.co/resource/planet/2> , <https://swapi.co/resource/planet/14> , <https://swapi.co/resource/planet/19> , <https://swapi.co/resource/planet/12> , <https://swapi.co/resource/planet/17> , <https://swapi.co/resource/planet/1> , <https://swapi.co/resource/planet/13> ;
+        voc:releaseDate   "2005-05-15"^^xsd:date ;
+        voc:starship      <https://swapi.co/resource/starship/65> , <https://swapi.co/resource/starship/2> , <https://swapi.co/resource/starship/32> , <https://swapi.co/resource/starship/74> , <https://swapi.co/resource/starship/68> , <https://swapi.co/resource/starship/64> , <https://swapi.co/resource/starship/75> , <https://swapi.co/resource/starship/61> , <https://swapi.co/resource/starship/66> , <https://swapi.co/resource/starship/59> , <https://swapi.co/resource/starship/48> , <https://swapi.co/resource/starship/63> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/67> , <https://swapi.co/resource/vehicle/62> , <https://swapi.co/resource/vehicle/53> , <https://swapi.co/resource/vehicle/33> , <https://swapi.co/resource/vehicle/73> , <https://swapi.co/resource/vehicle/56> , <https://swapi.co/resource/vehicle/70> , <https://swapi.co/resource/vehicle/72> , <https://swapi.co/resource/vehicle/50> , <https://swapi.co/resource/vehicle/71> , <https://swapi.co/resource/vehicle/69> , <https://swapi.co/resource/vehicle/76> , <https://swapi.co/resource/vehicle/60> ;
+        voc:wikidataLink  wd:Q42051 .
+
+<https://swapi.co/resource/human/19>
+        rdf:type       voc:Character , voc:Human ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/1> ;
+        voc:gender     "male" ;
+        voc:hairColor  "brown" ;
+        voc:height     180.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/26> ;
+        voc:mass       110.0 ;
+        voc:skinColor  "fair" ;
+        voc:starship   <https://swapi.co/resource/starship/12> .
+
+<https://swapi.co/resource/planet/7>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        4900 ;
+        voc:film            <https://swapi.co/resource/film/3> ;
+        voc:gravity         "0.85 standard" ;
+        voc:orbitalPeriod   402 ;
+        voc:population      30000000 ;
+        voc:resident        <https://swapi.co/resource/ewok/30> ;
+        voc:rotationPeriod  18 ;
+        voc:surfaceWater    8 ;
+        voc:terrain         "forests, mountains, lakes" .
+
+<https://swapi.co/resource/vehicle/36>
+        rdf:type                  voc:Vehicle ;
+        voc:costInCredits         2500 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:length                2.0 ;
+        voc:manufacturer          "Baktoid Armor Workshop" ;
+        voc:maxAtmospheringSpeed  400 ;
+        voc:model                 "Single Trooper Aerial Platform" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "repulsorcraft" .
+
+<https://swapi.co/resource/planet/61>
+        rdf:type     voc:Planet ;
+        voc:film     <https://swapi.co/resource/film/7> ;
+        voc:terrain  "deserts" .
+
+<https://swapi.co/resource/human/67>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "102BBY" ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:hairColor  "white" ;
+        voc:height     193.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/52> ;
+        voc:mass       80.0 ;
+        voc:skinColor  "fair" ;
+        voc:vehicle    <https://swapi.co/resource/vehicle/55> .
+
+<https://swapi.co/resource/vehicle/57>
+        rdf:type                  voc:Vehicle ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                9.8 ;
+        voc:manufacturer          "Huppla Pasa Tisc Shipwrights Collective" ;
+        voc:maxAtmospheringSpeed  20000 ;
+        voc:model                 "Nantex-class territorial defense" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "starfighter" .
+
+<https://swapi.co/resource/human/84>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Finn"@en , "Finn"@fr , "Finn"@it ;
+        voc:desc          "fictional Star Wars character"@en , "personaggio di Guerre stellari"@it , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "dark" ;
+        voc:film          <https://swapi.co/resource/film/7> ;
+        voc:gender        "male" ;
+        voc:hairColor     "black" ;
+        voc:homeworld     <https://swapi.co/resource/planet/28> ;
+        voc:skinColor     "dark" ;
+        voc:wikidataLink  wd:Q21772120 .
+
+voc:Human  rdf:type          voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    180.0 ;
+        voc:averageLifespan  "120" ;
+        voc:character        <https://swapi.co/resource/human/51> , <https://swapi.co/resource/human/61> , <https://swapi.co/resource/human/43> , <https://swapi.co/resource/human/25> , <https://swapi.co/resource/human/66> , <https://swapi.co/resource/human/22> , <https://swapi.co/resource/human/74> , <https://swapi.co/resource/human/86> , <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/11> , <https://swapi.co/resource/human/60> , <https://swapi.co/resource/human/69> , <https://swapi.co/resource/human/14> , <https://swapi.co/resource/human/34> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/68> , <https://swapi.co/resource/human/28> , <https://swapi.co/resource/human/4> , <https://swapi.co/resource/human/9> , <https://swapi.co/resource/human/81> , <https://swapi.co/resource/human/32> , <https://swapi.co/resource/human/12> , <https://swapi.co/resource/human/29> , <https://swapi.co/resource/human/19> , <https://swapi.co/resource/human/67> , <https://swapi.co/resource/human/84> , <https://swapi.co/resource/human/62> , <https://swapi.co/resource/human/85> , <https://swapi.co/resource/human/5> , <https://swapi.co/resource/human/6> , <https://swapi.co/resource/human/18> , <https://swapi.co/resource/human/26> , <https://swapi.co/resource/human/21> , <https://swapi.co/resource/human/7> , <https://swapi.co/resource/human/1> ;
+        voc:eyeColor         "blue" , "hazel" , "brown" , "amber" , "green" , "grey" ;
+        voc:film             <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:hairColor        "black" , "brown" , "red" , "blonde" ;
+        voc:language         "Galactic Basic" ;
+        voc:planet           <https://swapi.co/resource/planet/9> ;
+        voc:skinColor        "hispanic" , "black" , "asian" , "caucasian" .
+
+voc:Droid  rdf:type          voc:Species ;
+        rdfs:subClassOf      voc:Artificial , voc:Sentient ;
+        voc:averageLifespan  "indefinite" ;
+        voc:character        <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/droid/87> , <https://swapi.co/resource/droid/23> , <https://swapi.co/resource/droid/8> , <https://swapi.co/resource/droid/3> ;
+        voc:film             <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> .
+
+voc:Toydarian  rdf:type      voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    120.0 ;
+        voc:averageLifespan  "91" ;
+        voc:character        <https://swapi.co/resource/toydarian/40> ;
+        voc:eyeColor         "yellow" ;
+        voc:film             <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:language         "Toydarian" ;
+        voc:planet           <https://swapi.co/resource/planet/34> ;
+        voc:skinColor        "blue" , "green" , "grey" .
+
+<https://swapi.co/resource/vehicle/69>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         50 ;
+        voc:consumables           "3 days" ;
+        voc:costInCredits         12125 ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                15.1 ;
+        voc:manufacturer          "Appazanna Engineering Works" ;
+        voc:maxAtmospheringSpeed  420 ;
+        voc:model                 "Oevvaor jet catamaran" ;
+        voc:passengers            2 ;
+        voc:vehicleClass          "airspeeder" .
+
+voc:Quermian  rdf:type       voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    240.0 ;
+        voc:averageLifespan  "86" ;
+        voc:character        <https://swapi.co/resource/quermian/57> ;
+        voc:eyeColor         "yellow" ;
+        voc:film             <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:language         "Quermian" ;
+        voc:planet           <https://swapi.co/resource/planet/48> ;
+        voc:skinColor        "white" .
+
+<https://swapi.co/resource/human/62>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Cliegg Lars"@it , "Cliegg Lars"@en , "Cliegg Lars"@fr ;
+        voc:birthYear     "82BBY" ;
+        voc:desc          "Star Wars character"@en , "personnage de l'univers de Star Wars"@fr ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" ;
+        voc:height        183.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:skinColor     "fair" ;
+        voc:wikidataLink  wd:Q2474198 .
+
+<https://swapi.co/resource/vehicle/44>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         200 ;
+        voc:costInCredits         5750 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                3.68 ;
+        voc:manufacturer          "Mobquet Swoops and Speeders" ;
+        voc:maxAtmospheringSpeed  350 ;
+        voc:model                 "Zephyr-G swoop bike" ;
+        voc:passengers            1 ;
+        voc:pilot                 <https://swapi.co/resource/human/11> ;
+        voc:vehicleClass          "repulsorcraft" .
+
+<https://swapi.co/resource/wookiee/13>
+        rdf:type          voc:Character , voc:Wookiee ;
+        rdfs:label        "Chewbacca"@en , "Chewbacca"@fr , "Chewbecca"@it ;
+        voc:birthYear     "200BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "fictional character in the Star Wars franchise"@en , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" ;
+        voc:height        228.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/14> ;
+        voc:mass          112.0 ;
+        voc:starship      <https://swapi.co/resource/starship/10> , <https://swapi.co/resource/starship/22> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/19> ;
+        voc:wikidataLink  wd:Q51803 .
+
+<https://swapi.co/resource/starship/3>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         36000000 ;
+        voc:consumables           "2 years" ;
+        voc:costInCredits         150000000 ;
+        voc:crew                  47060 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> ;
+        voc:hyperdriveRating      2.0 ;
+        voc:length                1600.0 ;
+        voc:manufacturer          "Kuat Drive Yards" ;
+        voc:maxAtmospheringSpeed  975 ;
+        voc:mglt                  60 ;
+        voc:model                 "Imperial I-class Star Destroyer" ;
+        voc:passengers            0 ;
+        voc:starshipClass         "Star Destroyer" .
+
+<https://swapi.co/resource/xexto/49>
+        rdf:type       voc:Character , voc:Xexto ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     122.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/40> ;
+        voc:skinColor  "blue" , "white" .
+
+voc:Twilek  rdf:type       voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  200.0 ;
+        voc:character      <https://swapi.co/resource/twilek/45> , <https://swapi.co/resource/twilek/46> ;
+        voc:eyeColor       "blue" , "pink" , "orange" , "brown" ;
+        voc:film           <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:language       "Twi'leki" ;
+        voc:planet         <https://swapi.co/resource/planet/37> ;
+        voc:skinColor      "blue" , "purple" , "pink" , "tan" , "orange" , "yellow" , "green" .
+
+<https://swapi.co/resource/planet/17>
+        rdf:type            voc:Planet ;
+        voc:climate         "hot, humid" ;
+        voc:diameter        9100 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "0.75 standard" ;
+        voc:orbitalPeriod   231 ;
+        voc:population      8500000 ;
+        voc:rotationPeriod  34 ;
+        voc:terrain         "fungus forests" .
+
+<https://swapi.co/resource/human/85>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Rey"@en , "Rey"@fr , "Rey"@it ;
+        voc:desc          "personaggio di Guerre stellari"@it , "fictional character in Star Wars"@en , "personnage de Star Wars"@fr ;
+        voc:eyeColor      "hazel" ;
+        voc:film          <https://swapi.co/resource/film/7> ;
+        voc:gender        "female" ;
+        voc:hairColor     "brown" ;
+        voc:homeworld     <https://swapi.co/resource/planet/28> ;
+        voc:skinColor     "light" ;
+        voc:wikidataLink  wd:Q21772117 .
+
+<https://swapi.co/resource/human/5>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "19BBY" ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:gender     "female" ;
+        voc:hairColor  "brown" ;
+        voc:height     150.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/2> ;
+        voc:mass       49.0 ;
+        voc:skinColor  "light" ;
+        voc:vehicle    <https://swapi.co/resource/vehicle/30> .
+
+<https://swapi.co/resource/planet/58>
+        rdf:type      voc:Planet ;
+        voc:climate   "temperate" ;
+        voc:gravity   "1" ;
+        voc:resident  <https://swapi.co/resource/togruta/78> ;
+        voc:terrain   "cities, savannahs, seas, plains" .
+
+<https://swapi.co/resource/vehicle/4>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         50000 ;
+        voc:consumables           "2 months" ;
+        voc:costInCredits         150000 ;
+        voc:crew                  46 ;
+        voc:film                  <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> ;
+        voc:length                36.8 ;
+        voc:manufacturer          "Corellia Mining Corporation" ;
+        voc:maxAtmospheringSpeed  30 ;
+        voc:model                 "Digger Crawler" ;
+        voc:passengers            30 ;
+        voc:vehicleClass          "wheeled" .
+
+<https://swapi.co/resource/human/6>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Owen Lars"@en , "Owen Lars"@it , "Owen Lars"@fr ;
+        voc:birthYear     "52BBY" ;
+        voc:desc          "Star Wars character"@en , "personnage de l'univers de Star Wars"@fr ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" , "grey" ;
+        voc:height        178.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:mass          120.0 ;
+        voc:skinColor     "light" ;
+        voc:wikidataLink  wd:Q2267163 .
+
+<https://swapi.co/resource/rodian/15>
+        rdf:type       voc:Character , voc:Rodian ;
+        voc:birthYear  "44BBY" ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/1> ;
+        voc:gender     "male" ;
+        voc:height     173.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/23> ;
+        voc:mass       74.0 ;
+        voc:skinColor  "green" .
+
+<https://swapi.co/resource/tholothian/55>
+        rdf:type       voc:Character , voc:Tholothian ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:gender     "female" ;
+        voc:height     184.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/9> ;
+        voc:mass       50.0 ;
+        voc:skinColor  "dark" .
+
+<https://swapi.co/resource/starship/66>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         110 ;
+        voc:consumables           "5 days" ;
+        voc:costInCredits         155000 ;
+        voc:crew                  3 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                14.5 ;
+        voc:manufacturer          "Incom Corporation, Subpro Corporation" ;
+        voc:maxAtmospheringSpeed  1000 ;
+        voc:mglt                  100 ;
+        voc:model                 "Aggressive Reconnaissance-170 starfighte" ;
+        voc:passengers            0 ;
+        voc:starshipClass         "starfighter" .
+
+<https://swapi.co/resource/vehicle/51>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         40000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                28.82 ;
+        voc:manufacturer          "Rothana Heavy Engineering" ;
+        voc:maxAtmospheringSpeed  620 ;
+        voc:model                 "Low Altitude Assault Transport/carrier" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "gunship" .
+
+<https://swapi.co/resource/starship/40>
+        rdf:type                  voc:Starship ;
+        voc:crew                  8 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:hyperdriveRating      1.8 ;
+        voc:length                76.0 ;
+        voc:manufacturer          "Theed Palace Space Vessel Engineering Corps, Nubia Star Drives" ;
+        voc:maxAtmospheringSpeed  920 ;
+        voc:model                 "J-type 327 Nubian royal starship" ;
+        voc:pilot                 <https://swapi.co/resource/human/39> ;
+        voc:starshipClass         "yacht" .
+
+<https://swapi.co/resource/starship/31>
+        rdf:type                  voc:Starship ;
+        voc:crew                  9 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:hyperdriveRating      2.0 ;
+        voc:length                115.0 ;
+        voc:manufacturer          "Corellian Engineering Corporation" ;
+        voc:maxAtmospheringSpeed  900 ;
+        voc:model                 "Consular-class cruiser" ;
+        voc:passengers            16 ;
+        voc:starshipClass         "Space cruiser" .
+
+<https://swapi.co/resource/hutt/16>
+        rdf:type       voc:Character , voc:Hutt ;
+        voc:birthYear  "600BBY" ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/1> ;
+        voc:gender     "hermaphrodite" ;
+        voc:height     175.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/24> ;
+        voc:mass       1358.0 ;
+        voc:skinColor  "green-tan" , "brown" .
+
+<https://swapi.co/resource/starship/59>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         50000000 ;
+        voc:consumables           "4 years" ;
+        voc:costInCredits         125000000 ;
+        voc:crew                  600 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      1.5 ;
+        voc:length                1088.0 ;
+        voc:manufacturer          "Rendili StarDrive, Free Dac Volunteers Engineering corps." ;
+        voc:maxAtmospheringSpeed  1050 ;
+        voc:model                 "Providence-class carrier/destroyer" ;
+        voc:passengers            48247 ;
+        voc:pilot                 <https://swapi.co/resource/human/11> , <https://swapi.co/resource/human/10> ;
+        voc:starshipClass         "capital ship" .
+
+<https://swapi.co/resource/gungan/37>
+        rdf:type       voc:Character , voc:Gungan ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     224.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/8> ;
+        voc:mass       82.0 ;
+        voc:skinColor  "grey" .
+
+voc:Moncalamari  rdf:type  voc:Species ;
+        rdfs:subClassOf    voc:Amphibian , voc:Sentient ;
+        voc:averageHeight  160.0 ;
+        voc:character      <https://swapi.co/resource/moncalamari/27> ;
+        voc:eyeColor       "yellow" ;
+        voc:film           <https://swapi.co/resource/film/3> ;
+        voc:language       "Mon Calamarian" ;
+        voc:planet         <https://swapi.co/resource/planet/31> ;
+        voc:skinColor      "magenta" , "blue" , "brown" , "red" .
+
+<https://swapi.co/resource/film/5>
+        rdf:type                voc:Film ;
+        rdfs:label              "Star Wars: Episode II – Attack of the Clones"@en , "Star Wars, épisode II : L'Attaque des clones"@fr , "Star Wars: Episodio II - L'attacco dei cloni"@it ;
+        voc:boxOffice           649436358.0 ;
+        voc:character           <https://swapi.co/resource/neimodian/33> , <https://swapi.co/resource/human/51> , <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/human/61> , <https://swapi.co/resource/mirialan/64> , <https://swapi.co/resource/human/43> , <https://swapi.co/resource/mirialan/65> , <https://swapi.co/resource/yodasspecies/20> , <https://swapi.co/resource/besalisk/71> , <https://swapi.co/resource/human/66> , <https://swapi.co/resource/human/22> , <https://swapi.co/resource/human/74> , <https://swapi.co/resource/gungan/36> , <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/11> , <https://swapi.co/resource/human/60> , <https://swapi.co/resource/droid/75> , <https://swapi.co/resource/human/69> , <https://swapi.co/resource/geonosian/63> , <https://swapi.co/resource/skakoan/76> , <https://swapi.co/resource/clawdite/70> , <https://swapi.co/resource/togruta/78> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/68> , <https://swapi.co/resource/nautolan/53> , <https://swapi.co/resource/toydarian/40> , <https://swapi.co/resource/umbaran/82> , <https://swapi.co/resource/keldor/58> , <https://swapi.co/resource/kaminoan/72> , <https://swapi.co/resource/twilek/46> , <https://swapi.co/resource/human/67> , <https://swapi.co/resource/human/62> , <https://swapi.co/resource/human/6> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/chagrian/59> , <https://swapi.co/resource/muun/77> , <https://swapi.co/resource/human/21> , <https://swapi.co/resource/human/7> , <https://swapi.co/resource/kaminoan/73> , <https://swapi.co/resource/cerean/52> ;
+        voc:cost                115000000.0 ;
+        voc:desc                "film del 2002 scritto e diretto da George Lucas"@it , "film américain de la saga Star Wars sorti en 2002"@fr , "2002 American epic space opera film directed by George Lucas"@en ;
+        voc:episodeId           2 ;
+        voc:image               <http://commons.wikimedia.org/wiki/Special:FilePath/Star%20Wars%2C%20%C3%A9pisode%20II%20-%20L%27Attaque%20des%20clones%20logo.jpg> , <http://commons.wikimedia.org/wiki/Special:FilePath/Sw-ep2-logo.png> , <http://commons.wikimedia.org/wiki/Special:FilePath/Star%20wars%20ep%202%20de.svg> ;
+        voc:location            wd:Q919514 , wd:Q15523 , wd:Q948 , wd:Q1759446 , wd:Q1326261 , wd:Q3130 , wd:Q327983 , wd:Q408 ;
+        voc:openingCrawl        "There is unrest in the Galactic\r\nSenate. Several thousand solar\r\nsystems have declared their\r\nintentions to leave the Republic.\r\n\r\nThis separatist movement,\r\nunder the leadership of the\r\nmysterious Count Dooku, has\r\nmade it difficult for the limited\r\nnumber of Jedi Knights to maintain \r\npeace and order in the galaxy.\r\n\r\nSenator Amidala, the former\r\nQueen of Naboo, is returning\r\nto the Galactic Senate to vote\r\non the critical issue of creating\r\nan ARMY OF THE REPUBLIC\r\nto assist the overwhelmed\r\nJedi...." ;
+        voc:planet              <https://swapi.co/resource/planet/10> , <https://swapi.co/resource/planet/9> , <https://swapi.co/resource/planet/8> , <https://swapi.co/resource/planet/11> , <https://swapi.co/resource/planet/1> ;
+        voc:releaseDate         "2002-05-16"^^xsd:date ;
+        voc:returnOnInvestment  5.64727267826086956522 ;
+        voc:starship            <https://swapi.co/resource/starship/43> , <https://swapi.co/resource/starship/47> , <https://swapi.co/resource/starship/21> , <https://swapi.co/resource/starship/32> , <https://swapi.co/resource/starship/49> , <https://swapi.co/resource/starship/58> , <https://swapi.co/resource/starship/48> , <https://swapi.co/resource/starship/39> , <https://swapi.co/resource/starship/52> ;
+        voc:vehicle             <https://swapi.co/resource/vehicle/53> , <https://swapi.co/resource/vehicle/46> , <https://swapi.co/resource/vehicle/54> , <https://swapi.co/resource/vehicle/56> , <https://swapi.co/resource/vehicle/50> , <https://swapi.co/resource/vehicle/57> , <https://swapi.co/resource/vehicle/44> , <https://swapi.co/resource/vehicle/4> , <https://swapi.co/resource/vehicle/51> , <https://swapi.co/resource/vehicle/55> , <https://swapi.co/resource/vehicle/45> ;
+        voc:wikidataLink        wd:Q181069 .
+
+<https://swapi.co/resource/droid/3>
+        rdf:type          voc:Character , voc:Droid ;
+        rdfs:label        "R2-D2"@en , "R2-D2"@it , "R2-D2"@fr ;
+        voc:birthYear     "33BBY" ;
+        voc:degree        "Class Two" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "Robot de fiction de la saga Star Wars"@fr , "fictional character from Star Wars"@en ;
+        voc:eyeColor      "red" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:height        96.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/8> ;
+        voc:mass          32.0 ;
+        voc:skinColor     "blue" , "white" ;
+        voc:wikidataLink  wd:Q51788 .
+
+<https://swapi.co/resource/chagrian/59>
+        rdf:type       voc:Character , voc:Chagrian ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     196.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/50> ;
+        voc:skinColor  "blue" .
+
+<https://swapi.co/resource/film/1>
+        rdf:type                voc:Film ;
+        rdfs:label              "Guerre stellari"@it , "Star Wars, épisode IV : Un nouvel espoir"@fr , "Star Wars"@en ;
+        voc:boxOffice           775512064.0 ;
+        voc:character           <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/droid/8> , <https://swapi.co/resource/human/14> , <https://swapi.co/resource/human/10> , <https://swapi.co/resource/human/4> , <https://swapi.co/resource/human/9> , <https://swapi.co/resource/human/81> , <https://swapi.co/resource/human/12> , <https://swapi.co/resource/human/19> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/human/5> , <https://swapi.co/resource/human/6> , <https://swapi.co/resource/rodian/15> , <https://swapi.co/resource/hutt/16> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/human/18> , <https://swapi.co/resource/human/7> , <https://swapi.co/resource/human/1> ;
+        voc:cost                11000000.0 ;
+        voc:desc                "1977 American epic space opera film directed by George Lucas"@en , "film américain de la saga Star Wars sorti en 1977"@fr , "film del 1977 scritto e diretto da George Lucas"@it ;
+        voc:episodeId           4 ;
+        voc:image               <http://commons.wikimedia.org/wiki/Special:FilePath/Star%20Wars%20Logo.svg> ;
+        voc:location            wd:Q817149 , wd:Q774 , wd:Q99 , wd:Q816 ;
+        voc:openingCrawl        "It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal secret\r\nplans to the Empire's\r\nultimate weapon, the DEATH\r\nSTAR, an armored space\r\nstation with enough power\r\nto destroy an entire planet.\r\n\r\nPursued by the Empire's\r\nsinister agents, Princess\r\nLeia races home aboard her\r\nstarship, custodian of the\r\nstolen plans that can save her\r\npeople and restore\r\nfreedom to the galaxy...." ;
+        voc:planet              <https://swapi.co/resource/planet/2> , <https://swapi.co/resource/planet/3> , <https://swapi.co/resource/planet/1> ;
+        voc:releaseDate         "1977-05-25"^^xsd:date ;
+        voc:returnOnInvestment  70.50109672727272727273 ;
+        voc:starship            <https://swapi.co/resource/starship/12> , <https://swapi.co/resource/starship/11> , <https://swapi.co/resource/starship/10> , <https://swapi.co/resource/starship/5> , <https://swapi.co/resource/starship/13> , <https://swapi.co/resource/starship/2> , <https://swapi.co/resource/starship/9> , <https://swapi.co/resource/starship/3> ;
+        voc:vehicle             <https://swapi.co/resource/vehicle/8> , <https://swapi.co/resource/vehicle/7> , <https://swapi.co/resource/vehicle/4> , <https://swapi.co/resource/vehicle/6> ;
+        voc:wikidataLink        wd:Q17738 .
+
+<https://swapi.co/resource/starship/48>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         60 ;
+        voc:consumables           "7 days" ;
+        voc:costInCredits         180000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                8.0 ;
+        voc:manufacturer          "Kuat Systems Engineering" ;
+        voc:maxAtmospheringSpeed  1150 ;
+        voc:model                 "Delta-7 Aethersprite-class interceptor" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/10> , <https://swapi.co/resource/keldor/58> ;
+        voc:starshipClass         "Starfighter" .
+
+<https://swapi.co/resource/planet/29>
+        rdf:type            voc:Planet ;
+        voc:climate         "arid" ;
+        voc:diameter        0 ;
+        voc:gravity         "0.62 standard" ;
+        voc:orbitalPeriod   371 ;
+        voc:population      42000000 ;
+        voc:resident        <https://swapi.co/resource/trandoshan/24> ;
+        voc:rotationPeriod  25 ;
+        voc:terrain         "mountains, seas, grasslands, deserts" .
+
+<https://swapi.co/resource/vehicle/37>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         1800000 ;
+        voc:consumables           "1 day" ;
+        voc:costInCredits         200000 ;
+        voc:crew                  140 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:length                210.0 ;
+        voc:manufacturer          "Haor Chall Engineering" ;
+        voc:maxAtmospheringSpeed  587 ;
+        voc:model                 "C-9979 landing craft" ;
+        voc:passengers            284 ;
+        voc:vehicleClass          "landing craft" .
+
+<https://swapi.co/resource/starship/39>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         65 ;
+        voc:consumables           "7 days" ;
+        voc:costInCredits         200000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                11.0 ;
+        voc:manufacturer          "Theed Palace Space Vessel Engineering Corps" ;
+        voc:maxAtmospheringSpeed  1100 ;
+        voc:model                 "N-1 starfighter" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/35> , <https://swapi.co/resource/human/11> , <https://swapi.co/resource/human/60> ;
+        voc:starshipClass         "Starfighter" .
+
+voc:Trandoshan  rdf:type   voc:Species ;
+        rdfs:subClassOf    voc:Reptile , voc:Sentient ;
+        voc:averageHeight  200.0 ;
+        voc:character      <https://swapi.co/resource/trandoshan/24> ;
+        voc:eyeColor       "orange" , "yellow" ;
+        voc:film           <https://swapi.co/resource/film/2> ;
+        voc:language       "Dosh" ;
+        voc:planet         <https://swapi.co/resource/planet/29> ;
+        voc:skinColor      "brown" , "green" .
+
+<https://swapi.co/resource/kaleesh/79>
+        rdf:type       voc:Character , voc:Kaleesh ;
+        voc:eyeColor   "yellow" , "green" ;
+        voc:film       <https://swapi.co/resource/film/6> ;
+        voc:gender     "male" ;
+        voc:height     216.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/59> ;
+        voc:mass       159.0 ;
+        voc:skinColor  "brown" , "white" ;
+        voc:starship   <https://swapi.co/resource/starship/74> ;
+        voc:vehicle    <https://swapi.co/resource/vehicle/60> .
+
+voc:Umbaran  rdf:type      voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  170.0 ;
+        voc:character      <https://swapi.co/resource/rodian/15> ;
+        voc:eyeColor       "colourless" ;
+        voc:film           <https://swapi.co/resource/film/1> ;
+        voc:language       "Umbaran" ;
+        voc:planet         <https://swapi.co/resource/planet/60> ;
+        voc:skinColor      "pale blue" .
+
+<https://swapi.co/resource/vehicle/55>
+        rdf:type                  voc:Vehicle ;
+        voc:costInCredits         8000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                2.0 ;
+        voc:manufacturer          "Huppla Pasa Tisc Shipwrights Collective" ;
+        voc:maxAtmospheringSpeed  634 ;
+        voc:model                 "Flitknot speeder" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/67> ;
+        voc:vehicleClass          "speeder" .
+
+voc:Vulptereen  rdf:type   voc:Species ;
+        rdfs:subClassOf    voc:Unknown , voc:Sentient ;
+        voc:averageHeight  100.0 ;
+        voc:character      <https://swapi.co/resource/vulptereen/48> ;
+        voc:eyeColor       "yellow" ;
+        voc:film           <https://swapi.co/resource/film/4> ;
+        voc:language       "vulpterish" ;
+        voc:planet         <https://swapi.co/resource/planet/39> ;
+        voc:skinColor      "grey" .
+
+<https://swapi.co/resource/planet/55>
+        rdf:type          voc:Planet ;
+        voc:climate       "frigid" ;
+        voc:population    500000000 ;
+        voc:resident      <https://swapi.co/resource/besalisk/71> ;
+        voc:surfaceWater  100 ;
+        voc:terrain       "oceans, glaciers" .
+
+<https://swapi.co/resource/human/18>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Wedge Antilles"@it , "Wedge Antilles"@en , "Wedge Antilles"@fr ;
+        voc:birthYear     "21BBY" ;
+        voc:desc          "personaggio dell'universo di Guerre stellari"@it , "personnage de l'univers fictionnel de Star Wars"@fr , "character in Star Wars"@en ;
+        voc:eyeColor      "hazel" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> ;
+        voc:gender        "male" ;
+        voc:hairColor     "brown" ;
+        voc:height        170.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/22> ;
+        voc:mass          77.0 ;
+        voc:skinColor     "fair" ;
+        voc:starship      <https://swapi.co/resource/starship/12> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/14> ;
+        voc:wikidataLink  wd:Q52310 .
+
+<https://swapi.co/resource/planet/31>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        11030 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   398 ;
+        voc:population      27000000000 ;
+        voc:resident        <https://swapi.co/resource/moncalamari/27> ;
+        voc:rotationPeriod  21 ;
+        voc:surfaceWater    100 ;
+        voc:terrain         "oceans, reefs, islands" .
+
+<https://swapi.co/resource/vehicle/18>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         1000 ;
+        voc:crew                  5 ;
+        voc:film                  <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> ;
+        voc:length                20.0 ;
+        voc:manufacturer          "Kuat Drive Yards, Imperial Department of Military Research" ;
+        voc:maxAtmospheringSpeed  60 ;
+        voc:model                 "All Terrain Armored Transport" ;
+        voc:passengers            40 ;
+        voc:vehicleClass          "assault walker" .
+
+voc:Nautolan  rdf:type       voc:Species ;
+        rdfs:subClassOf      voc:Amphibian , voc:Sentient ;
+        voc:averageHeight    180.0 ;
+        voc:averageLifespan  "70" ;
+        voc:character        <https://swapi.co/resource/nautolan/53> ;
+        voc:eyeColor         "black" ;
+        voc:film             <https://swapi.co/resource/film/4> ;
+        voc:language         "Nautila" ;
+        voc:planet           <https://swapi.co/resource/planet/44> ;
+        voc:skinColor        "blue" , "brown" , "red" , "green" .
+
+voc:Tholothian  rdf:type  voc:Species ;
+        rdfs:subClassOf  voc:Mammal , voc:Sentient ;
+        voc:character    <https://swapi.co/resource/tholothian/55> ;
+        voc:eyeColor     "blue" , "indigo" ;
+        voc:film         <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:planet       <https://swapi.co/resource/planet/46> ;
+        voc:skinColor    "dark" .
+
+<https://swapi.co/resource/zabrak/54>
+        rdf:type       voc:Character , voc:Zabrak ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:gender     "male" ;
+        voc:hairColor  "black" ;
+        voc:height     171.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/45> ;
+        voc:skinColor  "brown" .
+
+<https://swapi.co/resource/human/26>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Lobot"@en , "Lobot"@fr ;
+        voc:birthYear     "37BBY" ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/2> ;
+        voc:gender        "male" ;
+        voc:height        175.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/6> ;
+        voc:mass          79.0 ;
+        voc:skinColor     "light" ;
+        voc:wikidataLink  wd:Q3494697 .
+
+<https://swapi.co/resource/sullustan/31>
+        rdf:type       voc:Character , voc:Sullustan ;
+        voc:eyeColor   "black" ;
+        voc:film       <https://swapi.co/resource/film/3> ;
+        voc:gender     "male" ;
+        voc:height     160.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/33> ;
+        voc:mass       68.0 ;
+        voc:skinColor  "grey" ;
+        voc:starship   <https://swapi.co/resource/starship/10> .
+
+voc:Keldor  rdf:type         voc:Species ;
+        rdfs:subClassOf      voc:Unknown , voc:Sentient ;
+        voc:averageHeight    180.0 ;
+        voc:averageLifespan  "70" ;
+        voc:character        <https://swapi.co/resource/keldor/58> ;
+        voc:eyeColor         "black" , "silver" ;
+        voc:film             <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> ;
+        voc:language         "Kel Dor" ;
+        voc:planet           <https://swapi.co/resource/planet/49> ;
+        voc:skinColor        "peach" , "orange" , "red" .
+
+<https://swapi.co/resource/ewok/30>
+        rdf:type       voc:Ewok , voc:Character ;
+        voc:birthYear  "8BBY" ;
+        voc:eyeColor   "brown" ;
+        voc:film       <https://swapi.co/resource/film/3> ;
+        voc:gender     "male" ;
+        voc:hairColor  "brown" ;
+        voc:height     88.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/7> ;
+        voc:mass       20.0 ;
+        voc:skinColor  "brown" .
+
+<https://swapi.co/resource/film/7>
+        rdf:type                voc:Film ;
+        rdfs:label              "Star Wars: The Force Awakens"@en , "Star Wars, épisode VII : Le Réveil de la Force"@fr , "Star Wars: Il risveglio della Forza"@it ;
+        voc:boxOffice           2068223624.0 , 123017325.0 , 88527046.0 , 936662225.0 ;
+        voc:character           <https://swapi.co/resource/droid/87> , <https://swapi.co/resource/human/86> , <https://swapi.co/resource/human/14> , <https://swapi.co/resource/human/88> , <https://swapi.co/resource/moncalamari/27> , <https://swapi.co/resource/human/84> , <https://swapi.co/resource/wookiee/13> , <https://swapi.co/resource/human/85> , <https://swapi.co/resource/human/5> , <https://swapi.co/resource/droid/3> , <https://swapi.co/resource/human/1> ;
+        voc:cost                215000000.0 , 245000000.0 ;
+        voc:desc                "2015 American epic space opera film directed by J. J. Abrams"@en , "film del 2015 diretto da J. J. Abrams"@it , "film américain de la saga Star Wars sorti en 2015"@fr ;
+        voc:episodeId           7 ;
+        voc:image               <http://commons.wikimedia.org/wiki/Special:FilePath/Star%20Wars%20The%20Force%20Awakens.jpg> ;
+        voc:location            wd:Q189 , wd:Q661896 , wd:Q23229 , wd:Q878 , wd:Q27 , wd:Q23220 , wd:Q184469 ;
+        voc:openingCrawl        "Luke Skywalker has vanished.\r\nIn his absence, the sinister\r\nFIRST ORDER has risen from\r\nthe ashes of the Empire\r\nand will not rest until\r\nSkywalker, the last Jedi,\r\nhas been destroyed.\r\n \r\nWith the support of the\r\nREPUBLIC, General Leia Organa\r\nleads a brave RESISTANCE.\r\nShe is desperate to find her\r\nbrother Luke and gain his\r\nhelp in restoring peace and\r\njustice to the galaxy.\r\n \r\nLeia has sent her most daring\r\npilot on a secret mission\r\nto Jakku, where an old ally\r\nhas discovered a clue to\r\nLuke's whereabouts...." ;
+        voc:planet              <https://swapi.co/resource/planet/61> ;
+        voc:releaseDate         "2015-12-16"^^xsd:date ;
+        voc:returnOnInvestment  0.50211153061224489796 , 3.82311112244897959184 , 0.5721736046511627907 , 9.61964476279069767442 , 0.41175370232558139535 , 0.36133488163265306122 , 4.35656848837209302326 , 8.44172907755102040816 ;
+        voc:starship            <https://swapi.co/resource/starship/10> , <https://swapi.co/resource/starship/77> ;
+        voc:wikidataLink        wd:Q6074 .
+
+<https://swapi.co/resource/starship/52>
+        rdf:type              voc:Starship ;
+        voc:cargoCapacity     11250000 ;
+        voc:consumables       "2 years" ;
+        voc:crew              700 ;
+        voc:film              <https://swapi.co/resource/film/5> ;
+        voc:hyperdriveRating  0.6 ;
+        voc:length            752.0 ;
+        voc:manufacturer      "Rothana Heavy Engineering" ;
+        voc:model             "Acclamator I-class assault ship" ;
+        voc:passengers        16000 ;
+        voc:starshipClass     "assault ship" .
+
+<https://swapi.co/resource/planet/37>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate, arid, subartic" ;
+        voc:diameter        10600 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   305 ;
+        voc:population      1500000000 ;
+        voc:resident        <https://swapi.co/resource/twilek/45> , <https://swapi.co/resource/twilek/46> ;
+        voc:rotationPeriod  30 ;
+        voc:surfaceWater    5 ;
+        voc:terrain         "mountains, valleys, deserts, tundra" .
+
+<https://swapi.co/resource/muun/77>
+        rdf:type       voc:Character , voc:Muun ;
+        voc:eyeColor   "gold" ;
+        voc:film       <https://swapi.co/resource/film/5> ;
+        voc:gender     "male" ;
+        voc:height     191.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/57> ;
+        voc:skinColor  "grey" .
+
+<https://swapi.co/resource/zabrak/44>
+        rdf:type          voc:Character , voc:Zabrak ;
+        rdfs:label        "Darth Maul"@it , "Darth Maul"@en , "Dark Maul"@fr ;
+        voc:birthYear     "54BBY" ;
+        voc:desc          "seigneur Sith de la saga Star Wars"@fr , "Star Wars character"@en , "personaggio della saga di Guerre stellari"@it ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/4> ;
+        voc:gender        "male" ;
+        voc:height        175.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/36> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Dark%20Maul%20%28body%20painting%29.jpg> ;
+        voc:mass          80.0 ;
+        voc:skinColor     "red" ;
+        voc:starship      <https://swapi.co/resource/starship/41> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/42> ;
+        voc:wikidataLink  wd:Q51766 .
+
+<https://swapi.co/resource/starship/63>
+        rdf:type                  voc:Starship ;
+        voc:cargoCapacity         20000000 ;
+        voc:consumables           "2 years" ;
+        voc:costInCredits         59000000 ;
+        voc:crew                  7400 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:hyperdriveRating      1.0 ;
+        voc:length                1137.0 ;
+        voc:manufacturer          "Kuat Drive Yards, Allanteen Six shipyards" ;
+        voc:maxAtmospheringSpeed  975 ;
+        voc:model                 "Senator-class Star Destroyer" ;
+        voc:passengers            2000 ;
+        voc:starshipClass         "star destroyer" .
+
+<https://swapi.co/resource/human/39>
+        rdf:type       voc:Character , voc:Human ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:hairColor  "brown" ;
+        voc:height     183.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/8> ;
+        voc:skinColor  "fair" ;
+        voc:starship   <https://swapi.co/resource/starship/40> .
+
+<https://swapi.co/resource/human/21>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Palpatine"@it , "Palpatine"@fr , "Palpatine"@en ;
+        voc:birthYear     "82BBY" ;
+        voc:desc          "Fictional character in the Star Wars universe"@en , "personaggio dell'universo  di Guerre stellari"@it , "personnage dans Star Wars"@fr ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "grey" ;
+        voc:height        170.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/8> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Empereur%20Palpatine.JPG> ;
+        voc:mass          75.0 ;
+        voc:skinColor     "pale" ;
+        voc:wikidataLink  wd:Q51770 .
+
+voc:Geonosian  rdf:type    voc:Species ;
+        rdfs:subClassOf    voc:Insectoid , voc:Sentient ;
+        voc:averageHeight  178.0 ;
+        voc:character      <https://swapi.co/resource/geonosian/63> ;
+        voc:eyeColor       "hazel" , "green" ;
+        voc:film           <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:language       "Geonosian" ;
+        voc:planet         <https://swapi.co/resource/planet/11> ;
+        voc:skinColor      "brown" , "green" .
+
+<https://swapi.co/resource/planet/40>
+        rdf:type      voc:Planet ;
+        voc:resident  <https://swapi.co/resource/xexto/49> ;
+        voc:terrain   "desert, tundra, rainforests, mountains" .
+
+voc:Skakoan  rdf:type    voc:Species ;
+        rdfs:subClassOf  voc:Mammal , voc:Sentient ;
+        voc:character    <https://swapi.co/resource/skakoan/76> ;
+        voc:film         <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:language     "Skakoan" ;
+        voc:planet       <https://swapi.co/resource/planet/56> ;
+        voc:skinColor    "green" , "grey" .
+
+<https://swapi.co/resource/vehicle/76>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         20 ;
+        voc:consumables           "1 day" ;
+        voc:costInCredits         40000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                3.2 ;
+        voc:manufacturer          "Kuat Drive Yards" ;
+        voc:maxAtmospheringSpeed  90 ;
+        voc:model                 "All Terrain Recon Transport" ;
+        voc:passengers            0 ;
+        voc:vehicleClass          "walker" .
+
+<https://swapi.co/resource/planet/22>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        11000 ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   329 ;
+        voc:population      3000000000 ;
+        voc:resident        <https://swapi.co/resource/human/14> , <https://swapi.co/resource/human/18> ;
+        voc:rotationPeriod  25 ;
+        voc:surfaceWater    70 ;
+        voc:terrain         "plains, urban, hills, forests" .
+
+voc:Yodasspecies  rdf:type   voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    66.0 ;
+        voc:averageLifespan  "900" ;
+        voc:character        <https://swapi.co/resource/yodasspecies/20> ;
+        voc:eyeColor         "yellow" , "brown" , "green" ;
+        voc:film             <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:hairColor        "brown" , "white" ;
+        voc:language         "Galactic basic" ;
+        voc:planet           <https://swapi.co/resource/planet/28> ;
+        voc:skinColor        "yellow" , "green" .
+
+<https://swapi.co/resource/human/7>
+        rdf:type       voc:Character , voc:Human ;
+        voc:birthYear  "47BBY" ;
+        voc:eyeColor   "blue" ;
+        voc:film       <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> ;
+        voc:gender     "female" ;
+        voc:hairColor  "brown" ;
+        voc:height     165.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/1> ;
+        voc:mass       75.0 ;
+        voc:skinColor  "light" .
+
+voc:Hutt  rdf:type           voc:Species ;
+        rdfs:subClassOf      voc:Gastropod , voc:Sentient ;
+        voc:averageHeight    300.0 ;
+        voc:averageLifespan  "1000" ;
+        voc:character        <https://swapi.co/resource/hutt/16> ;
+        voc:eyeColor         "yellow" , "red" ;
+        voc:film             <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/1> ;
+        voc:language         "Huttese" ;
+        voc:planet           <https://swapi.co/resource/planet/24> ;
+        voc:skinColor        "tan" , "brown" , "green" .
+
+<https://swapi.co/resource/kaminoan/73>
+        rdf:type          voc:Character , voc:Kaminoan ;
+        rdfs:label        "Taun We"@en , "Taun We"@fr ;
+        voc:desc          "Star Wars character"@en ;
+        voc:eyeColor      "black" ;
+        voc:film          <https://swapi.co/resource/film/5> ;
+        voc:gender        "female" ;
+        voc:height        213.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/10> ;
+        voc:skinColor     "grey" ;
+        voc:wikidataLink  wd:Q2532506 .
+
+<https://swapi.co/resource/human/1>
+        rdf:type          voc:Character , voc:Human ;
+        rdfs:label        "Luke Skywalker"@it , "Luke Skywalker"@fr , "Luke Skywalker"@en ;
+        voc:birthYear     "19BBY" ;
+        voc:cybernetics   "Prosthetic right hand" ;
+        voc:desc          "personnage de Star Wars"@fr , "character in Star Wars"@en , "personaggio di Guerre stellari, protagonista della prima trilogia"@it ;
+        voc:eyeColor      "blue" ;
+        voc:film          <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:gender        "male" ;
+        voc:hairColor     "blond" ;
+        voc:height        172.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/1> ;
+        voc:image         <http://commons.wikimedia.org/wiki/Special:FilePath/Luke%20Skywalker%20con%20traje%20de%20piloto.jpg> ;
+        voc:mass          77.0 ;
+        voc:skinColor     "fair" ;
+        voc:starship      <https://swapi.co/resource/starship/12> , <https://swapi.co/resource/starship/22> ;
+        voc:vehicle       <https://swapi.co/resource/vehicle/30> , <https://swapi.co/resource/vehicle/14> ;
+        voc:wikidataLink  wd:Q51746 .
+
+<https://swapi.co/resource/planet/46>
+        rdf:type  voc:Planet .
+
+voc:Wookiee  rdf:type        voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    210.0 ;
+        voc:averageLifespan  "400" ;
+        voc:character        <https://swapi.co/resource/wookiee/80> , <https://swapi.co/resource/wookiee/13> ;
+        voc:eyeColor         "blue" , "golden" , "yellow" , "brown" , "red" , "green" ;
+        voc:film             <https://swapi.co/resource/film/2> , <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/1> , <https://swapi.co/resource/film/7> ;
+        voc:hairColor        "black" , "brown" ;
+        voc:language         "Shyriiwook" ;
+        voc:planet           <https://swapi.co/resource/planet/14> ;
+        voc:skinColor        "gray" .
+
+<https://swapi.co/resource/toong/50>
+        rdf:type       voc:Character , voc:Toong ;
+        voc:eyeColor   "orange" ;
+        voc:film       <https://swapi.co/resource/film/4> ;
+        voc:gender     "male" ;
+        voc:height     163.0 ;
+        voc:homeworld  <https://swapi.co/resource/planet/41> ;
+        voc:mass       65.0 ;
+        voc:skinColor  "yellow" , "green" , "grey" .
+
+<https://swapi.co/resource/planet/59>
+        rdf:type            voc:Planet ;
+        voc:climate         "arid, temperate, tropical" ;
+        voc:diameter        13850 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   378 ;
+        voc:population      4000000000 ;
+        voc:resident        <https://swapi.co/resource/kaleesh/79> ;
+        voc:rotationPeriod  23 ;
+        voc:terrain         "rainforests, cliffs, canyons, seas" .
+
+<https://swapi.co/resource/planet/35>
+        rdf:type            voc:Planet ;
+        voc:climate         "arid, temperate, tropical" ;
+        voc:diameter        18880 ;
+        voc:gravity         "1.56" ;
+        voc:orbitalPeriod   201 ;
+        voc:population      2000000000 ;
+        voc:resident        <https://swapi.co/resource/dug/41> ;
+        voc:rotationPeriod  26 ;
+        voc:terrain         "swamps, deserts, jungles, mountains" .
+
+<https://swapi.co/resource/vehicle/45>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         80 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/5> ;
+        voc:length                6.6 ;
+        voc:manufacturer          "Desler Gizh Outworld Mobility Corporation" ;
+        voc:maxAtmospheringSpeed  800 ;
+        voc:model                 "Koro-2 Exodrive airspeeder" ;
+        voc:passengers            1 ;
+        voc:pilot                 <https://swapi.co/resource/clawdite/70> ;
+        voc:vehicleClass          "airspeeder" .
+
+<https://swapi.co/resource/cerean/52>
+        rdf:type          voc:Character , voc:Cerean ;
+        rdfs:label        "Ki-Adi-Mundi"@en , "Ki-Adi-Mundi"@fr , "Ki-Adi-Mundi"@it ;
+        voc:birthYear     "92BBY" ;
+        voc:desc          "personnage fictif de la saga de Star Wars"@fr , "personaggio dell'universo di Guerre stellari"@it , "Star Wars character"@en ;
+        voc:eyeColor      "yellow" ;
+        voc:film          <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> ;
+        voc:gender        "male" ;
+        voc:hairColor     "white" ;
+        voc:height        198.0 ;
+        voc:homeworld     <https://swapi.co/resource/planet/43> ;
+        voc:mass          82.0 ;
+        voc:skinColor     "pale" ;
+        voc:wikidataLink  wd:Q54271 .
+
+<https://swapi.co/resource/vehicle/24>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         2000000 ;
+        voc:consumables           "Live food tanks" ;
+        voc:costInCredits         285000 ;
+        voc:crew                  26 ;
+        voc:film                  <https://swapi.co/resource/film/3> ;
+        voc:length                30.0 ;
+        voc:manufacturer          "Ubrikkian Industries Custom Vehicle Division" ;
+        voc:maxAtmospheringSpeed  100 ;
+        voc:model                 "Modified Luxury Sail Barge" ;
+        voc:passengers            500 ;
+        voc:vehicleClass          "sail barge" .
+
+<https://swapi.co/resource/planet/34>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        7900 ;
+        voc:gravity         "1" ;
+        voc:orbitalPeriod   184 ;
+        voc:population      11000000 ;
+        voc:resident        <https://swapi.co/resource/toydarian/40> ;
+        voc:rotationPeriod  21 ;
+        voc:terrain         "swamps, lakes" .
+
+voc:Zabrak  rdf:type       voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  180.0 ;
+        voc:character      <https://swapi.co/resource/zabrak/54> , <https://swapi.co/resource/zabrak/44> ;
+        voc:eyeColor       "orange" , "brown" ;
+        voc:film           <https://swapi.co/resource/film/4> ;
+        voc:hairColor      "black" ;
+        voc:language       "Zabraki" ;
+        voc:planet         <https://swapi.co/resource/planet/45> ;
+        voc:skinColor      "orange" , "yellow" , "brown" , "red" , "pale" .
+
+voc:Pauan  rdf:type          voc:Species ;
+        rdfs:subClassOf      voc:Mammal , voc:Sentient ;
+        voc:averageHeight    190.0 ;
+        voc:averageLifespan  "700" ;
+        voc:character        <https://swapi.co/resource/pauan/83> ;
+        voc:eyeColor         "black" ;
+        voc:film             <https://swapi.co/resource/film/6> ;
+        voc:language         "Utapese" ;
+        voc:planet           <https://swapi.co/resource/planet/12> ;
+        voc:skinColor        "grey" .
+
+<https://swapi.co/resource/vehicle/6>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         50 ;
+        voc:consumables           "0" ;
+        voc:costInCredits         14500 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/1> ;
+        voc:length                10.4 ;
+        voc:manufacturer          "Incom Corporation" ;
+        voc:maxAtmospheringSpeed  1200 ;
+        voc:model                 "T-16 skyhopper" ;
+        voc:passengers            1 ;
+        voc:vehicleClass          "repulsorcraft" .
+
+<https://swapi.co/resource/vehicle/60>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         10 ;
+        voc:costInCredits         15000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/6> ;
+        voc:length                3.5 ;
+        voc:manufacturer          "Z-Gomot Ternbuell Guppat Corporation" ;
+        voc:maxAtmospheringSpeed  330 ;
+        voc:model                 "Tsmeu-6 personal wheel bike" ;
+        voc:passengers            1 ;
+        voc:pilot                 <https://swapi.co/resource/kaleesh/79> ;
+        voc:vehicleClass          "wheeled walker" .
+
+<https://swapi.co/resource/planet/6>
+        rdf:type            voc:Planet ;
+        voc:climate         "temperate" ;
+        voc:diameter        118000 ;
+        voc:film            <https://swapi.co/resource/film/2> ;
+        voc:gravity         "1.5 (surface), 1 standard (Cloud City)" ;
+        voc:orbitalPeriod   5110 ;
+        voc:population      6000000 ;
+        voc:resident        <https://swapi.co/resource/human/26> ;
+        voc:rotationPeriod  12 ;
+        voc:surfaceWater    0 ;
+        voc:terrain         "gas giant" .
+
+<https://swapi.co/resource/vehicle/14>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         10 ;
+        voc:crew                  2 ;
+        voc:film                  <https://swapi.co/resource/film/2> ;
+        voc:length                4.5 ;
+        voc:manufacturer          "Incom corporation" ;
+        voc:maxAtmospheringSpeed  650 ;
+        voc:model                 "t-47 airspeeder" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/human/18> , <https://swapi.co/resource/human/1> ;
+        voc:vehicleClass          "airspeeder" .
+
+voc:Sullustan  rdf:type    voc:Species ;
+        rdfs:subClassOf    voc:Mammal , voc:Sentient ;
+        voc:averageHeight  180.0 ;
+        voc:character      <https://swapi.co/resource/sullustan/31> ;
+        voc:eyeColor       "black" ;
+        voc:film           <https://swapi.co/resource/film/3> ;
+        voc:language       "Sullutese" ;
+        voc:planet         <https://swapi.co/resource/planet/33> ;
+        voc:skinColor      "pale" .
+
+<https://swapi.co/resource/planet/1>
+        rdf:type            voc:Planet ;
+        voc:climate         "arid" ;
+        voc:diameter        10465 ;
+        voc:film            <https://swapi.co/resource/film/3> , <https://swapi.co/resource/film/4> , <https://swapi.co/resource/film/6> , <https://swapi.co/resource/film/5> , <https://swapi.co/resource/film/1> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   304 ;
+        voc:population      200000 ;
+        voc:resident        <https://swapi.co/resource/droid/2> , <https://swapi.co/resource/human/43> , <https://swapi.co/resource/human/11> , <https://swapi.co/resource/droid/8> , <https://swapi.co/resource/human/4> , <https://swapi.co/resource/human/9> , <https://swapi.co/resource/human/62> , <https://swapi.co/resource/human/6> , <https://swapi.co/resource/human/7> , <https://swapi.co/resource/human/1> ;
+        voc:rotationPeriod  23 ;
+        voc:surfaceWater    1 ;
+        voc:terrain         "desert" .
+
+<https://swapi.co/resource/vehicle/42>
+        rdf:type                  voc:Vehicle ;
+        voc:cargoCapacity         2 ;
+        voc:costInCredits         4000 ;
+        voc:crew                  1 ;
+        voc:film                  <https://swapi.co/resource/film/4> ;
+        voc:length                1.5 ;
+        voc:manufacturer          "Razalon" ;
+        voc:maxAtmospheringSpeed  180 ;
+        voc:model                 "FC-20 speeder bike" ;
+        voc:passengers            0 ;
+        voc:pilot                 <https://swapi.co/resource/zabrak/44> ;
+        voc:vehicleClass          "speeder" .
+
+<https://swapi.co/resource/planet/13>
+        rdf:type            voc:Planet ;
+        voc:climate         "hot" ;
+        voc:diameter        4200 ;
+        voc:film            <https://swapi.co/resource/film/6> ;
+        voc:gravity         "1 standard" ;
+        voc:orbitalPeriod   412 ;
+        voc:population      20000 ;
+        voc:rotationPeriod  36 ;
+        voc:surfaceWater    0 ;
+        voc:terrain         "volcanoes, lava rivers, mountains, caves" .
+
+voc:Aleena  rdf:type         voc:Species ;
+        rdfs:subClassOf      voc:Reptile , voc:Sentient ;
+        voc:averageHeight    80.0 ;
+        voc:averageLifespan  "79" ;
+        voc:character        <https://swapi.co/resource/aleena/47> ;
+        voc:film             <https://swapi.co/resource/film/4> ;
+        voc:language         "Aleena" ;
+        voc:planet           <https://swapi.co/resource/planet/38> ;
+        voc:skinColor        "blue" , "gray" .
