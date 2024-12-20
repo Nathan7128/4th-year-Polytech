@@ -1,5 +1,5 @@
-# 4th-year-Polytech
- This repository contains all the programs I completed during my 4th year of studies at Polytech.
+# Introduction
+ This repository contains all the programming work that I complete during my 4th year of studies (2024-2025) at Polytech Clermont.
 
 # Specification
 
