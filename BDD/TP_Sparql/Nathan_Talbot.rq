@@ -101,29 +101,66 @@ WHERE {
 # vous pouvez limiter les informations descriptives (label et description) à une seule
 # langue.
 
-SELECT ?desc
+SELECT ?predicate ?attribut
 WHERE {
   ?perso rdf:type voc:Character .
-  ?perso rdfs:label "Yoda"@fr
+  ?perso rdfs:label "Yoda"@fr .
+  ?perso ?predicate ?attribut
 }
 
 # Question 11 Citer les personnages sauf ceux qui ont participé au 3eme film ?
 
+SELECT ?perso
+WHERE {
+  ?perso rdf:type voc:Character .
+  ?perso voc:film ?film
+  FILTER (?film != <https://swapi.co/resource/film/3>)
+}
+
 # Question 12 Lister les films dans lesquels au moins 4 planètes différentes sont
 # visitées. Organiser la liste selon l’ordre alphabétique de leur nom.
 
+SELECT ?label
+WHERE {
+  ?film rdf:type voc:Film .
+  ?film rdfs:label ?label .
+  ?film voc:planet ?planet .
+  FILTER( lang(?label) = 'fr' )
+}
+GROUP BY ?label
+HAVING (COUNT(?planet) >= 4)
+ORDER BY ?label
+
 # Question 13 Reprendre la question précédente et y ajouter les planètes visitées
 # et leur climat.
-
 
 # Question 14 Quels sont les duos de personnages participants au même film ?
 # Limiter votre réponse aux 100 premiers duos.
 
 
+
 # Question 15 Pour chaque type, donner le poids moyen.
+
+SELECT ?type (AVG(?poids) AS ?PoidsMoyen)
+WHERE {
+  ?perso rdf:type voc:Character .
+  ?perso rdf:type ?type .
+  ?perso voc:mass ?poids
+}
+GROUP BY ?type
 
 # Question 16 Lister les personnages avec le nom des films dans lesquels ils aparaissent
 # ainsi que leur planète d’origine accompagnée de leur population.
+
+SELECT ?labelperso ?labelfilm ?population
+WHERE {
+  ?perso rdf:type voc:Character .
+  ?perso voc:Film ?film .
+  ?perso rdfs:label ?labelperso .
+  ?film rdfs:label ?labelfilm .
+  ?perso voc:homeworld ?planet .
+  ?planet voc:population ?population
+}
 
 # Question 17 Donner les individus qui ont un poids moyen supèrieur au poids
 # moyen de leur type.
