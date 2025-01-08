@@ -1,0 +1,32 @@
+COMMANDES UTILISEES DANS GIT BASH
+
+1) Dans un premier temps accéder à l'emplacement ou on veut créer le dépôt en local avec la commande "cd …"
+Ensuite, créer le dossier correspondant au dépôt avec la commande mkdir "TpCLI"
+Accéder au dossier avec la commande "cd TpCLI"
+J'ai ajouté à ce dossier le fichier code.py
+Initialiser le dépôt avec "git init"
+
+2) J'ai ensuite ajouter un fichier code2.py
+Pour vérifier les modifs : "git status"
+On remarque que les deux fichiers codes sont untracked
+
+3) Pour indexer les fichiers : git add .
+pour commit : git commit -m "Ajout d’un fichier et modificaEon d’un fichier"
+
+4) Pour afficher l'historique simplifié : git log
+
+5) Nouvelle branche : git branch branche2
+Vérifier si elle a bien été créée : git branch (pour lister toutes les branches locales) -> Elle a bien été créée
+
+Je me suis déplacé sur la 2ème branche "branche2" : git checkout branche2
+J'ai ensuite modifier le fichier code.py
+j'ai indexer l'ensemble des fichiers : git add .
+J'ai commit le changement : git commit -m "Modif du fichier dans branche2"
+
+En faisant un : git log, on a bien les deux commits effectuer : le premier dans la branche master pour l'ajout des 2 fichiers du dépôt et le 2ème dans le branche "branche2" pour ajouter les modifs de "code.py"
+
+Fusion de branche2 avec la branche master :
+a) se placer dans master : git checkout master
+b) merge branche2 dans master : git merge branche2
+
+En faisant un : git log, on remarque que le commit lié à la modif de "code.py" appliqué à la branche2 a été répercuté dans la branche master.
