@@ -16,3 +16,7 @@ Machine_Learning_2/env_ML2
 
 # BDD
 BDD/TP_Sparql/apache_jena_fuseki_3.9.0
+
+# Git
+Git/**/*.git
+Git/**/*.gitignore
