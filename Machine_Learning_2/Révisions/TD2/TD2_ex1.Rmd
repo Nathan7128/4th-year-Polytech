@@ -1,0 +1,66 @@
+---
+title: "TD2_ex1"
+output: html_document
+date: "2025-01-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+n = 100
+K = 2
+```
+
+```{r}
+pi = c(0.7, 0.3)
+mu1 = c(10, 0)
+mu2 = c(2, 2)
+sigma1 = matrix(c(1, 0.2, 0.2, 1), nrow = 2)
+sigma2 = matrix(c(1, 0.5, 0.5, 0.7), nrow = 2)
+```
+
+
+
+
+```{r}
+Z = rmultinom(n, 1, pi)
+Z = t(Z)
+Z[1:5, ]
+N_k = colSums(Z)
+N_k
+```
+
+```{r}
+X1 = MASS::mvrnorm(n = N_k[1], mu = mu1, Sigma = sigma1)
+X2 = MASS::mvrnorm(n = N_k[2], mu = mu2, Sigma = sigma2)
+X1[1:5, ]
+X2[1:5, ]
+```
+```{r}
+plot(rbind(X1, X2), col = c(rep("blue", 50), rep("red", 50)), pch = 16,
+     xlab = "X1", ylab = "X2")
+```
+
+```{r}
+X = matrix(0, nrow = n, ncol = K)
+X[Z[, 1] == 1, ] = X1
+X[Z[, 2] == 1, ] = X2
+
+x1min = min(X[,1])
+x1max = max(X[,1])
+x2min = min(X[,2])
+x2max = max(X[, 2])
+
+plot(X1, col='red', xlim=c(x1min, x1max), ylim = c(x2min, x2max))
+points(X2, col='blue')
+```
+
+
+
+
+
+
