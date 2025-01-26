@@ -1,0 +1,82 @@
+---
+title: "TD1_ex1"
+output: html_document
+date: "2025-01-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+---
+
+## Importation des données
+
+```{r}
+data("USArrests")
+```
+---
+
+## Analyse des données
+
+```{r}
+summary(USArrests)
+cat("\n\n")
+str(USArrests)
+```
+---
+
+## Mise en place CAH
+
+```{r}
+CAH = hclust(dist(USArrests, method = "euclidian"), method = "ward.D2")
+W = rev(CAH$height)
+plot(CAH)
+plot((1:49), W)
+```
+
+On voit une cassure pour K = 3, ensuite W se stabilise
+
+---
+
+## Analyse des résultats avec K = 3
+
+```{r}
+K = 3
+cluster = cutree(CAH, K)
+cluster
+table(cluster)
+```
+On obtient des clusters de tailles relativement homogènes
+
+On va maintenant regarder les moyennes des variables pour chaque cluster
+
+```{r}
+mu = matrix(0, K, dim(USArrests)[2])
+for(k in 1:K) {
+  mu[k, ] = colMeans(USArrests[cluster == k,])
+}
+colnames(mu) = colnames(USArrests)
+mu
+```
+On remarque les les villes appartenenant au cluster 1 sont celles avec le plus fort taux de criminalité
+La variable UrbanPop est celle qui varie le moins entre chaque cluster, cependant la variable Assault (agression)
+
+---
+
+## Analyse graphique des clusters
+
+```{r}
+library(ggplot2)
+ggplot(USArrests, aes(x = Murder, y = Assault, color = cluster)) +
+  geom_point(size = 3) + labs(title = "Résultats de la CAH", x = "Crime",
+                              y = "Agression")
+ggplot(USArrests, aes(x = Rape, y = Assault, color = cluster)) +
+  geom_point(size = 3) + labs(title = "Résultats de la CAH", x = "Viol",
+                              y = "Agression")
+```
+
+
+
+
+
+

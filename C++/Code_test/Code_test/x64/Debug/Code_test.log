@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\natha\Documents\Git\4th-year-Polytech\C++\Code_test\Source.cpp(5,6): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
+C:\Users\natha\Documents\Git\4th-year-Polytech\C++\Code_test\Source.cpp(7,12): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+  Code_test.vcxproj -> C:\Users\natha\Documents\Git\4th-year-Polytech\C++\Code_test\x64\Debug\Code_test.exe

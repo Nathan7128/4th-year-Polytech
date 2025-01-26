@@ -1,0 +1,24 @@
+---
+title: "TD1_ex3"
+output: html_document
+date: "2025-01-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data("USArrests")
+```
+
+
+```{r}
+res_kmeans = kmeans(USArrests, centers = 3)
+clusters = res_kmeans$cluster
+centers = res_kmeans$centers
+clusters
+cat("\n\n")
+centers
+```
+

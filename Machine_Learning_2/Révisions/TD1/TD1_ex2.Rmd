@@ -1,0 +1,76 @@
+---
+title: "TD1_ex2"
+output: html_document
+date: "2025-01-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+------------------------------------------------------------------------
+
+## Importation des données
+
+```{r}
+library(FactoMineR)
+data(decathlon)
+```
+
+------------------------------------------------------------------------
+
+## Analyse des données
+
+```{r}
+summary(decathlon)
+cat("\n\n")
+str(decathlon)
+```
+
+On ne s'intéressera pas aux variables "Rank", "Points" et "Compétition"
+
+```{r}
+data = decathlon[1:10]
+```
+
+------------------------------------------------------------------------
+
+## Mise en place CAH
+
+```{r}
+CAH = hclust(dist(data, method = "euclidian"), method = "ward.D2")
+W = rev(CAH$height)
+plot(CAH)
+plot((1:length(W)), W)
+```
+On remarque une forte cassure à K = 2, cependant ce n'est pas un nombre de cluster suffisant
+Il y'a une autre cassure a K = 4
+
+```{r}
+K = 4
+cluster = cutree(CAH, K)
+cluster
+table(cluster)
+```
+
+Il y'a une grosse différence de nombre d'observations entre les clusters 2 et 3
+
+```{r}
+mu = matrix(0, K, dim(data)[2])
+for(k in 1:K) {
+  mu[k, ] = colMeans(data[cluster == k,])
+}
+colnames(mu) = colnames(data)
+mu
+```
+On remarque que c'est le lancer de disque et le 1500m qui différencient le plus les clusters
+
+
+```{r}
+library(ggplot2)
+
+ggplot(data, aes(x = Discus, y = data$"1500m", color = cluster)) +
+  geom_point(size = 3) + labs(title = "Résultats de la CAH", x = "1500m",
+                              y = "Lancer de disque")
+```
+
