@@ -1,0 +1,118 @@
+---
+title: "TD2suite_ex1"
+output: html_document
+date: "2025-01-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+K = 2
+D = 2
+
+mus_star = array(dim = c(D, K))
+
+Sigmas_star = array(dim = c(D, D, K))
+
+pi_star = c(0.7, 0.3)
+
+mus_star[, 1] = c(10, 0)
+mus_star[, 2] = c(2, 2)
+
+Sigmas_star[,, 1] = matrix(c(1, 0.2, 0.2, 1), nrow = 2)
+Sigmas_star[,, 2] = matrix(c(1, 0.5, 0.5, 0.7), nrow = 2)
+```
+
+```{r}
+N = 200
+Z = t(rmultinom(N, 1, pi_star))
+
+N_k = colSums(Z)
+
+X = matrix(0, nrow = N, ncol = D)
+for (k in 1:K) {
+  X[Z[, k] == 1, ] = MASS::mvrnorm(N_k[k], mus_star[, k], Sigmas_star[,, k])
+}
+```
+
+```{r}
+library(plotrix)
+plot(X, col = max.col(Z))
+```
+
+```{r}
+softmax <- function (x) {
+  y = max(x)
+  y = y + log(sum(exp(x - y)))
+  exp(x - y)
+}
+
+etape_E <- function(x, pi, mus, Sigmas, K){
+  # Etape E de l'algorithme EM
+    # X : données de dimensions N x D
+    # pi : proportions des clusters de dimensions K
+    # mus : array de dimensions D x K
+    # Sigmas : array de dimensions D x D x K
+    # K : entier, nombre de clusters
+  
+  log_tau = matrix(0, nrow = N, ncol = K)
+  
+  for (k in 1:K){
+    # On utilise le log pour plus de stabilité numérique
+    log_tau[,k] = log(pi[k]) + log(dmvnorm(X, mean = mus[, k], sigma = Sigmas[,,k]))
+  }
+  
+  # On normalise en utilisant la fonction softmax bien codée pour éviter
+  # les problèmes numériques
+  tau = t(apply(log_tau, 1, softmax))
+  
+  return(tau)
+}
+
+
+etape_M <- function(X, tau){
+  eps = .Machine$double.eps
+  
+  # Etape M de l'algorithme EM
+    # X : données de dimensions N x D
+    # tau : probabilités à posteriori d'appartenance aux clusters
+    # de dimensions N x K
+  
+  N = dim(X)[1]
+  D = dim(X)[2]
+  
+  mus_new = array(0, dim=c(D, K))
+  Sigmas_new = array(0, dim=c(D, D, K))
+  
+  # Estimation a posterio d'individus par cluster
+  N_k_new <- colSums(tau) + 10 * eps
+  
+  # Equation pour pi
+  pi_new <- N_k_new / n
+  
+  for (k in 1:K){
+    # Equation pour mu
+    mus_new[,k] <- colSums(tau[, k] * X) / N_k_new[k]
+    
+    for (i in 1:N){
+      # Equation pour Sigmas
+      Sigmas_new[,,k] <- Sigmas_new[,,k] +
+        tau[i,k] * (X[i,] - mus_new[, k]) %*% t((X[i,] - mus_new[, k]))
+    }
+    
+    # Normalisation de la matrice de var/covar
+    Sigmas_new[,,k] <- _
+    
+    # On ajoute cette ligne pour s'assurer de la positivité de la matrice de var/covar
+    Sigmas_new[,,k] <- Sigmas_new[,,k] + (eps* 10) * diag(1, nrow = D, ncol = D)
+  }
+  
+  return(list("pi"=pi_new, "mus"=mus_new, "Sigmas"=Sigmas_new))
+}
+
+```
+
