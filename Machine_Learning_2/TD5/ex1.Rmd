@@ -1,0 +1,65 @@
+---
+title: "Exercice 1 TD5"
+output: html_document
+date: "2025-01-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 0) Importation des données
+
+```{r}
+library(bayess)
+data("caterpillar", package = "bayess")
+y = log(caterpillar$y)
+X = as.matrix(caterpillar[,1:8])
+caterpillar$y = log(caterpillar$y)
+```
+
+# 1) Version fréquentiste : régression linéaire
+
+```{r}
+reg_lin_bis = lm(data = caterpillar, formula = y ~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8)
+```
+
+```{r}
+reg_lin = lm(y ~ X)
+```
+
+```{r}
+summary(reg_lin)
+```
+H0 : Le modèle sans la variable ajuste aussi bien les données que le modèle avec la variable
+H0 : Le paramètre est nul
+
+On rejette H0 lorsque la statistique de test est > à un certain seuil
+
+pvalue = Probabilité d'obtenir une valeur aussi extrême que la valeur observée pour la statistique de test, sachant H0.
+
+On rejette H0 si la pvalue est très basse (< 0.05).
+
+# 2) Variables gardées
+
+Étant donné les résultats de la pvalue pour les différents paramètres, nous décidons de garder l'intercept et les paramètres x1, x2 et x7.
+
+
+```{r}
+reg_bay = BayesReg(y, X)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
