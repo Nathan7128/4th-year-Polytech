@@ -1,0 +1,29 @@
+   27 :
+   28 : // Calcul de l'erreur
+   29 : func u = x*(1.0 - x)*y*(1.0 - y);
+   30 : Vh error = u - uh;
+   31 :
+   32 : real errL2 = sqrt(int2d(Th)(error^2));
+   33 : real errH1 = sqrt(int2d(Th)(error^2) + dx(error)^2 + dy(error)^2);
+   34 : cout << "Erreur L2 " << errL2 << endl;
+   35 : cout << "Erreur H1 " << errH1 << endl;
+   36 :
+   37 : //On visualise le maillage et le resultat
+   38 : plot(Th, wait = true);
+   39 : plot(uh, wait = true); sizestack + 1024 =3632  ( 2608 )
+ 
+  -- Square mesh : nb vertices  =121 ,  nb triangles = 200 ,  nb boundary edges 40 rmdup= 0
+Temps CPU apres def du domaine = 0
+Temps CPU apres def du maillage = 0
+Temps CPU apres def du probleme var = 0
+  SkyLineMatrix: size pL/pU: 121 1320 1320 moy=10.9091
+  -- Solve :
+          min 8.01458e-63  max 0.0620127
+Temps CPU apres resolution = 0.001
+Erreur L2 0.00026816
+Erreur H1 0.000895309
+times: compile 0.047s, execution 0.115s,  mpirank:0
+ ######## unfreed pointers   684 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4081,  size :537184 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP1\tp1.edp

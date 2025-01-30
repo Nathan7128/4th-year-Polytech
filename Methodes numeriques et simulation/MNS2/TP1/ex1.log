@@ -1,0 +1,29 @@
+Nombre de noeuds : 32
+Erreur L2 2.0648e-08
+ 
+Erreur H1 3.5931e-06
+ 
+ 
+  -- Square mesh : nb vertices  =4225 ,  nb triangles = 8192 ,  nb boundary edges 256 rmdup= 0
+Temps CPU apres def du domaine = 0.001
+ 
+Temps CPU apres def du maillage = 0.008
+ 
+Temps CPU apres def du probleme var = 0.009
+ 
+  SkyLineMatrix: size pL/pU: 16641 1821936 1821936 moy=109.485
+  -- Solve :
+          min -3.33533e-51  max 0.0625
+Temps CPU apres resolution = 0.219
+ 
+Nombre de noeuds : 64
+Erreur L2 1.29552e-09
+ 
+Erreur H1 4.49132e-07
+ 
+ 
+times: compile 0.075s, execution 4.446s,  mpirank:0
+ ######## unfreed pointers   141485 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4359,  size :548800 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP1\ex1.edp
