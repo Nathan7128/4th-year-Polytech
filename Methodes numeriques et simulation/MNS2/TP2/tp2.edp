@@ -1,0 +1,50 @@
+//Données
+real T = 36000;
+real K = 1;
+real S = 0.5;
+real D = 2e-5;
+real Text = 8;
+int Nbnoeuds = 2;
+int N = 1000;
+real dt = T/N;
+int C = 10;
+
+
+//Definition du maillage
+border C1(t = 0., 0.3){x = t; y = 0.;}
+border C2(t = 0., 0.7){x = 0.3; y = t;}
+border C3(t = 0.3, 0.7){x = t; y = 0.7;}
+border C4(t = 0.3, 1.){x = 0.7; y = 1. - t;}
+border C5(t = 0.7, 1.){x = t; y = 0.;}
+border C6(t = 0., 1.){x = 1.; y = t;}
+border C7(t = 0., 1.){x = 1 - t; y = 1.;}
+border C8(t = 0., 1.){x = 0.; y = 1 - t;}
+
+mesh Th = buildmesh(C1(3*Nbnoeuds) + C2(7*Nbnoeuds) + C3(4*Nbnoeuds) + C4(7*Nbnoeuds)
+        + C5(3*Nbnoeuds) + C6(10*Nbnoeuds) + C7(10*Nbnoeuds) + C8(10*Nbnoeuds));
+
+
+//Fonction de x et de y
+func u0 = sin(pi*x)*sin(pi*y) + 15 + 8;
+func f = S*(x < 0.95)*(x > 0.85)*(y < 0.95)*(y > 0.85);
+
+
+//Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Vh(Th, P1);
+
+
+//uh et vh sont des elements de Vh
+Vh uh = u0, vh, uold;
+
+
+//Definition du probleme variationnel
+problem thermic(uh, vh, solver = LU) = int1d(Th)(D*K*uh*vh) - int1d(Th)(D*K*Text*vh) + int2d(Th)(D*dx(uh)*dx(vh)
+        + D*dy(uh)*dy(vh)) - int2d(Th)(f*vh) ;
+
+
+//Resolution du probleme
+for (int k = 0; k < N; k += 1) {
+    uold = uh;
+    thermic;
+    plot(uh, wait = false, fill = true, value = 1);
+}

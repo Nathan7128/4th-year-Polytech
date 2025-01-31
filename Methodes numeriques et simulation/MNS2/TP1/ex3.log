@@ -1,0 +1,28 @@
+   37 :
+   38 : problem laplacien(uh, vh, solver = LU) = int1d(Th)(D*K*uh*vh) - int1d(Th)(D*K*Text*vh) + int2d(Th)(D*dx(uh)*dx(vh)
+   39 :         + D*dy(uh)*dy(vh)) - int2d(Th)(f*vh) ;
+   40 :
+   41 : cout << "Temps CPU apres def du probleme var = " << (clock() - cpu) << endl;
+   42 :
+   43 :
+   44 : //Resolution du probleme
+   45 : laplacien;
+   46 : cout << "Temps CPU apres resolution = " << (clock() - cpu) << endl;
+   47 :
+   48 : //On visualise le maillage et le resultat
+   49 : plot(Th, wait=true);
+   50 : plot(uh, wait = true); sizestack + 1024 =3352  ( 2328 )
+ 
+  --  mesh:  Nb of Triangles =    620, Nb of Vertices 365
+Temps CPU apres def du domaine = 0.006
+Temps CPU apres def du maillage = 0.006
+Temps CPU apres def du probleme var = 0.006
+  SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
+  -- Solve :
+          min 7.99709  max 62.32
+Temps CPU apres resolution = 0.008
+times: compile 0.055s, execution 0.745s,  mpirank:0
+ ######## unfreed pointers   1892 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4245,  size :546696 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP1\ex3.edp

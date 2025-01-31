@@ -4,21 +4,24 @@ int Nbnoeuds = 10;
 real cpu = clock();
 
 //Definition du maillage
+//Disque
 border D(t = 0., 2.*pi){
     x = cos(t)*0.3 + 0.5;
     y = sin(t)*0.3 + 0.5;
 }
 
-border C11(t = 0., 1.){x = 1 - t; y = 1.;}
-border C12(t = 0., 1.){x = t; y = 0.;}
-border C13(t = 0., 1.){x = 0.; y = 1 - t;}
-border C14(t = 0., 1.){x = 1.; y = t;}
-plot(D(-50) + C11(5) + C12(20) + C13(5) + C14(20));
+//Carré
+int C = 1;
+
+border C11(t = 0., 1.){x = 1 - t; y = 1.; label = C;}
+border C12(t = 0., 1.){x = t; y = 0.; label = C;}
+border C13(t = 0., 1.){x = 0.; y = 1 - t; label = C;}
+border C14(t = 0., 1.){x = 1.; y = t; label = C;}
 mesh Th = buildmesh(D(-50) + C11(5) + C12(20) + C13(5) + C14(20));
 cout << "Temps CPU apres def du domaine = " << (clock() - cpu) << endl;
 
 //Fonction de x et de y
-func f = 2.0*x*(1.0 - x) + 2.0*y*(1.0 - y);
+func f = 1;
 
 //Definition de l'espace des elements finis P1 associe au maillage Th
 fespace Vh(Th, P1);
@@ -28,8 +31,15 @@ cout << "Temps CPU apres def du maillage = " << (clock() - cpu) << endl;
 Vh uh, vh;
 
 //Definition du probleme variationnel
-problem laplacien(uh, vh, solver = LU) = int2d(Th)(dx(uh)*dx(vh) + dy(uh)*dy(vh)) - int2d(Th)(f*vh) + on(1, 2, 3, 4, uh = 0);
+
+// a) Condition aux bords de Dirichlet homogènes
+//problem laplacien(uh, vh, solver = LU) = int2d(Th)(dx(uh)*dx(vh) + dy(uh)*dy(vh)) - int2d(Th)(f*vh) + on(C, uh = 0) + on(D, uh = 0);
+
+// b) Conditions aux bords avec u = 1 sur le bord du carré et u = 0 sur le bord du Disque
+problem laplacien(uh, vh, solver = LU) = int2d(Th)(dx(uh)*dx(vh) + dy(uh)*dy(vh)) - int2d(Th)(f*vh) + on(C, uh = 1) + on(D, uh = 0);
+
 cout << "Temps CPU apres def du probleme var = " << (clock() - cpu) << endl;
+
 
 //Resolution du probleme
 laplacien;
