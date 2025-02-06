@@ -1,0 +1,126 @@
+setwd('D:/Seafile/BibliothequeUCA/ENSEIGNEMENT/IMDS4A Regression/ANOVA/TPANOVA R/TPANOVA1WAY/')
+getwd()
+dir()
+ 
+#chargement des données
+load('cholesterol.Rdata')
+dim(cholesterol)
+# visualisation du début de la table
+head(cholesterol,50)
+names(cholesterol)
+attach(cholesterol)
+# summary permet entre autre de vérifier qulles variables sont déclarées quali ou quanti
+summary(cholesterol)
+is.factor(trt)
+is.factor(response)
+is.numeric(response)
+# regardons les effectifs par niveau de trt
+table(trt)
+table(response)
+# approche descriptive (data viz)
+library(ggplot2)
+ 
+ggplot(data=cholesterol, aes(y=response, x=trt))+
+  geom_boxplot() 
+
+ggplot(cholesterol, aes(y=response, x=trt,colour=trt ,fill=trt))+
+  geom_boxplot(alpha=0.5)+ # alpha pour le niveau de transparence 
+  geom_point(alpha=0.1)+ # pour visualiser les points
+
+ggplot(cholesterol, aes(y=response, x=trt,colour=trt ,fill=trt))+
+  geom_violin(alpha=0.5)+ # alpha pour le niveau de transparence 
+  geom_jitter(width=0.25) # pour décaler légèrement les points superposés
+
+# ---------------------------
+# modélisation
+# --------------------------
+# ANOVA à un facteur
+model <- lm(response ~ trt)
+summary(model)
+
+names(model)
+
+# test global du facteur traitement
+# attention à ne pas oublier la majuscule sur dans Anova(...)
+# anova(...) existe ausi mais est à déconseiller car fait des tests de type I uniquement
+library(car)
+Anova(model)
+ 
+# graphe des résidus
+# avec plot
+plot(model,1)
+# avec ggplot
+base <- ggplot(model, aes(x=fitted(model), y=residuals(model)))
+base + geom_point()+geom_smooth()
+# avec jitter
+base + geom_jitter(width=0.3)
+
+# normalité des résidus
+# commande de base
+plot(model,2)
+# avec ggplot2
+ ggplot(model)  + 
+  geom_qq(aes(sample=scale(residuals(model))))+
+  geom_abline(intercept=0, slope=1, color="blue")
+
+# avec la librairie car (donne les résidus studentisés)
+library(car)
+# qq plot
+qqPlot(model, main="QQ Plot") #qq plot for studentized residuals
+# test de normalité de Shapiro Wilks
+shapiro.test(residuals(model))
+
+# homogénéité des variances
+# graphe des résidus standardisés avec plot
+plot(model,3)
+# et avec gglpot
+ggplot(model, aes(x=fitted(model), y=rstandard(model))) + geom_point() 
+# test de levene (le plus courant)
+library(car)
+leveneTest(residuals(model) ~ trt)
+# test de fligner-Killeen (test non paramétrique robuste à la non-normalité)
+fligner.test(residuals(model) ~ trt)
+#  test de Bartlet (très sensible à la non-normalité)
+bartlett.test(residuals(model) ~ trt)
+
+
+# analyse des emmeans
+library(emmeans)
+effets <- emmeans(model, specs= "trt")
+effets
+summary(model)
+
+# comparaison des traitements
+pairs(effets)
+# pour présenter les résultats sous forme de tableau
+# En haut : p values
+# sur la diagonale : emmeans
+# en bas, differences de emmeans
+pwpm(effets)
+# graphique des comparaisons
+plot(effets, comparisons = TRUE)
+
+# redefinition de la modalité de réference
+# Comparaison avec le placebo drugE
+# on commence par regarder les niveaux de "trt"
+levels(cholesterol$trt)
+# la modalité de référence est le 1er niveau: 1time
+# modification du niveau de réference
+cholesterol$trt <- relevel(cholesterol$trt, ref="drugE")
+# vérification : le nouveau nivau de référence apparait en premier
+levels(cholesterol$trt)
+model2=lm(response ~ trt, data=cholesterol)
+# ici les résultats sont changés var on n'a pas la même modalité de référence
+summary(model2)
+# bien sûr, pour les emmeans, cela ne change rien.
+emmeans(model, spec="trt")
+
+# test de Dunnett
+library(multcomp)
+# test d'infériorité de la réponse : alternative="less" au lieu de bilatéral
+comp_temoin <- glht(model2, linfct=mcp(trt="Dunnett"), alternative="less")
+summary(comp_temoin)
+plot(comp_temoin)
+par(mar=c(4,7,3,3))
+plot(comp_temoin)
+  
