@@ -1,13 +1,14 @@
 //Données
 real T = 36000;
-real K = 1e4;
+real K = 1e5;
 real S = 0.5;
 real D = 2e-5;
 real Text = 8;
 int Nbnoeuds = 2;
-int N = 1000;
+int N = 6000;
 real dt = T/N;
 int C = 10;
+real gamma = 4e-3;
 
 
 //Definition du maillage
@@ -27,6 +28,8 @@ mesh Th = buildmesh(C1(3*Nbnoeuds) + C2(7*Nbnoeuds) + C3(4*Nbnoeuds) + C4(7*Nbno
 //Fonction de x et de y
 func u0 = sin(pi*x)*sin(pi*y) + 15 + 8;
 func f = S*(x < 0.95)*(x > 0.85)*(y < 0.95)*(y > 0.85);
+func v1 = -gamma*(y - 0.5);
+func v2 = gamma*(x - 0.5);
 
 
 //Definition de l'espace des elements finis P1 associe au maillage Th
@@ -38,7 +41,9 @@ Vh uh = u0, vh, uold;
 
 
 //Definition du probleme variationnel
-problem thermic(uh, vh, solver = LU) = int2d(Th)(uh*vh/dt) - int2d(Th)(uold*vh/dt) + int1d(Th)(D*K*uh*vh) - int1d(Th)(D*K*Text*vh) +
+problem thermic(uh, vh, solver = LU) = int2d(Th)(uh*vh/dt) - int2d(Th)(uold*vh/dt) + 
+        int1d(Th)(D*K*uh*vh) - int1d(Th)(D*K*Text*vh) +
+        int2d(Th)((v1*dx(uh) + v2*dy(uh))*vh) +
         int2d(Th)(D*dx(uh)*dx(vh) + D*dy(uh)*dy(vh)) - int2d(Th)(f*vh) ;
 
 

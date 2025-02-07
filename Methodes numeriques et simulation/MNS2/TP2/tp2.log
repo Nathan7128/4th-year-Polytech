@@ -1,29 +1,29 @@
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
+          min 7.97128  max 62.3575
   SkyLineMatrix: size pL/pU: 365 3516 3516 moy=9.63288
   -- Solve :
-          min 13.2942  max 213.701
-times: compile 0.047s, execution 28.132s,  mpirank:0
- ######## unfreed pointers   1852022 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
- CodeAlloc : nb ptr  4266,  size :547448 mpirank: 0
+          min 7.97128  max 62.3575
+times: compile 0.049s, execution 40.434s,  mpirank:0
+ ######## unfreed pointers   1856022 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4302,  size :550304 mpirank: 0
 Ok: Normal End
  try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP2\tp2.edp

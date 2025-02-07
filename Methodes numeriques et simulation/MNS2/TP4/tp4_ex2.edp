@@ -1,0 +1,63 @@
+// Données
+int Nbnoeuds = 50;
+real P = 0.1;
+real K = 1e5;
+real Text = 0;
+
+real vmin=5;
+real vmax=40;
+int nbv=50;
+real[int] valeurs(nbv);
+for (int i = 0; i < nbv; i++){
+    valeurs[i] = i*(vmax - vmin)/(nbv - 1) + vmin;
+}
+
+real Tf = 72*3600;
+int N = 1000;
+real dt = Tf/N;
+
+
+// Fonctions
+func f = (x < 0.1)*(x > -0.1)*(y < 0.85)*(y > 0.75);
+func u0 = sin(pi*x)*sin(pi*y) + 15 + 8;
+func D = 2e-5 + (2e-6 - 2e-5)*(cos(x) > 0.4)*(sin(y) > 0.4)
+
+
+// Définition du bord du disque
+border Disque(t = 0., 2.*pi) { 
+    x = cos(t);
+    y = sin(t);
+}
+
+
+// Génération du maillage à l'intérieur du disque
+mesh Th = buildmesh(Disque(Nbnoeuds));
+
+
+//Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Vh(Th, P1);
+
+Vh fh, uh = u0, vh, uold;
+
+
+//Definition du probleme variationnel
+real [int] xx(Tf/dt + 1), z1(Tf/dt + 1), yy(Tf/dt + 1), zz(Tf/dt + 1),z2(Tf/dt + 1);
+int i=0;
+
+for (real t = 0; t < Tf; t += dt){
+    uold = uh;
+    fh = f*(1 - sin(pi*t/(3600*12)))*P;
+    Text = 15 + 5*sin(pi*t/(3600*12));
+    solve thermic(uh, vh, solver = LU) = int2d(Th)(uh*vh/dt) - int2d(Th)(uold*vh/dt) + int1d(Th)(D*K*uh*vh) -
+        int1d(Th)(D*K*Text*vh) + int2d(Th)(D*dx(uh)*dx(vh) + D*dy(uh)*dy(vh)) - int2d(Th)(fh*vh) ;;
+    plot(uh, wait = false, value = true, grey = false, fill = true, viso = valeurs);
+
+    xx[i]=t;
+    yy[i]=Text;
+    zz[i]=uh(0.0,0.0);
+    z1[i]=fh(0.0,0.8);
+    z2[i]=uh[].min;
+    i++;
+}
+
+plot([xx, yy], [xx, zz], [xx, z1], [xx, z2], value = true, wait = true);
