@@ -1,0 +1,52 @@
+real T=36000;
+int N=1000;
+real Tf = 72*3600;
+real dt = Tf/N;
+int C=99;
+real cpu = clock();
+
+
+
+
+
+// Définition des bordures pour une couronne coupée
+border C0(t=0, pi){x=cos(t); y=sin(t);}  
+border C1(t=pi, 0){x=0.4*cos(t); y=0.4*sin(t);} 
+border C2(t=0.4, 1){x=t; y=0;} 
+border C3(t=0, 0.6){x=-1+t; y=0;} 
+
+plot(C0(100) + C1(40) + C2(20) + C3(20),wait=true);
+mesh Th = buildmesh(C0(100) + C1(40) + C2(20) + C3(20)); // Construction du maillage
+
+plot(Th, wait=true); // Affichage du maillage
+
+
+
+
+// Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Vh(Th, P1);
+cout << "temps CPU apres def du maillage = " << (clock()-cpu) << endl;
+
+//uh et ch sont des elements de Vh
+Vh uh, vh;
+
+// Definition du pb variationnel
+problem laplacien(uh, vh, solver = LU)=int2d(Th)(dx(uh)*dx(vh)+dy(uh)*dy(vh))+ on(C1,uh=0) + on(C0,uh=1);
+cout << "temps CPU apres def du pb var = " << (clock()-cpu) <<endl;
+
+//Resolution du pb
+laplacien;
+cout << "temps CPU apres resolution = " <<(clock()-cpu) << endl;
+
+//Calcul erreur
+func u = (log(x^2+y^2)+log(6.25))/log(6.25);
+Vh error = u-uh;
+
+real errL2 = sqrt(int2d(Th)(error^2));
+real errH1 = sqrt(int2d(Th)(error^2+dx(error)^2+dy(error)^2));
+cout << "erreur L2 : "<< errL2 << endl;
+cout << "erreur H1 : "<< errH1 << endl;
+
+//On visualise le maillage et le resultat
+plot(Th, wait = true, ps="mesh.eps");
+plot(uh, wait = true);

@@ -1,0 +1,29 @@
+-- FreeFem++ v4.6 (Fri, Apr 03, 2020  2:08:08 PM - git v4.6)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : // Parameters
+    2 : int C1=99;
+    3 : int C2=100;
+    4 : real Dc=2e-5;
+    5 : int Text=8;
+    6 : int T=36000;
+    7 : real S=.5;
+    8 : int K=1;
+    9 : real dt=10;
+   10 : int nb=2;
+   11 : real gamma = 4e-3;
+   12 :
+   13 :
+   14 :
+   15 :
+   16 : // Borders
+   17 : border c1(t=0., 1.){x=0.; y=1-t; label=C The Identifier C does not exist
+ 
+ Error line number 17, in file P:\4A\MNS2\tp3\tp3.2.3.edp, before  token C
+ 
+  current line = 17
+Compile error :
+        line number :17, C
+error Compile error :
+        line number :17, C
+ code = 1 mpirank: 0
+ try getConsole P:\4A\MNS2\tp3\tp3.2.3.edp

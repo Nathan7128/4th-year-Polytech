@@ -1,0 +1,32 @@
+-- FreeFem++ v4.6 (Fri, Apr 03, 2020  2:08:08 PM - git v4.6)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : // Parameters
+    2 : int nn = 30;
+    3 :
+    4 : // Mesh
+    5 : mesh Th = square(nn, nn);
+    6 :
+    7 : // Fespace
+    8 : fespace Uh(Th, P1b);
+    9 : Uh u, v;
+   10 : Uh uu, vv;
+   11 :
+   12 : fespace Ph(Th, P1);
+   13 : Ph p, pp;
+   14 :
+   15 : // Problem
+   16 : solve stokes ([u, v, p], [uu, vv, pp])= int2d(Th)(dx(u)*dx(uu)+ dy(u)*dy(uu)+ dx(v)*dx(vv)+ dy(v)*dy(vv)+ dx(p)*
+uu+ dy(p)*vv+ pp*(dx(u) + dy(v))- 1e-10*p*pp)+ on(1, 2, 4, u=0, v=0)+ on(3, u=1, v=0);
+   17 :
+   18 : // Plot
+   19 : plot([u, v], p, wait=1); sizestack + 1024 =1896  ( 872 )
+ 
+  -- Square mesh : nb vertices  =961 ,  nb triangles = 1800 ,  nb boundary edges 120
+  -- Solve :
+          min -0.184667  max 1
+          min -0.313438  max 0.311822
+          min -80.2104  max 66.6749
+times: compile 0.031s, execution 0.054s,  mpirank:0
+ CodeAlloc : nb ptr  3529,  size :474640 mpirank: 0
+Ok: Normal End
+ try getConsole P:\4A\MNS2\tp3\tp3.2.edp

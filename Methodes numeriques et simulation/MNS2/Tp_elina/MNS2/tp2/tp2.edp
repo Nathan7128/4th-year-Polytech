@@ -1,0 +1,43 @@
+real T=36000;
+int N=1000;
+real dt = T/N;
+int C=10;
+int Text = 8;
+
+
+//Définition geometrique
+border c1(t=0., 1.){x=0.; y=1-t; label=C;}
+border c2(t=0., 1.){x=1.; y=t; label=C;}
+border c3(t=0., 1.){x=1-t; y=1.; label=C;}
+border c4(t=0., 0.3){x=t; y=0.; label=C;}
+border c5(t=0.7, 1){x=t; y=0.; label=C;}
+border c6(t=0.3, 0.7){x=t; y=0.7; label=C;}
+border c7(t=0, 0.7){x=0.7; y=-t+0.7; label=C;}
+border c8(t=0, 0.7){x=0.3; y=t; label=C;}
+
+int nb=2;
+real K=10000;
+real D=2e-5;
+
+plot(c1(2) + c2(2) + c3(2) + c4(2) + c5(2) + c6(2) + c7(2) + c8(2),wait=true);
+
+// Définition du maillage
+mesh Th=buildmesh(c1(3*nb) + c2(7*nb) + c3(4*nb) + c4(7*nb) + c5(3*nb) + c6(10*nb) + c7(10*nb) + c8(10*nb));
+
+plot(Th,wait=true);
+
+fespace Vh(Th, P1);
+
+// Fonction de x et y
+func u0 = sin(3.1415*x)*sin(3.1415*y)*15+8;
+func f=(x>0.85) * (x<0.95) *(y>0.85) * (y<0.95)*0.5;
+
+Vh uh = u0, vh, uold;
+
+problem thermic(uh, vh, solver=LU)=int2d(Th)(D*(dx(uh)*dx(vh)+dy(uh)*dy(vh)))-int2d(Th)(f*vh) - int1d(Th)(D*vh*K*Text) + int1d(Th)(D*K*uh*vh)+int2d(Th)(vh*uh/dt)- int2d(Th)(vh*uold/dt);
+
+for(int k=0; k<N;k+=1){
+    uold = uh;
+    thermic;
+    plot(uh, wait = false, fill= true, value=1);
+}

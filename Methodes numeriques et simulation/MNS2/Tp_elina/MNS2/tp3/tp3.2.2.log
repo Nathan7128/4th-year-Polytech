@@ -1,0 +1,54 @@
+-- FreeFem++ v4.6 (Fri, Apr 03, 2020  2:08:08 PM - git v4.6)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : // Parameters
+    2 : int nb = 2;
+    3 : int C1=99;
+    4 : int C2=100;
+    5 :
+    6 : // Borders
+    7 : border G(t=0., 1.) {x=0.; y=1-t; label=C1;}
+    8 : border D(t=0., 1.) {x=1.; y=t; label=C2;}
+    9 : border H(t=0., 1.) {x=1-t; y=1.; label=C1;}
+   10 : border B1(t=0., .3) {x=t; y=0.; label=C1;}
+   11 : border B2(t=.7, 1.) {x=t; y=0.; label=C1;}
+   12 : border VG(t=0., .5) {x=.3; y=t; label=C1;}
+   13 : border VD(t=0., .5) {x=.7; y=0.5-t; label=C1;}
+   14 : border BH(t=.3, .7) {x=t; y=.5; label=C1;}
+   15 :
+   16 : // Mesh
+   17 : mesh Th = buildmesh(G(10*nb) + D(10*nb) + H(10*nb) + B1(3*nb) + B2(3*nb) + VG(7*nb) + VD(7*nb) + BH(4*nb));
+   18 :
+   19 : // Function spaces
+   20 : fespace Uh(Th, P1b);  // P1b pour la vitesse
+   21 : Uh u, v, uu, vv;
+   22 :
+   23 : fespace Ph(Th, P1);   // P1 pour la pression
+   24 : Ph p, pp;
+   25 :
+   26 : // Problem
+   27 : solve stokes ([u, v, p], [uu, vv, pp])
+   28 :     = int2d(Th)(
+   29 :         dx(u)*dx(uu)
+   30 :         + dy(u)*dy(uu)
+   31 :         + dx(v)*dx(vv)
+   32 :         + dy(v)*dy(vv)
+   33 :         + dx(p)*uu
+   34 :         + dy(p)*vv
+   35 :         + pp*(dx(u) + dy(v))
+   36 :         - 1e-10*p*pp
+   37 :     )
+   38 :     + on(C1, u=0, v=0)
+   39 :     + on(C2, u=1, v=0);
+   40 :
+   41 : // Plot results
+   42 : plot([u, v], p, wait=1); sizestack + 1024 =2040  ( 1016 )
+ 
+  --  mesh:  Nb of Triangles =    808, Nb of Vertices 459
+  -- Solve :
+          min -0.0456757  max 1.74625
+          min -1.51425  max 0.899998
+          min 1.25e+10  max 1.25e+10
+times: compile 0.041s, execution 0.026s,  mpirank:0
+ CodeAlloc : nb ptr  3737,  size :484176 mpirank: 0
+Ok: Normal End
+ try getConsole P:\4A\MNS2\tp3\tp3.2.2.edp

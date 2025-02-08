@@ -1,0 +1,39 @@
+border D1(t = 0, pi){
+    x = 0.4*cos(pi - t);
+    y = 0.4*sin(pi - t);
+}
+
+border D2(t = 0, pi) {
+    x = cos(t);
+    y = sin(t);
+}
+
+border Sg(t = -1, -0.4) {
+    x = t;
+    y = 0;
+}
+
+border Sd(t = 0.4, 1) {
+    x = t;
+    y = 0;
+}
+
+mesh Th = buildmesh(Sg(10) + D1(20) + Sd(10) + D2(50));
+
+//Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Uh(Th, P1b);
+Uh u, v;
+Uh uu, vv;
+
+fespace Ph(Th, P1);
+Ph p, pp;
+
+func f1 = x^2-1.4*x+0.4;
+func f2 = -x^2-1.4*x-0.4;
+
+// Problem
+solve stokes ([u, v, p], [uu, vv, pp]) = int2d(Th)( dx(u)*dx(uu) + dy(u)*dy(uu) + dx(v)*dx(vv) + dy(v)*dy(vv) + dx(p)*uu +
+    dy(p)*vv + pp*(dx(u) + dy(v)) - 1e-10*p*pp ) + on(D1, u=0, v=0) + on(D2, u = 0, v = 0) + on(Sd, u=0, v=f1) + on(Sg, u = 0, v = f2);
+;
+// Plot
+plot([u, v], p, wait=1);

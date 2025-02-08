@@ -1,0 +1,52 @@
+int C1 = 99;
+real S = 0.5;
+int Text = 8;
+real Dc = 0.00002;
+int K = 5;
+real cpu=clock();
+
+//Définition geometrique
+border G(t=0., 1.){x=0.; y=1-t; label=C1;}
+border H(t=0., 1.){x=1.; y=t; label=C1;}
+border D(t=0., 1.){x=1-t; y=1.; label=C1;}
+border BG(t=0., 0.3){x=t; y=0.; label=C1;}
+border BD(t=0.7, 1){x=t; y=0.; label=C1;}
+border IH(t=0.3, 0.7){x=t; y=0.7; label=C1;}
+border ID(t=0, 0.7){x=0.7; y=-t+0.7; label=C1;}
+border IG(t=0, 0.7){x=0.3; y=t; label=C1;}
+plot(G(20) + H(20) + D(20) + BG(20) + BD(20) + IH(20) + ID(20) + IG(20),wait=1);
+
+// Définition du maillage
+mesh Th=buildmesh(G(20) + H(20) + D(20) + BG(20) + BD(20) + IH(20) + ID(20) + IG(20));
+plot(Th,wait=1);
+
+// Fonction de x et y
+func f=S * (x>=0.85) * (x<=0.95) *(y>=0.85) * (y<=0.95);
+
+// Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Vh(Th, P2);
+cout << "temps CPU apres def du maillage = " << (clock()-cpu) << endl;
+
+//uh et ch sont des elements de Vh
+Vh uh, vh;
+
+//definition du pb
+problem laplacien(uh, vh, solver = LU)=int2d(Th)(Dc*(dx(uh)*dx(vh)+dy(uh)*dy(vh)))-int2d(Th)(f*vh) - int1d(Th)(Dc*vh*K*Text) + int1d(Th)(Dc*K*uh*vh);
+
+// Résolution du probleme
+laplacien;
+
+cout << "temps CPU apres resolution = " <<(clock()-cpu) << endl;
+
+//Calcul erreur
+func u = x*(1.0-x)*y*(1.0-y);
+Vh error = u-uh;
+
+real errL2 = sqrt(int2d(Th)(error^2));
+real errH1 = sqrt(int2d(Th)(error^2+dx(error)^2+dy(error)^2));
+cout << "erreur L2"<< errL2 << endl;
+cout << "erreur H1"<< errH1 << endl;
+
+//On visualise le maillage et le resultat
+plot(Th, wait = true, ps="mesh.eps");
+plot(uh, wait = true);

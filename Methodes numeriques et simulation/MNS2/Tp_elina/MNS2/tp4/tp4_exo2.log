@@ -1,0 +1,3081 @@
+-- FreeFem++ v4.6 (Fri, Apr 03, 2020  2:08:08 PM - git v4.6)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : // Définition des paramètres
+    2 : real D1 = 2e-6; // Coefficient de diffusion dans la couronne
+    3 : real D2 = 2e-5; // Coefficient de diffusion dans le reste du domaine
+    4 : real K = 1; // Paramètre d'isolation
+    5 : real Text; // Température de bord
+    6 : real T0 = 15; // Condition initiale
+    7 : real Tf = 10; // Temps final
+    8 : real dt = 0.01; // Pas de temps
+    9 :
+   10 : // Définition de la fonction D(x, y) comme une fonction dans FreeFem++
+   11 : func C = (sqrt(x^2 + y^2) > 0.4) * (sqrt(x^2 + y^2) < 0.6); // Couronne entre 0.4 et 0.6
+   12 : func D = 2e-5 + (2e-6 - 2e-5) * C;
+   13 :
+   14 :
+   15 : int C1=10;
+   16 : real P =0.01;
+ *** Warning  The identifier P hide a Global identifier
+ 
+   17 : int nb=2;
+   18 :
+   19 :
+   20 : border C0(t=0., 2.*pi){x=cos(t); y=sin(t);}
+   21 :
+   22 : plot( C0(50),wait=true);
+   23 :
+   24 : mesh Th=buildmesh(C0(50*nb));
+   25 :
+   26 : plot(Th,wait=true);
+   27 :
+   28 : // Fonction f
+   29 : func f=(x>-0.1) * (x<0.1) *(y>0.75) * (y<0.85);
+   30 :
+   31 : //Conditions initiales
+   32 : func u0 = 15;
+   33 :
+   34 : real vmin=5;
+   35 : real vmax = 25;
+   36 : int nbv = 17;
+   37 : real[int] valeurs(nbv);
+   38 : for (int i=0; i<nbv;i++)
+   39 : {
+   40 :     valeurs[i]=i*(vmax-vmin)/(nbv-1)+vmin;
+   41 : }
+   42 :
+   43 : // Definition de l'espace des elements finis P1 associe au maillage Th
+   44 : fespace Vh(Th, P1);
+   45 : Vh fh, uh, uold, vh;
+   46 :
+   47 : real[int] xx(Tf/dt+1), z1(Tf/dt+1), yy(Tf/dt+1), zz(Tf/dt+1), z2(Tf/dt+1);
+   48 : int i=0;
+   49 :
+   50 : for( real t=0; t<Tf; t+=dt){
+   51 :     uold=uh;
+   52 :     fh = f*P*(1-sin(pi*t/(12*3600)));
+   53 :     Text = 15 + 5*sin(pi*t/(12*3600));
+   54 :     solve thermic(uh, vh, solver=LU)=int2d(Th)(D*(dx(uh)*dx(vh)+dy(uh)*dy(vh)))-int2d(Th)(f*vh) - int1d(Th)(D*vh*K*Text) + int1d(Th)(D*K*uh*vh)+int2d(Th)(vh*uh/dt)- int2d(Th)(vh*uold/dt);
+   55 :     plot(uh, wait=false, value=true, grey=false, fill=true, viso=valeurs);
+   56 :
+   57 :
+   58 :     xx[i]=t;
+   59 :     yy[i]=Text;
+   60 :     zz[i]=uh(0.0,0.0);
+   61 :     z1[i] = fh(0.0,0.8);
+   62 :     z2[i] = uh[].min;
+   63 :     i++;
+   64 : }
+   65 : plot([xx,yy],[xx,zz],[xx,z1],[xx,z2], value=true,wait=true);
+   66 :
+   67 :
+   68 :  sizestack + 1024 =6072  ( 5048 )
+ 
+  --  mesh:  Nb of Triangles =   1740, Nb of Vertices 921
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0024509  max 0.0148456
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.00489913  max 0.0296862
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0073447  max 0.0445217
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0097876  max 0.0593522
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0122278  max 0.0741776
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0146654  max 0.0889981
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0171003  max 0.103813
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0195326  max 0.118624
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0219622  max 0.133429
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0243892  max 0.148229
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0268135  max 0.163025
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0292351  max 0.177815
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0316541  max 0.1926
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0340705  max 0.207381
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0364842  max 0.222156
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0388953  max 0.236926
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0413038  max 0.251692
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0437096  max 0.266452
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0461128  max 0.281207
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0485134  max 0.295958
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0509113  max 0.310703
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0533066  max 0.325443
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0556993  max 0.340179
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0580894  max 0.354909
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0604768  max 0.369635
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0628616  max 0.384355
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0652439  max 0.399071
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0676235  max 0.413781
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0700005  max 0.428487
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0723749  max 0.443188
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0747466  max 0.457884
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0771158  max 0.472574
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0794824  max 0.48726
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0818464  max 0.501941
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0842078  max 0.516617
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0865665  max 0.531288
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0889227  max 0.545955
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0912763  max 0.560616
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0936274  max 0.575272
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0959758  max 0.589924
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.0983216  max 0.60457
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.100665  max 0.619212
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.103006  max 0.633849
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.105344  max 0.64848
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.107679  max 0.663107
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.110012  max 0.677729
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.112343  max 0.692346
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.11467  max 0.706959
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.116996  max 0.721566
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.119318  max 0.736169
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.121638  max 0.750766
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.123956  max 0.765359
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.126271  max 0.779947
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.128583  max 0.79453
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.130893  max 0.809108
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.133201  max 0.823681
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.135506  max 0.83825
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.137808  max 0.852813
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.140107  max 0.867372
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.142405  max 0.881926
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.144699  max 0.896475
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.146991  max 0.911019
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.149281  max 0.925558
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.151568  max 0.940093
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.153852  max 0.954623
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.156134  max 0.969148
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.158414  max 0.983668
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.160691  max 0.998183
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.162965  max 1.01269
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.165237  max 1.0272
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.167506  max 1.0417
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.169773  max 1.0562
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.172037  max 1.07069
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.174299  max 1.08517
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.176558  max 1.09965
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.178815  max 1.11413
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.181069  max 1.1286
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.183321  max 1.14307
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.18557  max 1.15753
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.187817  max 1.17199
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.190061  max 1.18644
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.192303  max 1.20089
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.194542  max 1.21534
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.196779  max 1.22977
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.199013  max 1.24421
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.201245  max 1.25864
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.203474  max 1.27306
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.205701  max 1.28748
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.207925  max 1.3019
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.210147  max 1.31631
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.212366  max 1.33071
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.214583  max 1.34511
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.216798  max 1.35951
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.21901  max 1.3739
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.221219  max 1.38829
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.223426  max 1.40267
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.225631  max 1.41704
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.227833  max 1.43142
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.230032  max 1.44578
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.232229  max 1.46015
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.234424  max 1.4745
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.236616  max 1.48886
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.238806  max 1.50321
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.240993  max 1.51755
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.243178  max 1.53189
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.245361  max 1.54622
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.247541  max 1.56055
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.249718  max 1.57488
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.251893  max 1.5892
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.254066  max 1.60352
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.256236  max 1.61783
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.258404  max 1.63213
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.260569  max 1.64644
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.262732  max 1.66073
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.264892  max 1.67503
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.26705  max 1.68931
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.269206  max 1.7036
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.271359  max 1.71787
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.27351  max 1.73215
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.275658  max 1.74642
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.277804  max 1.76068
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.279948  max 1.77494
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.282089  max 1.7892
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.284227  max 1.80345
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.286364  max 1.81769
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.288498  max 1.83194
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.290629  max 1.84617
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.292758  max 1.8604
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.294885  max 1.87463
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.297009  max 1.88885
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.299131  max 1.90307
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.30125  max 1.91729
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.303367  max 1.9315
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.305482  max 1.9457
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.307594  max 1.9599
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.309704  max 1.9741
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.311812  max 1.98829
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.313917  max 2.00247
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.316019  max 2.01665
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.31812  max 2.03083
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.320218  max 2.045
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.322313  max 2.05917
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.324407  max 2.07333
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.326497  max 2.08749
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.328586  max 2.10165
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.330672  max 2.1158
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.332756  max 2.12994
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.334837  max 2.14408
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.336916  max 2.15822
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.338993  max 2.17235
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.341067  max 2.18647
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.343139  max 2.2006
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.345208  max 2.21471
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.347276  max 2.22883
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.34934  max 2.24294
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.351403  max 2.25704
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.353463  max 2.27114
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.355521  max 2.28523
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.357576  max 2.29932
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.359629  max 2.31341
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.36168  max 2.32749
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.363729  max 2.34157
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.365775  max 2.35564
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.367818  max 2.36971
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.36986  max 2.38377
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.371899  max 2.39783
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.373936  max 2.41188
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.37597  max 2.42593
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.378002  max 2.43998
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.380032  max 2.45402
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.38206  max 2.46806
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.384085  max 2.48209
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.386108  max 2.49612
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.388128  max 2.51014
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.390146  max 2.52416
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.392162  max 2.53817
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.394176  max 2.55218
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.396187  max 2.56619
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.398196  max 2.58019
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.400203  max 2.59418
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.402207  max 2.60817
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.404209  max 2.62216
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.406209  max 2.63614
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.408206  max 2.65012
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.410201  max 2.6641
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.412194  max 2.67806
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.414185  max 2.69203
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.416173  max 2.70599
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.418159  max 2.71995
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.420143  max 2.7339
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.422124  max 2.74784
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.424103  max 2.76179
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.42608  max 2.77573
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.428055  max 2.78966
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.430027  max 2.80359
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.431997  max 2.81751
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.433965  max 2.83143
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.43593  max 2.84535
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.437893  max 2.85926
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.439854  max 2.87317
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.441813  max 2.88707
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.443769  max 2.90097
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.445724  max 2.91487
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.447676  max 2.92876
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.449625  max 2.94264
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.451573  max 2.95652
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.453518  max 2.9704
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.45546  max 2.98427
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.457401  max 2.99814
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.459339  max 3.012
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.461276  max 3.02586
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.463209  max 3.03972
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.465141  max 3.05357
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.46707  max 3.06741
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.468998  max 3.08125
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.470922  max 3.09509
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.472845  max 3.10892
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.474765  max 3.12275
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.476684  max 3.13658
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.4786  max 3.1504
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.480513  max 3.16421
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.482425  max 3.17802
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.484334  max 3.19183
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.486241  max 3.20563
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.488146  max 3.21943
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.490049  max 3.23323
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.491949  max 3.24702
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.493847  max 3.2608
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.495743  max 3.27458
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.497637  max 3.28836
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.499528  max 3.30213
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.501418  max 3.3159
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.503305  max 3.32966
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.50519  max 3.34342
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.507072  max 3.35718
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.508953  max 3.37093
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.510831  max 3.38467
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.512707  max 3.39842
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.514581  max 3.41215
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.516453  max 3.42589
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.518322  max 3.43962
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.520189  max 3.45334
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.522054  max 3.46706
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.523917  max 3.48078
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.525778  max 3.49449
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.527637  max 3.5082
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.529493  max 3.5219
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.531347  max 3.5356
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.533199  max 3.5493
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.535049  max 3.56299
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.536897  max 3.57668
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.538742  max 3.59036
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.540585  max 3.60404
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.542426  max 3.61771
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.544265  max 3.63138
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.546102  max 3.64505
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.547937  max 3.65871
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.549769  max 3.67236
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.551599  max 3.68602
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.553428  max 3.69967
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.555254  max 3.71331
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.557077  max 3.72695
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.558899  max 3.74059
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.560718  max 3.75422
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.562536  max 3.76785
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.564351  max 3.78147
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.566164  max 3.79509
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.567975  max 3.8087
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.569784  max 3.82231
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.57159  max 3.83592
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.573395  max 3.84952
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.575197  max 3.86312
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.576997  max 3.87671
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.578795  max 3.8903
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.580591  max 3.90389
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.582385  max 3.91747
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.584176  max 3.93105
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.585966  max 3.94462
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.587753  max 3.95819
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.589538  max 3.97175
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.591322  max 3.98531
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.593103  max 3.99887
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.594881  max 4.01242
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.596658  max 4.02597
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.598433  max 4.03951
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.600205  max 4.05305
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.601976  max 4.06659
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.603744  max 4.08012
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.60551  max 4.09365
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.607274  max 4.10717
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.609036  max 4.12069
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.610796  max 4.1342
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.612554  max 4.14771
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.614309  max 4.16122
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.616063  max 4.17472
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.617814  max 4.18822
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.619563  max 4.20171
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.621311  max 4.2152
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.623056  max 4.22869
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.624799  max 4.24217
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.62654  max 4.25565
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.628279  max 4.26912
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.630015  max 4.28259
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.63175  max 4.29606
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.633483  max 4.30952
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.635213  max 4.32297
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.636942  max 4.33643
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.638668  max 4.34988
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.640392  max 4.36332
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.642114  max 4.37676
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.643834  max 4.3902
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.645552  max 4.40363
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.647268  max 4.41706
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.648982  max 4.43048
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.650694  max 4.4439
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.652404  max 4.45732
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.654111  max 4.47073
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.655817  max 4.48414
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.657521  max 4.49754
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.659222  max 4.51094
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.660921  max 4.52434
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.662619  max 4.53773
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.664314  max 4.55112
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.666007  max 4.5645
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.667699  max 4.57788
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.669388  max 4.59126
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.671075  max 4.60463
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.67276  max 4.61799
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.674443  max 4.63136
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.676124  max 4.64472
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.677803  max 4.65807
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.679479  max 4.67142
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.681154  max 4.68477
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.682827  max 4.69811
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.684498  max 4.71145
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.686167  max 4.72479
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.687833  max 4.73812
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.689498  max 4.75145
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.69116  max 4.76477
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.692821  max 4.77809
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.69448  max 4.7914
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.696136  max 4.80471
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.697791  max 4.81802
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.699443  max 4.83132
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.701094  max 4.84462
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.702742  max 4.85792
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.704388  max 4.87121
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.706033  max 4.8845
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.707675  max 4.89778
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.709316  max 4.91106
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.710954  max 4.92433
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.71259  max 4.93761
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.714225  max 4.95087
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.715857  max 4.96414
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.717487  max 4.97739
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.719116  max 4.99065
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.720742  max 5.0039
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.722366  max 5.01715
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.723988  max 5.03039
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.725609  max 5.04363
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.727227  max 5.05687
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.728843  max 5.0701
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.730458  max 5.08333
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.73207  max 5.09655
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.73368  max 5.10977
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.735289  max 5.12298
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.736895  max 5.1362
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.738499  max 5.1494
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.740102  max 5.16261
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.741702  max 5.17581
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.743301  max 5.189
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.744897  max 5.2022
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.746492  max 5.21538
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.748084  max 5.22857
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.749675  max 5.24175
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.751263  max 5.25492
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.75285  max 5.2681
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.754434  max 5.28126
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.756017  max 5.29443
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.757598  max 5.30759
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.759176  max 5.32075
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.760753  max 5.3339
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.762328  max 5.34705
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.763901  max 5.36019
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.765472  max 5.37333
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.76704  max 5.38647
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.768607  max 5.39961
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.770172  max 5.41273
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.771735  max 5.42586
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.773297  max 5.43898
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.774856  max 5.4521
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.776413  max 5.46521
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.777968  max 5.47832
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.779521  max 5.49143
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.781073  max 5.50453
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.782622  max 5.51763
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.784169  max 5.53073
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.785715  max 5.54382
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.787259  max 5.5569
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.7888  max 5.56999
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.79034  max 5.58307
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.791878  max 5.59614
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.793413  max 5.60921
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.794947  max 5.62228
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.796479  max 5.63534
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.798009  max 5.6484
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.799538  max 5.66146
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.801064  max 5.67451
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.802588  max 5.68756
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.80411  max 5.7006
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.805631  max 5.71365
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.807149  max 5.72668
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.808666  max 5.73972
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.81018  max 5.75274
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.811693  max 5.76577
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.813204  max 5.77879
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.814713  max 5.79181
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.81622  max 5.80482
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.817725  max 5.81783
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.819228  max 5.83084
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.82073  max 5.84384
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.822229  max 5.85684
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.823726  max 5.86984
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.825222  max 5.88283
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.826716  max 5.89581
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.828208  max 5.9088
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.829697  max 5.92178
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.831185  max 5.93475
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.832671  max 5.94773
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.834156  max 5.96069
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.835638  max 5.97366
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.837118  max 5.98662
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.838597  max 5.99958
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.840074  max 6.01253
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.841548  max 6.02548
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.843021  max 6.03842
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.844492  max 6.05137
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.845961  max 6.0643
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.847428  max 6.07724
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.848894  max 6.09017
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.850357  max 6.1031
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.851819  max 6.11602
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.853279  max 6.12894
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.854736  max 6.14185
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.856192  max 6.15477
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.857647  max 6.16767
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.859099  max 6.18058
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.860549  max 6.19348
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.861998  max 6.20638
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.863444  max 6.21927
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.864889  max 6.23216
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.866332  max 6.24504
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.867773  max 6.25793
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.869212  max 6.2708
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.87065  max 6.28368
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.872085  max 6.29655
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.873519  max 6.30942
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.87495  max 6.32228
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.87638  max 6.33514
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.877808  max 6.348
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.879235  max 6.36085
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.880659  max 6.3737
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.882082  max 6.38654
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.883502  max 6.39938
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.884921  max 6.41222
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.886338  max 6.42505
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.887753  max 6.43788
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.889167  max 6.45071
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.890578  max 6.46353
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.891988  max 6.47635
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.893395  max 6.48917
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.894801  max 6.50198
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.896206  max 6.51479
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.897608  max 6.52759
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.899008  max 6.54039
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.900407  max 6.55319
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.901804  max 6.56598
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.903199  max 6.57877
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.904592  max 6.59156
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.905983  max 6.60434
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.907373  max 6.61712
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.908761  max 6.62989
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.910147  max 6.64266
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.911531  max 6.65543
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.912913  max 6.66819
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.914293  max 6.68095
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.915672  max 6.69371
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.917049  max 6.70646
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.918424  max 6.71921
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.919797  max 6.73196
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.921168  max 6.7447
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.922538  max 6.75744
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.923906  max 6.77017
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.925272  max 6.7829
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.926636  max 6.79563
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.927998  max 6.80835
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.929359  max 6.82107
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.930718  max 6.83379
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.932075  max 6.8465
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.93343  max 6.85921
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.934783  max 6.87192
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.936135  max 6.88462
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.937485  max 6.89732
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.938833  max 6.91001
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.940179  max 6.92271
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.941523  max 6.93539
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.942866  max 6.94808
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.944207  max 6.96076
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.945546  max 6.97343
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.946883  max 6.98611
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.948219  max 6.99878
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.949553  max 7.01144
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.951061  max 7.02411
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.952586  max 7.03676
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.95411  max 7.04942
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.955632  max 7.06207
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.957153  max 7.07472
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.958674  max 7.08736
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.960192  max 7.1
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.96171  max 7.11264
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.963227  max 7.12528
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.964742  max 7.13791
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.966256  max 7.15053
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.967769  max 7.16316
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.969281  max 7.17577
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.970792  max 7.18839
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.972301  max 7.201
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.97381  max 7.21361
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.975317  max 7.22622
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.976823  max 7.23882
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.978328  max 7.25142
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.979831  max 7.26401
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.981334  max 7.2766
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.982835  max 7.28919
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.984335  max 7.30177
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.985834  max 7.31435
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.987332  max 7.32693
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.988828  max 7.3395
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.990324  max 7.35207
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.991818  max 7.36464
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.993311  max 7.3772
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.994803  max 7.38976
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.996294  max 7.40232
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.997783  max 7.41487
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -0.999272  max 7.42742
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.00076  max 7.43996
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.00225  max 7.45251
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.00373  max 7.46504
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.00521  max 7.47758
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0067  max 7.49011
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.00818  max 7.50264
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.00966  max 7.51516
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01114  max 7.52768
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01262  max 7.5402
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01409  max 7.55271
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01557  max 7.56522
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01704  max 7.57773
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01852  max 7.59023
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.01999  max 7.60273
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.02146  max 7.61523
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.02293  max 7.62772
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0244  max 7.64021
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.02586  max 7.65269
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.02733  max 7.66518
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0288  max 7.67765
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03026  max 7.69013
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03172  max 7.7026
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03318  max 7.71507
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03465  max 7.72753
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03611  max 7.74
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03756  max 7.75245
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.03902  max 7.76491
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04048  max 7.77736
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04193  max 7.78981
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04338  max 7.80225
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04484  max 7.81469
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04629  max 7.82713
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04774  max 7.83956
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.04919  max 7.85199
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.05064  max 7.86442
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.05208  max 7.87684
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.05353  max 7.88926
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.05497  max 7.90168
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.05642  max 7.91409
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.05786  max 7.9265
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0593  max 7.93891
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06074  max 7.95131
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06218  max 7.96371
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06362  max 7.97611
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06505  max 7.9885
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06649  max 8.00089
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06792  max 8.01327
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.06936  max 8.02565
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.07079  max 8.03803
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.07222  max 8.05041
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.07365  max 8.06278
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.07508  max 8.07515
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0765  max 8.08751
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.07793  max 8.09988
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.07935  max 8.11223
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.08078  max 8.12459
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0822  max 8.13694
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.08362  max 8.14929
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.08504  max 8.16163
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.08646  max 8.17398
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.08788  max 8.18631
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.0893  max 8.19865
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09071  max 8.21098
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09213  max 8.22331
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09354  max 8.23563
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09496  max 8.24795
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09637  max 8.26027
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09778  max 8.27258
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.09919  max 8.2849
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1006  max 8.2972
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.102  max 8.30951
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.10341  max 8.32181
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.10481  max 8.3341
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.10622  max 8.3464
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.10762  max 8.35869
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.10902  max 8.37098
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.11042  max 8.38326
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.11182  max 8.39554
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.11322  max 8.40782
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.11461  max 8.42009
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.11601  max 8.43236
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1174  max 8.44463
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1188  max 8.45689
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12019  max 8.46916
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12158  max 8.48141
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12297  max 8.49367
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12436  max 8.50592
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12575  max 8.51816
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12713  max 8.53041
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.12852  max 8.54265
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1299  max 8.55489
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13129  max 8.56712
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13267  max 8.57935
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13405  max 8.59158
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13543  max 8.6038
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13681  max 8.61602
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13819  max 8.62824
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.13956  max 8.64045
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.14094  max 8.65266
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.14231  max 8.66487
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.14369  max 8.67708
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.14506  max 8.68928
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.14643  max 8.70147
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1478  max 8.71367
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.14917  max 8.72586
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.15054  max 8.73805
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1519  max 8.75023
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.15327  max 8.76241
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.15463  max 8.77459
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.156  max 8.78676
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.15736  max 8.79893
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.15872  max 8.8111
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16008  max 8.82327
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16144  max 8.83543
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.1628  max 8.84759
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16415  max 8.85974
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16551  max 8.87189
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16686  max 8.88404
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16822  max 8.89618
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.16957  max 8.90833
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.17092  max 8.92046
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.17227  max 8.9326
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.17362  max 8.94473
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.17497  max 8.95686
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.17631  max 8.96898
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.17766  max 8.98111
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.179  max 8.99323
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18035  max 9.00534
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18169  max 9.01745
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18303  max 9.02956
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18437  max 9.04167
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18571  max 9.05377
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18705  max 9.06587
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18838  max 9.07797
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.18972  max 9.09006
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19105  max 9.10215
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19239  max 9.11423
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19372  max 9.12632
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19505  max 9.1384
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19638  max 9.15047
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19771  max 9.16255
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.19904  max 9.17462
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20037  max 9.18668
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20169  max 9.19875
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20302  max 9.21081
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20434  max 9.22287
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20566  max 9.23492
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20698  max 9.24697
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2083  max 9.25902
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.20962  max 9.27106
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.21094  max 9.2831
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.21226  max 9.29514
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.21357  max 9.30718
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.21489  max 9.31921
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2162  max 9.33124
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.21752  max 9.34326
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.21883  max 9.35528
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22014  max 9.3673
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22145  max 9.37932
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22276  max 9.39133
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22406  max 9.40334
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22537  max 9.41535
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22667  max 9.42735
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22798  max 9.43935
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.22928  max 9.45134
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23058  max 9.46334
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23188  max 9.47533
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23318  max 9.48731
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23448  max 9.4993
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23578  max 9.51128
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23708  max 9.52326
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23837  max 9.53523
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.23967  max 9.5472
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24096  max 9.55917
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24225  max 9.57113
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24354  max 9.5831
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24483  max 9.59505
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24612  max 9.60701
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24741  max 9.61896
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2487  max 9.63091
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.24998  max 9.64286
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25127  max 9.6548
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25255  max 9.66674
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25383  max 9.67867
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25511  max 9.69061
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25639  max 9.70254
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25767  max 9.71446
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.25895  max 9.72639
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.26023  max 9.73831
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2615  max 9.75023
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.26278  max 9.76214
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.26405  max 9.77405
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.26533  max 9.78596
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2666  max 9.79787
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.26787  max 9.80977
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.26914  max 9.82167
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27041  max 9.83356
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27167  max 9.84545
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27294  max 9.85734
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27421  max 9.86923
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27547  max 9.88111
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27673  max 9.89299
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27799  max 9.90487
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.27926  max 9.91674
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28052  max 9.92861
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28177  max 9.94048
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28303  max 9.95235
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28429  max 9.96421
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28554  max 9.97607
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2868  max 9.98792
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28805  max 9.99977
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.28931  max 10.0116
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29056  max 10.0235
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29181  max 10.0353
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29306  max 10.0472
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29431  max 10.059
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29555  max 10.0708
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.2968  max 10.0827
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29804  max 10.0945
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.29929  max 10.1063
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30053  max 10.1181
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30177  max 10.1299
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30301  max 10.1418
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30425  max 10.1536
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30549  max 10.1654
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30673  max 10.1772
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.30797  max 10.189
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3092  max 10.2008
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31044  max 10.2126
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31167  max 10.2244
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3129  max 10.2362
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31413  max 10.248
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31536  max 10.2597
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31659  max 10.2715
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31782  max 10.2833
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.31905  max 10.2951
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32027  max 10.3068
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3215  max 10.3186
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32272  max 10.3304
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32395  max 10.3421
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32517  max 10.3539
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32639  max 10.3657
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32761  max 10.3774
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.32883  max 10.3892
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33005  max 10.4009
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33126  max 10.4127
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33248  max 10.4244
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33369  max 10.4361
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33491  max 10.4479
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33612  max 10.4596
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33733  max 10.4713
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33854  max 10.4831
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.33975  max 10.4948
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34096  max 10.5065
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34217  max 10.5182
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34337  max 10.5299
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34458  max 10.5417
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34578  max 10.5534
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34698  max 10.5651
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34819  max 10.5768
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.34939  max 10.5885
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35059  max 10.6002
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35179  max 10.6119
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35298  max 10.6236
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35418  max 10.6352
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35538  max 10.6469
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35657  max 10.6586
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35776  max 10.6703
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.35896  max 10.682
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36015  max 10.6936
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36134  max 10.7053
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36253  max 10.717
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36372  max 10.7286
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36491  max 10.7403
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36609  max 10.752
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36728  max 10.7636
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36846  max 10.7753
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.36965  max 10.7869
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37083  max 10.7986
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37201  max 10.8102
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37319  max 10.8218
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37437  max 10.8335
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37555  max 10.8451
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37672  max 10.8567
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3779  max 10.8684
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.37908  max 10.88
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38025  max 10.8916
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38142  max 10.9032
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38259  max 10.9148
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38377  max 10.9265
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38494  max 10.9381
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3861  max 10.9497
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38727  max 10.9613
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38844  max 10.9729
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.38961  max 10.9845
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.39077  max 10.9961
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.39193  max 11.0077
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3931  max 11.0193
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.39426  max 11.0308
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.39542  max 11.0424
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.39658  max 11.054
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.39774  max 11.0656
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.3989  max 11.0772
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40005  max 11.0887
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40121  max 11.1003
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40236  max 11.1119
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40352  max 11.1234
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40467  max 11.135
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40582  max 11.1466
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40697  max 11.1581
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40812  max 11.1697
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.40927  max 11.1812
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41042  max 11.1928
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41156  max 11.2043
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41271  max 11.2158
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41385  max 11.2274
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.415  max 11.2389
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41614  max 11.2504
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41728  max 11.262
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41842  max 11.2735
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.41956  max 11.285
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4207  max 11.2965
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42184  max 11.308
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42297  max 11.3196
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42411  max 11.3311
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42524  max 11.3426
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42638  max 11.3541
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42751  max 11.3656
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42864  max 11.3771
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.42977  max 11.3886
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4309  max 11.4001
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43203  max 11.4116
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43315  max 11.4231
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43428  max 11.4345
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43541  max 11.446
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43653  max 11.4575
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43765  max 11.469
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.43878  max 11.4805
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4399  max 11.4919
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44102  max 11.5034
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44214  max 11.5149
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44325  max 11.5263
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44437  max 11.5378
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44549  max 11.5492
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4466  max 11.5607
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44772  max 11.5721
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44883  max 11.5836
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.44994  max 11.595
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.45105  max 11.6065
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.45216  max 11.6179
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.45327  max 11.6293
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.45438  max 11.6408
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.45549  max 11.6522
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4566  max 11.6636
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4577  max 11.6751
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4588  max 11.6865
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.45991  max 11.6979
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46101  max 11.7093
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46211  max 11.7207
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46321  max 11.7321
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46431  max 11.7435
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46541  max 11.755
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46651  max 11.7664
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4676  max 11.7778
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.4687  max 11.7892
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.46979  max 11.8005
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47088  max 11.8119
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47198  max 11.8233
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47307  max 11.8347
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47416  max 11.8461
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47525  max 11.8575
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47634  max 11.8688
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47742  max 11.8802
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47851  max 11.8916
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.47959  max 11.903
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48068  max 11.9143
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48176  max 11.9257
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48284  max 11.937
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48393  max 11.9484
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48501  max 11.9598
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48609  max 11.9711
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48716  max 11.9825
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48824  max 11.9938
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.48932  max 12.0051
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49039  max 12.0165
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49147  max 12.0278
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49254  max 12.0392
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49361  max 12.0505
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49468  max 12.0618
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49576  max 12.0731
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49682  max 12.0845
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49789  max 12.0958
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.49896  max 12.1071
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50003  max 12.1184
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50109  max 12.1297
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50216  max 12.141
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50322  max 12.1524
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50428  max 12.1637
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50535  max 12.175
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50641  max 12.1863
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50747  max 12.1976
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50852  max 12.2088
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.50958  max 12.2201
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51064  max 12.2314
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51169  max 12.2427
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51275  max 12.254
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.5138  max 12.2653
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51486  max 12.2765
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51591  max 12.2878
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51696  max 12.2991
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51801  max 12.3104
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.51906  max 12.3216
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52011  max 12.3329
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52115  max 12.3441
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.5222  max 12.3554
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52324  max 12.3667
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52429  max 12.3779
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52533  max 12.3892
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52637  max 12.4004
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52741  max 12.4116
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52845  max 12.4229
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.52949  max 12.4341
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53053  max 12.4454
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53157  max 12.4566
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.5326  max 12.4678
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53364  max 12.479
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53467  max 12.4903
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53571  max 12.5015
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53674  max 12.5127
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53777  max 12.5239
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.5388  max 12.5351
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.53983  max 12.5463
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54086  max 12.5576
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54189  max 12.5688
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54291  max 12.58
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54394  max 12.5912
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54496  max 12.6024
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54599  max 12.6136
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54701  max 12.6247
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54803  max 12.6359
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.54905  max 12.6471
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55007  max 12.6583
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55109  max 12.6695
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55211  max 12.6807
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55313  max 12.6918
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55414  max 12.703
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55516  max 12.7142
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55617  max 12.7253
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55718  max 12.7365
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.5582  max 12.7477
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.55921  max 12.7588
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.56022  max 12.77
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.56123  max 12.7811
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.56224  max 12.7923
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.56324  max 12.8034
+  SkyLineMatrix: size pL/pU: 921 28912 28912 moy=31.392
+  -- Solve :
+          min -1.56425  max 12.8146
+times: compile 0.054s, execution 1082.2s,  mpirank:0
+ CodeAlloc : nb ptr  3855,  size :487344 mpirank: 0
+Ok: Normal End
+ try getConsole P:\4A\MNS2\tp4\tp4_exo2.edp

@@ -1,0 +1,64 @@
+-- FreeFem++ v4.6 (Fri, Apr 03, 2020  2:08:08 PM - git v4.6)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : int C1 = 99;
+    2 : real S = 0.5;
+    3 : int Text = 8;
+    4 : real Dc = 0.00002;
+    5 : int K = 5;
+    6 : real cpu=clock();
+    7 :
+    8 : //Définition geometrique
+    9 : border G(t=0., 1.){x=0.; y=1-t; label=C1;}
+   10 : border H(t=0., 1.){x=1.; y=t; label=C1;}
+   11 : border D(t=0., 1.){x=1-t; y=1.; label=C1;}
+   12 : border BG(t=0., 0.3){x=t; y=0.; label=C1;}
+   13 : border BD(t=0.7, 1){x=t; y=0.; label=C1;}
+   14 : border IH(t=0.3, 0.7){x=t; y=0.7; label=C1;}
+   15 : border ID(t=0, 0.7){x=0.7; y=-t+0.7; label=C1;}
+   16 : border IG(t=0, 0.7){x=0.3; y=t; label=C1;}
+   17 : plot(G(20) + H(20) + D(20) + BG(20) + BD(20) + IH(20) + ID(20) + IG(20),wait=1);
+   18 :
+   19 : // Définition du maillage
+   20 : mesh Th=buildmesh(G(20) + H(20) + D(20) + BG(20) + BD(20) + IH(20) + ID(20) + IG(20));
+   21 : plot(Th,wait=1);
+   22 :
+   23 : // Fonction de x et y
+   24 : func f=S * (x>=0.85) * (x<=0.95) *(y>=0.85) * (y<=0.95);
+   25 :
+   26 : // Definition de l'espace des elements finis P1 associe au maillage Th
+   27 : fespace Vh(Th, P2);
+   28 : cout << "temps CPU apres def du maillage = " << (clock()-cpu) << endl;
+   29 :
+   30 : //uh et ch sont des elements de Vh
+   31 : Vh uh, vh;
+   32 :
+   33 : //definition du pb
+   34 : problem laplacien(uh, vh, solver = LU)=int2d(Th)(Dc*(dx(uh)*dx(vh)+dy(uh)*dy(vh)))-int2d(Th)(f*vh) - int1d(Th)(DPb�c*vh*K*Text) + int1d(Th)(Dc*K*uh*vh);
+   35 :
+   36 : // Résolution du probleme
+   37 : laplacien;
+   38 :
+   39 : cout << "temps CPU apres resolution = " <<(clock()-cpu) << endl;
+   40 :
+   41 : //Calcul erreur
+   42 : func u = x*(1.0-x)*y*(1.0-y);
+   43 : Vh error = u-uh;
+   44 :
+   45 : real errL2 = sqrt(int2d(Th)(error^2));
+   46 : real errH1 = sqrt(int2d(Th)(error^2+dx(error)^2+dy(error)^2));
+   47 : cout << "erreur L2"<< errL2 << endl;
+   48 : cout << "erreur H1"<< errH1 << endl;
+   49 :
+   50 : //On visualise le maillage et le resultat
+   51 : plot(Th, wait = true, ps="mesh.eps");
+   52 : plot(uh, wait = true); sizestack + 1024 =4272  ( 3248 )
+ 
+  --  mesh:  Nb of Triangles =   1124, Nb of Vertices 643
+temps CPU apres def du maillage = 0.147
+  SkyLineMatrix: size pL/pU: 2409 58198 58198 moy=24.1586
+  -- Solve :
+          min 8.03483  max 113.929
+temps CPU apres resolution = 0.159
+erreur L224.018
+erreur H1123.058
+^C try getConsole P:\4A\MNS2\tp1\exo3.edp

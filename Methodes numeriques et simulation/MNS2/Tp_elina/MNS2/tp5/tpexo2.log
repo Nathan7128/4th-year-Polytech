@@ -1,0 +1,28 @@
+   37 :     = int2d(Th)(
+   38 :         dx(u)*dx(uu)
+   39 :         + dy(u)*dy(uu)
+   40 :         + dx(v)*dx(vv)
+   41 :         + dy(v)*dy(vv)
+   42 :         + dx(p)*uu
+   43 :         + dy(p)*vv
+   44 :         + pp*(dx(u) + dy(v))
+   45 :         - 1e-10*p*pp
+   46 :     )
+   47 :     +on(C1,u=0,v=0)
+   48 :     +on(C0,u=0,v=0)
+   49 :     + on(C2, u=0, v=f1)
+   50 :     + on(C3, u=0, v=f2);
+   51 :
+   52 : // Plot results
+   53 : plot([u, v], p, wait=1); sizestack + 1024 =2000  ( 976 )
+ 
+  --  mesh:  Nb of Triangles =    760, Nb of Vertices 426
+  -- Solve :
+          min -1.99391e-33  max 0.0896842
+          min -0.09  max 0.09
+          min -2.69587  max 2.69881
+times: compile 0.053s, execution 2.449s,  mpirank:0
+ ######## unfreed pointers   2350 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4160,  size :542976 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\Tp_elina\MNS2\tp5\tpexo2.edp

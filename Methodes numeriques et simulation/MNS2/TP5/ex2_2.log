@@ -1,0 +1,29 @@
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.862564  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.863346  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.864124  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.864898  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.865667  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.866432  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.867192  max 1
+  SkyLineMatrix: size pL/pU: 425 5520 5520 moy=12.9882
+  -- Solve :
+          min 0.867948  max 1
+times: compile 0.074s, execution 17.339s,  mpirank:0
+ ######## unfreed pointers   872107 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4309,  size :551592 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP5\ex2_2.edp

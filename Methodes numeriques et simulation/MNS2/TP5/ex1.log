@@ -1,0 +1,28 @@
+   27 : Vh uh, vh;
+   28 :
+   29 : //Definition du probleme variationnel
+   30 : problem laplacien(uh, vh, solver = LU) = int2d(Th)(dx(uh)*dx(vh) + dy(uh)*dy(vh)) + on(D1, uh = 0) + on(D2, uh = 1);
+   31 :
+   32 : laplacien;
+   33 :
+   34 : // Calcul de l'erreur
+   35 : func u = (log(x*x + y*y) + log(6.25))/log(6.25);
+   36 : Vh error = u - uh;
+   37 :
+   38 : real errH1 = sqrt(int2d(Th)(error^2 + dx(error)^2 + dy(error)^2));
+   39 :
+   40 : cout << "Erreur H1 " << errH1 << endl << endl;
+   41 :
+   42 : plot(uh, wait = true); sizestack + 1024 =2792  ( 1768 )
+ 
+  --  mesh:  Nb of Triangles =   3002, Nb of Vertices 1592
+  SkyLineMatrix: size pL/pU: 1592 41671 41671 moy=26.1753
+  -- Solve :
+          min 4.22933e-32  max 1
+Erreur H1 0.00538803
+ 
+times: compile 0.067s, execution 0.042s,  mpirank:0
+ ######## unfreed pointers   8018 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4088,  size :538120 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP5\ex1.edp

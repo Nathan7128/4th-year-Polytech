@@ -1,0 +1,28 @@
+   25 : Uh u, v;
+   26 : Uh uu, vv;
+   27 :
+   28 : fespace Ph(Th, P1);
+   29 : Ph p, pp;
+   30 :
+   31 : func f1 = x^2-1.4*x+0.4;
+   32 : func f2 = -x^2-1.4*x-0.4;
+   33 :
+   34 : // Problem
+   35 : solve stokes ([u, v, p], [uu, vv, pp]) = int2d(Th)( dx(u)*dx(uu) + dy(u)*dy(uu) + dx(v)*dx(vv) + dy(v)*dy(vv) +
+dx(p)*uu +
+   36 :     dy(p)*vv + pp*(dx(u) + dy(v)) - 1e-10*p*pp ) + on(D1, u=0, v=0) + on(D2, u = 0, v = 0) + on(Sd, u=0, v=f1) + on(Sg, u = 0, v = f2);
+   37 : ;
+   38 : // Plot
+   39 : plot([u, v], p, wait=1);
+   40 :  sizestack + 1024 =1952  ( 928 )
+ 
+  --  mesh:  Nb of Triangles =    758, Nb of Vertices 425
+  -- Solve :
+          min -4.15644e-33  max 0.0897124
+          min -0.09  max 0.09
+          min -2.68299  max 2.68905
+times: compile 0.069s, execution 0.036s,  mpirank:0
+ ######## unfreed pointers   2334 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  4122,  size :541168 mpirank: 0
+Ok: Normal End
+ try getConsole C:\Users\natha\Documents\Git\4th-year-Polytech\Methodes numeriques et simulation\MNS2\TP5\ex2.edp

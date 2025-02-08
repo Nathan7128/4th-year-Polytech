@@ -1,0 +1,89 @@
+// Parameters
+int C=99;
+int Cd=100;
+real Dc=2e-5;
+int Text=8;
+int T=36000;
+real S=.5;
+int K=1;
+real dt=10;
+int nb=2;
+real gamma = 4e-3;
+
+
+
+
+// Borders
+border c1(t=0., 1.){x=0.; y=1-t; label=C;}
+border c2(t=0., 1.){x=1.; y=t; label=C;}
+border c3(t=0., 1.){x=1-t; y=1.; label=Cd;}
+border c4(t=0., 0.3){x=t; y=0.; label=C;}
+border c5(t=0.7, 1){x=t; y=0.; label=C;}
+border c6(t=0.3, 0.7){x=t; y=0.7; label=C;}
+border c7(t=0, 0.7){x=0.7; y=-t+0.7; label=C;}
+border c8(t=0, 0.7){x=0.3; y=t; label=C;}
+
+// Mesh
+mesh Th=buildmesh(c1(3*nb) + c2(7*nb) + c3(4*nb) + c4(7*nb) + c5(3*nb) + c6(10*nb) + c7(10*nb) + c8(10*nb));
+
+// Function spaces
+fespace Uh(Th, P1b);  // P1b pour la vitesse
+Uh u, v, uu, vv;
+
+fespace Ph(Th, P1);   // P1 pour la pression
+Ph p, pp;
+
+// Problem
+solve stokes ([u, v, p], [uu, vv, pp])
+    = int2d(Th)(
+        dx(u)*dx(uu)
+        + dy(u)*dy(uu)
+        + dx(v)*dx(vv)
+        + dy(v)*dy(vv)
+        + dx(p)*uu
+        + dy(p)*vv
+        + pp*(dx(u) + dy(v))
+        - 1e-10*p*pp
+    )
+    + on(C, u=0, v=0)
+    + on(Cd, u=1, v=0);
+
+// Plot results
+plot([u, v], p, wait=1);
+// question B
+
+
+
+
+
+//definition du champ de vitesse
+
+func v1 = u*gamma;
+func v2 = v*gamma;
+
+// Fonction de x et de y
+func f=S*(.85<=x)*(x<=.95)*(.85<=y)*(y<=.95);
+
+// Condition initiale
+func u0=Text + 15*sin(x*3.14)*sin(y*3.14);
+
+// Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Vh(Th, P1);
+
+// uh et vh sont des elements de Vh
+Vh uh=u0, vh, uold;
+
+problem thermic(uh, vh, solver=LU)=int2d(Th)(vh*uh/dt) 
+- int2d(Th)(vh*uold/dt)
+- int1d(Th,C,Cd)(Dc*vh*K*Text) 
++ int1d(Th,C,Cd)(Dc*vh*K*uh) 
++ int2d(Th)(dx(uh)*v1*vh+dy(uh)*vh*v2)
++ int2d(Th)(Dc*(dx(uh)*dx(vh)+dy(uh)*dy(vh))) 
+- int2d(Th)(f*vh);
+
+
+for (real t=0; t<T; t+=dt) {
+    uold=uh;
+    thermic;
+    plot(uh, wait=false, value=1);
+}

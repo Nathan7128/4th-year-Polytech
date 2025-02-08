@@ -1,0 +1,38 @@
+// Nbre de mailles suivant x et y
+int Nbnoeuds=100;
+real cpu = clock();
+
+//Definition du maillage
+mesh Th = square(Nbnoeuds, Nbnoeuds,[x,y]);
+cout<<"temps CPU apres def du domaine =" <<(clock()-cpu) << endl;
+
+//Fonction de x et y
+func f = 2.0*x*(1.0-x)+2.0*y*(1.0-y);
+
+// Definition de l'espace des elements finis P1 associe au maillage Th
+fespace Vh(Th, P2);
+cout << "temps CPU apres def du maillage = " << (clock()-cpu) << endl;
+
+//uh et ch sont des elements de Vh
+Vh uh, vh;
+
+// Definition du pb variationnel
+problem laplacien(uh, vh, solver = LU)=int2d(Th)(dx(uh)*dx(vh)+dy(uh)*dy(vh))-int2d(Th)(f*vh)+on(1,2,3,4,uh=0);
+cout << "temps CPU apres def du pb var = " << (clock()-cpu) <<endl;
+
+//Resolution du pb
+laplacien;
+cout << "temps CPU apres resolution = " <<(clock()-cpu) << endl;
+
+//Calcul erreur
+func u = x*(1.0-x)*y*(1.0-y);
+Vh error = u-uh;
+
+real errL2 = sqrt(int2d(Th)(error^2));
+real errH1 = sqrt(int2d(Th)(error^2+dx(error)^2+dy(error)^2));
+cout << "erreur L2"<< errL2 << endl;
+cout << "erreur H1"<< errH1 << endl;
+
+//On visualise le maillage et le resultat
+plot(Th, wait = true);
+plot(uh, wait = true);

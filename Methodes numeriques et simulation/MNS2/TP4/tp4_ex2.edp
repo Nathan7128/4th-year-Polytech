@@ -1,8 +1,8 @@
 // Données
 int Nbnoeuds = 50;
 real P = 0.1;
-real K = 1e5;
-real Text = 0;
+real K = 1;
+real Text = 15;
 
 real vmin=5;
 real vmax=40;
@@ -19,8 +19,11 @@ real dt = Tf/N;
 
 // Fonctions
 func f = (x < 0.1)*(x > -0.1)*(y < 0.85)*(y > 0.75);
-func u0 = sin(pi*x)*sin(pi*y) + 15 + 8;
-func D = 2e-5 + (2e-6 - 2e-5)*(cos(x) > 0.4)*(sin(y) > 0.4)
+func u0 = 15;
+
+// Definition de la fonction D en creant une fonction booleenne correspondant a la couronne
+func couronne = (sqrt(x^2 + y^2) > 0.4) * (sqrt(x^2 + y^2) < 0.6);
+func D = 2e-5 + (2e-6 - 2e-5)*couronne;
 
 
 // Définition du bord du disque
@@ -47,7 +50,6 @@ int i=0;
 for (real t = 0; t < Tf; t += dt){
     uold = uh;
     fh = f*(1 - sin(pi*t/(3600*12)))*P;
-    Text = 15 + 5*sin(pi*t/(3600*12));
     solve thermic(uh, vh, solver = LU) = int2d(Th)(uh*vh/dt) - int2d(Th)(uold*vh/dt) + int1d(Th)(D*K*uh*vh) -
         int1d(Th)(D*K*Text*vh) + int2d(Th)(D*dx(uh)*dx(vh) + D*dy(uh)*dy(vh)) - int2d(Th)(fh*vh) ;;
     plot(uh, wait = false, value = true, grey = false, fill = true, viso = valeurs);

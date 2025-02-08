@@ -22,7 +22,7 @@
   SkyLineMatrix: size pL/pU: 246 3901 3901 moy=15.8577
   -- Solve :
           min 14.7263  max 55.0612
-times: compile 0.057s, execution 45.395s,  mpirank:0
+times: compile 0.061s, execution 41.824s,  mpirank:0
  ######## unfreed pointers   1262032 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
  CodeAlloc : nb ptr  4300,  size :546936 mpirank: 0
 Ok: Normal End

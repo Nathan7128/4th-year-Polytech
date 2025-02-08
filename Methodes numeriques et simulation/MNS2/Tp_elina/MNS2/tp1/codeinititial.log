@@ -1,0 +1,56 @@
+-- FreeFem++ v4.6 (Fri, Apr 03, 2020  2:08:08 PM - git v4.6)
+ Load: lg_fem lg_mesh lg_mesh3 eigenvalue
+    1 : // Nbre de mailles suivant x et y
+    2 : int Nbnoeuds=10;
+    3 : real cpu = clock();
+    4 :
+    5 : //Definition du maillage
+    6 : mesh Th = square(Nbnoeuds, Nbnoeuds,[x,y]);
+    7 : cout<<"temps CPU apres def du domaine =" <<(clock()-cpu) << endl;
+    8 :
+    9 : //Fonction de x et y
+   10 : func f = 20.*x*(1.0-x)+2.0*y*(1.0-y);
+   11 :
+   12 : // Definition de l'espace des elements finis P1 associe au maillage Th
+   13 : fespace Vh(Th, P1);
+   14 : cout << "temps CPU apres def du maillage = " << (clock()-cpu) << endl;
+   15 :
+   16 : //uh et ch sont des elements de Vh
+   17 : Vh uh, vh;
+   18 :
+   19 : // Definition du pb variationnel
+   20 : problem laplacien(uh, vh, solver = LU)=int2d(Th)(dx(uh)*dx(vh)+dy(uh)*dy(vh))-int2d(Th)(f*vh)+on(1,2,3,4,uh=0);
+1î   21 : cout << "temps CPU apres def du pb var = " << (clock()-cpu) <<endl;
+   22 :
+   23 : //Resolution du pb
+   24 : laplacien;
+   25 : cout << "temps CPU apres resolution = " <<(clock()-cpu) << endl;
+   26 :
+   27 : //Calcul erreur
+   28 : func u = x*(1.0-x)*y*(1.0-y);
+   29 : Vh error = u-uh;
+   30 :
+   31 : real errL2 = sqrt(int2d(Th)(error^2));
+   32 : real errH1 = sqrt(int2d(Th)(error^2+dx(error)^2+dy(error)^2));
+   33 : cout << "erreur L2"<< errL2 << endl;
+   34 : cout << "erreur H1"<< errH1 << endl;
+   35 :
+   36 : //On visualise le maillage et le resultat
+   37 : plot(Th, wait = true);
+   38 : plot(uh, wait = true); sizestack + 1024 =3632  ( 2608 )
+ 
+  -- Square mesh : nb vertices  =121 ,  nb triangles = 200 ,  nb boundary edges 40
+temps CPU apres def du domaine =0
+temps CPU apres def du maillage = 0
+temps CPU apres def du pb var = 0
+  SkyLineMatrix: size pL/pU: 121 1320 1320 moy=10.9091
+  -- Solve :
+          min 4.40802e-62  max 0.34107
+temps CPU apres resolution = 0.002
+erreur L20.146162
+erreur H10.679654
+times: compile 0.053s, execution 0.48s,  mpirank:0
+ ######## We forget of deleting   -4 Nb pointer,   0Bytes  ,  mpirank 0, memory leak =0
+ CodeAlloc : nb ptr  3611,  size :476072 mpirank: 0
+Ok: Normal End
+ try getConsole P:\4A\MNS2\codeinititial.edp

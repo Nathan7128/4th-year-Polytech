@@ -1,0 +1,76 @@
+real T=36000;
+int N=1000;
+real dt = T/N;
+int C1=10;
+int P =0.01;
+int Tf = 72*3600;
+int nb=2;
+real K=1;
+real D=2e-5;
+
+
+// Fonction de x et y
+func u0 = 15;
+func f=(x>-0.1) * (x<0.1) *(y>0.75) * (y<0.85)
+
+
+real vmin=15;
+real vmax = 19;
+int nbc = 17;
+real[int] valeurs(nbv);
+for (int i=0; i<nbv;i++)
+{
+    valeurs[i]=i*(vmax-vmin)/(nbv-1)+vmin;
+}
+Vh fh;
+
+real[int] xx(Tf/dt), z1(Tf/dt), yy(Tf/dt), zz(Tf/dt), z2(Tf/dt);
+int i=0;
+
+for( real t=0; t<Th; t+=dt){
+    uold=uh;
+    fh = f*P*(1-sin(pi*t/(12*3600)));
+    Text = 15 + 5*sin(pi*t/(12*3600));
+    solve thermic(uh, vh, solver=LU)=int2d(Th)(uh*vh/dt)+;
+    plot(uh,wait=false, value=true, grey=false, fill=true, viso=valeurs);
+
+
+    xx[i]=t;
+    yy[i]=TempExt;
+    zz[i]=uh(0.0,0.0);
+    z1[i] = fh(0.1,0.9);
+    z2[i] = uh[].min;
+    i++;
+}
+plot([xx,yy],[xx,zz],[xx,z1],[xx,z2], value=true,wait=true);
+
+
+//Définition geometrique
+
+border C0(t=0., 2.*pi){x=(t); y=sin(t);}
+
+plot( C0(50),wait=true, ps="heatexb.eps");
+
+
+
+
+
+plot( C0(50),wait=true, ps="heatexb.eps");
+
+// Définition du maillage
+mesh Th=buildmesh(C0(50*nb)+ C11(10*nb)+C12(10*nb)+C13(10*nb)+C14(10*nb));
+
+plot(Th,wait=true);
+
+fespace Vh(Th, P1);
+
+
+Vh uh = u0, vh, uold;
+
+// Afficher 
+real[int] xx(Tf/dt), z1(Tf/dt), yy(Tf/dt), zz(Tf/dt), z2(Tf/dt);
+int i=0;
+for(real t=0;t<Tf;t+=dt){
+
+}
+plot([xx,yy],[xx,zz],[xx,z1],[xx,z2], value=true,wait=true);

@@ -1,0 +1,42 @@
+// Parameters
+int nb = 2;
+int C=99;
+int Cd=100;
+
+// Borders
+border c1(t=0., 1.){x=0.; y=1-t; label=C;}
+border c2(t=0., 1.){x=1.; y=t; label=C;}
+border c3(t=0., 1.){x=1-t; y=1.; label=Cd;}
+border c4(t=0., 0.3){x=t; y=0.; label=C;}
+border c5(t=0.7, 1){x=t; y=0.; label=C;}
+border c6(t=0.3, 0.7){x=t; y=0.7; label=C;}
+border c7(t=0, 0.7){x=0.7; y=-t+0.7; label=C;}
+border c8(t=0, 0.7){x=0.3; y=t; label=C;}
+
+// Mesh
+mesh Th=buildmesh(c1(3*nb) + c2(7*nb) + c3(4*nb) + c4(7*nb) + c5(3*nb) + c6(10*nb) + c7(10*nb) + c8(10*nb));
+
+// Function spaces
+fespace Uh(Th, P1b);  // P1b pour la vitesse
+Uh u, v, uu, vv;
+
+fespace Ph(Th, P1);   // P1 pour la pression
+Ph p, pp;
+
+// Problem
+solve stokes ([u, v, p], [uu, vv, pp])
+    = int2d(Th)(
+        dx(u)*dx(uu)
+        + dy(u)*dy(uu)
+        + dx(v)*dx(vv)
+        + dy(v)*dy(vv)
+        + dx(p)*uu
+        + dy(p)*vv
+        + pp*(dx(u) + dy(v))
+        - 1e-10*p*pp
+    )
+    + on(C, u=0, v=0)
+    + on(Cd, u=1, v=0);
+
+// Plot results
+plot([u, v], p, wait=1);
